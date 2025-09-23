@@ -7,6 +7,10 @@
 
 "use strict";
 
+
+//backgroun will have a default purple color
+let backgroundShade = "170, 66, 245";
+
 /**
  * OH LOOK I DIDN'T DESCRIBE SETUP!!
 */
@@ -23,7 +27,18 @@ function setup() {
  * OOPS I DIDN'T DESCRIBE WHAT MY DRAW DOES!
 */
 function draw() {
-    background(170, 66, 245);
+
+    //frameRate of 3 because I want to use to to make my background 
+    //change colors but at a relatively small pace.
+    frameRate(3);
+
+    //muticolor background
+    let r = random(0, 255);
+    let g = random(0, 255);
+    let b = random(0, 255);
+    background(r, g, b);
+
+
 
     //head
     push();
@@ -102,10 +117,6 @@ function draw() {
     ellipse(530, 310, 30, 30)
     pop();
 
-
-
-
-
     //mouth
     push();
     fill(166, 48, 77);
@@ -114,6 +125,11 @@ function draw() {
     //used arc() to create an open arc which i am going to use to do my mouth.
     arc(500, 375, 150, 50, 0, PI + QUARTER_PI, OPEN);
     pop();
+
+
+    //cheeks
+
+
 
 
     //doing the hair
