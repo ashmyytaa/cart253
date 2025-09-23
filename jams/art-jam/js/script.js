@@ -42,14 +42,16 @@ function draw() {
     //left eyes
     push();
     fill('white');
-    noStroke();
+    stroke('black');
+    strokeWeight(0.5)
     ellipse(370, 200, 50, 30);
     pop();
 
     //right eyes
     push();
     fill('white');
-    noStroke();
+    stroke('black');
+    strokeWeight(0.5)
     ellipse(650, 200, 50, 30);
     pop();
 
@@ -73,17 +75,147 @@ function draw() {
     push();
     fill(194, 142, 58);
     stroke(138, 96, 28);
-    strokeWeight(3);
+    strokeWeight(0.3);
     rect(500, 250, 30, 60);
     pop();
 
-    //mouth
+    //noseOpening
     push();
     fill(194, 142, 58);
-    stroke(138, 96, 28);
-    strokeWeight(3);
-    arc(500, 300, 150, 200, 0, PI + QUARTER_PI, OPEN);
+    noStroke();
+    ellipse(515, 246, 30, 30)
     pop();
+
+    //nostrils
+    push();
+    fill(168, 112, 44);
+    stroke(138, 96, 28);
+    strokeWeight(0.2);
+    ellipse(500, 310, 30, 30)
+    pop();
+
+    //nostrils
+    push();
+    fill(168, 112, 44);
+    stroke(138, 96, 28);
+    strokeWeight(0.2);
+    ellipse(530, 310, 30, 30)
+    pop();
+
+
+
+
+
+    //mouth
+    push();
+    fill(166, 48, 77);
+    stroke(166, 48, 77);
+    strokeWeight(3);
+    //used arc() to create an open arc which i am going to use to do my mouth.
+    arc(500, 375, 150, 50, 0, PI + QUARTER_PI, OPEN);
+    pop();
+
+
+    //doing the hair
+    push();
+    fill(97, 56, 30);
+    noStroke();
+    ellipse(370, 100, 150, 90);
+    pop();
+
+    push();
+    fill(97, 56, 30);
+    noStroke();
+    ellipse(470, 100, 150, 90);
+    pop();
+
+    push();
+    fill(97, 56, 30);
+    noStroke();
+    ellipse(570, 100, 150, 90);
+    pop();
+
+    push();
+    fill(97, 56, 30);
+    noStroke();
+    ellipse(630, 100, 150, 90);
+    pop();
+
+    push();
+    fill(97, 56, 30);
+    noStroke();
+    ellipse(630, 50, 150, 90);
+    pop();
+
+    push();
+    fill(97, 56, 30);
+    noStroke();
+    ellipse(330, 50, 150, 90);
+    pop();
+
+    push();
+    fill(97, 56, 30);
+    noStroke();
+    ellipse(430, 50, 150, 90);
+    pop();
+
+    push();
+    fill(97, 56, 30);
+    noStroke();
+    ellipse(530, 50, 150, 90);
+    pop();
+
+    push();
+    fill(97, 56, 30);
+    noStroke();
+    ellipse(530, 30, 150, 90);
+    pop();
+
+    push();
+    fill(97, 56, 30);
+    noStroke();
+    ellipse(300, 150, 150, 90);
+    pop();
+
+    push();
+    fill(97, 56, 30);
+    noStroke();
+    ellipse(700, 150, 150, 90);
+    pop();
+
+    push();
+    fill(97, 56, 30);
+    noStroke();
+    ellipse(700, 100, 150, 90);
+    pop();
+
+    push();
+    fill(97, 56, 30);
+    noStroke();
+    ellipse(270, 200, 150, 90);
+    pop();
+
+    push();
+    fill(97, 56, 30);
+    noStroke();
+    ellipse(750, 200, 150, 90);
+    pop();
+
+    push();
+    fill(97, 56, 30);
+    noStroke();
+    ellipse(750, 270, 150, 90);
+    pop();
+
+    push();
+    fill(97, 56, 30);
+    noStroke();
+    ellipse(250, 270, 150, 90);
+    pop();
+
+
+
+
 
 
 
