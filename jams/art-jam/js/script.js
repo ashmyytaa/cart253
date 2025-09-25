@@ -29,6 +29,11 @@ function setup() {
 */
 function draw() {
 
+    x1 = x1 + 1;
+    x2 = x2 + 1;
+    x3 = x3 + 1;
+    x4 = x4 + 1;
+
     //frameRate of 3 because I want to use to to make my background 
     //change colors but at a relatively small pace.
     frameRate(3);
@@ -68,7 +73,8 @@ function draw() {
     fill('white');
     stroke('black');
     strokeWeight(0.5)
-    ellipse(650, 200, 50, 30);
+    // ellipse(650, 200, 50, 30);
+    quad(50, 62, 86, 50, 50, 38, 14, 50);
     pop();
 
     //left eye pupil
@@ -91,32 +97,13 @@ function draw() {
     push();
     fill(194, 142, 58);
     stroke(138, 96, 28);
-    strokeWeight(0.3);
+    strokeWeight(3);
     rect(500, 250, 30, 60);
     pop();
 
-    //noseOpening
-    push();
-    fill(194, 142, 58);
-    noStroke();
-    ellipse(515, 246, 30, 30)
-    pop();
 
-    //nostrils
-    push();
-    fill(168, 112, 44);
-    stroke(138, 96, 28);
-    strokeWeight(0.2);
-    ellipse(500, 310, 30, 30)
-    pop();
 
-    //nostrils
-    push();
-    fill(168, 112, 44);
-    stroke(138, 96, 28);
-    strokeWeight(0.2);
-    ellipse(530, 310, 30, 30)
-    pop();
+
 
     //mouth
     push();
@@ -128,7 +115,13 @@ function draw() {
     pop();
 
 
-    //cheeks
+    //cheeks - left
+    push();
+    fill(171, 85, 121);
+    noStroke();
+    ellipse(370, 300, 60);
+    pop()
+
 
 
 
