@@ -2,7 +2,8 @@
  * ART JAM
  * Ashmitha Kanagiah
  * 
- * Self Portrait
+ * Self Portrait.
+ * I did a simple portait of a girl. There are mutiple animations that compose my portrait such as: 
  */
 
 "use strict";
@@ -12,7 +13,7 @@
 let backgroundShade = "170, 66, 245";
 
 /**
- * OH LOOK I DIDN'T DESCRIBE SETUP!!
+ * Creates the background color of my canvas, where my portait will be displayed.
 */
 function setup() {
     createCanvas(1000, 600);
@@ -24,7 +25,7 @@ function setup() {
 
 
 /**
- * OOPS I DIDN'T DESCRIBE WHAT MY DRAW DOES!
+ * The draw functions draws the shapes of my portrait.
 */
 function draw() {
 
@@ -132,7 +133,7 @@ function draw() {
 
 
 
-    //doing the hair
+    //doing the hair, which consists of multiple circles that overlap eachother
     push();
     fill(97, 56, 30);
     noStroke();
