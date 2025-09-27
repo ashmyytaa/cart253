@@ -29,10 +29,6 @@ function setup() {
 */
 function draw() {
 
-    x1 = x1 + 1;
-    x2 = x2 + 1;
-    x3 = x3 + 1;
-    x4 = x4 + 1;
 
     //frameRate of 3 because I want to use to to make my background 
     //change colors but at a relatively small pace.
@@ -50,77 +46,24 @@ function draw() {
     push();
     fill(194, 142, 58);
     noStroke();
-    ellipse(500, 250, 450, 450);
+    ellipse(500, 290, 430, 430);
     pop();
 
-    //neck
     push();
-    fill(194, 142, 58);
-    noStroke();
-    rect(460, 300, 100, 600);
-
-
-    //left eyes
-    push();
-    fill('white');
+    noFill();
     stroke('black');
-    strokeWeight(0.5)
-    ellipse(370, 200, 50, 30);
+    strokeWeight(3);
+    arc(590, 260, 90, 80, PI + QUARTER_PI, TWO_PI);
     pop();
 
-    //right eyes
     push();
-    fill('white');
+    noFill();
     stroke('black');
-    strokeWeight(0.5)
-    // ellipse(650, 200, 50, 30);
-    quad(50, 62, 86, 50, 50, 38, 14, 50);
-    pop();
-
-    //left eye pupil
-    push();
-    fill('black');
-    noStroke();
-    ellipse(650, 200, 20, 20);
-    pop();
-
-
-    //right eye pupil
-    push();
-    fill('black');
-    noStroke();
-    ellipse(370, 200, 20, 20);
-    pop();
-
-
-    //nose
-    push();
-    fill(194, 142, 58);
-    stroke(138, 96, 28);
     strokeWeight(3);
-    rect(500, 250, 30, 60);
+    arc(380, 260, 90, 80, PI + QUARTER_PI, TWO_PI);
     pop();
 
 
-
-
-
-    //mouth
-    push();
-    fill(166, 48, 77);
-    stroke(166, 48, 77);
-    strokeWeight(3);
-    //used arc() to create an open arc which i am going to use to do my mouth.
-    arc(500, 375, 150, 50, 0, PI + QUARTER_PI, OPEN);
-    pop();
-
-
-    //cheeks - left
-    push();
-    fill(171, 85, 121);
-    noStroke();
-    ellipse(370, 300, 60);
-    pop()
 
 
 
