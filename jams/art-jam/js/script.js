@@ -42,26 +42,26 @@ function draw() {
 
 
 
-    //head
+    //head - which is in a ellipse shape
     push();
     fill(194, 142, 58);
     noStroke();
     ellipse(500, 290, 430, 430);
     pop();
 
-    //eyes
+    //eyes - left 
     push();
     noFill();
     stroke('black');
     strokeWeight(2);
-    arc(580, 260, 90, 70, PI + TWO_PI, TWO_PI); //left eye
+    arc(600, 260, 110, 70, PI + TWO_PI, TWO_PI); //using arc to create a closed lid eye 
     pop();
-
+    // eyes - right 
     push();
     noFill();
     stroke('black');
     strokeWeight(2);
-    arc(420, 260, 90, 70, PI + TWO_PI, TWO_PI); //right  eye
+    arc(410, 260, 110, 70, PI + TWO_PI, TWO_PI); //using arc to create a closed lid eye 
     pop();
 
     //nose
@@ -69,7 +69,7 @@ function draw() {
     noFill();
     stroke('black');
     strokeWeight(2);
-    arc(500, 300, 20, 50, 0, PI + QUARTER_PI, OPEN);
+    arc(500, 300, 20, 50, 0, PI + QUARTER_PI, OPEN); //using arc to create my nose shape 
     pop();
 
     //mouth
@@ -77,16 +77,7 @@ function draw() {
     noFill();
     stroke(181, 33, 89, 200);
     strokeWeight(3);
-    arc(500, 380, 100, 90, 0, PI + TWO_PI, OPEN);
-    pop();
-
-
-    //eyebrows - left
-    push();
-    noFill();
-    stroke(74, 33, 24);
-    strokeWeight(1);
-    arc(580, 200, 60, 20, PI + TWO_PI, TWO_PI);
+    arc(500, 380, 100, 90, 0, PI + TWO_PI, OPEN); //using arc again to create a smile 
     pop();
 
 
@@ -95,7 +86,14 @@ function draw() {
     noFill();
     stroke(74, 33, 24);
     strokeWeight(1);
-    arc(420, 200, 60, 20, PI + TWO_PI, TWO_PI);
+    arc(580, 200, 50, 20, PI + TWO_PI, TWO_PI); //using arc to create my eyebrows
+    pop();
+    //eyebrows - left
+    push();
+    noFill();
+    stroke(74, 33, 24);
+    strokeWeight(1);
+    arc(420, 200, 50, 20, PI + TWO_PI, TWO_PI); //using arc to create my eyebrows
     pop();
 
     //cheeks - right
@@ -105,7 +103,6 @@ function draw() {
     strokeWeight(1);
     ellipse(600, 320, 90)
     pop();
-
     //cheeks - left
     push();
     fill(184, 15, 94, 20);
@@ -115,14 +112,14 @@ function draw() {
     pop();
 
 
-    //hairr
+    //hair - right
     push();
     fill(66, 46, 34);
     noStroke();
     strokeWeight(1);
-    ellipse(780, 130, 200) //right
+    ellipse(770, 130, 200)
     pop();
-
+    //hair - left
     push();
     fill(66, 46, 34);
     noStroke();
@@ -131,16 +128,16 @@ function draw() {
     pop();
 
 
-
-    //hairr bangs
+    //hairr front bangs
     push();
     fill(66, 46, 34);
     noStroke();
     strokeWeight(1);
-    arc(500, 150, 350, 250, PI + TWO_PI, TWO_PI); //right  eye
+    arc(500, 150, 350, 250, PI + TWO_PI, TWO_PI); // using a filled arc to do like an half ellipse for my front bangs
     pop();
 
-    //hair bows - left side
+    //hair bows - left 
+    //bottom bow triangle
     push();
     fill('brown');
     noStroke();
@@ -148,14 +145,14 @@ function draw() {
     triangle(190, 240, 320, 170, 250, 300
     );
     pop();
-
+    //top bow triangle
     push();
     fill('brown');
     noStroke();
     strokeWeight(1);
     triangle(300, 180, 380, 80, 430, 140);
     pop();
-
+    //bow button
     push();
     fill('brown');
     noStroke();
@@ -163,21 +160,23 @@ function draw() {
     ellipse(300, 185, 60);
     pop();
 
-    //hair bows - right side 
+
+    //hair bows - right  
+    //top bow triangle
     push();
     fill('brown');
     noStroke();
     strokeWeight(1);
     triangle(700, 190, 630, 80, 550, 110);
     pop();
-
+    //bottom bow triangle
     push();
     fill('brown');
     noStroke();
     strokeWeight(1);
     triangle(690, 180, 750, 300, 800, 250);
     pop();
-
+    //bow button
     push();
     fill('brown');
     noStroke();
