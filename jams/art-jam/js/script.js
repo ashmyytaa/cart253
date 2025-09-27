@@ -53,31 +53,31 @@ function draw() {
     push();
     noFill();
     stroke('black');
-    strokeWeight(3);
-    arc(580, 260, 90, 80, PI + TWO_PI, TWO_PI); //left eye
+    strokeWeight(2);
+    arc(580, 260, 90, 70, PI + TWO_PI, TWO_PI); //left eye
     pop();
 
     push();
     noFill();
     stroke('black');
-    strokeWeight(3);
-    arc(420, 260, 90, 80, PI + TWO_PI, TWO_PI); //right  eye
+    strokeWeight(2);
+    arc(420, 260, 90, 70, PI + TWO_PI, TWO_PI); //right  eye
     pop();
 
-    //NOSE
+    //nose
     push();
     noFill();
     stroke('black');
-    strokeWeight(3);
-    arc(500, 300, 10, 80, 0, PI + QUARTER_PI, OPEN);
+    strokeWeight(2);
+    arc(500, 300, 20, 50, 0, PI + QUARTER_PI, OPEN);
     pop();
 
     //mouth
     push();
     noFill();
-    stroke(181, 33, 89);
+    stroke(181, 33, 89, 200);
     strokeWeight(3);
-    arc(500, 380, 130, 150, 0, PI + TWO_PI, OPEN);
+    arc(500, 380, 100, 90, 0, PI + TWO_PI, OPEN);
     pop();
 
 
@@ -100,125 +100,73 @@ function draw() {
 
     //cheeks - right
     push();
-    fill(184, 15, 94);
+    fill(184, 15, 94, 20);
     noStroke();
     strokeWeight(1);
-    ellipse(600, 320, 70)
+    ellipse(600, 320, 90)
     pop();
 
     //cheeks - left
     push();
-    fill(184, 15, 94);
+    fill(184, 15, 94, 20);
     noStroke();
     strokeWeight(1);
-    ellipse(400, 320, 70)
+    ellipse(400, 320, 90)
     pop();
 
 
-
-
-
-
-
-
-
-
-    //doing the hair, which consists of multiple circles that overlap eachother
+    //hairr
     push();
-    fill(97, 56, 30);
+    fill(66, 46, 34);
     noStroke();
-    ellipse(370, 100, 150, 90);
+    strokeWeight(1);
+    ellipse(780, 130, 200)
     pop();
 
     push();
-    fill(97, 56, 30);
+    fill(66, 46, 34);
     noStroke();
-    ellipse(470, 100, 150, 90);
+    strokeWeight(1);
+    ellipse(220, 130, 200)
+    pop();
+
+
+
+    //hairr bangs
+    push();
+    fill(66, 46, 34);
+    noStroke();
+    strokeWeight(1);
+    arc(500, 150, 350, 250, PI + TWO_PI, TWO_PI); //right  eye
+    pop();
+
+    //hair bows
+    push();
+    fill('brown');
+    noStroke();
+    strokeWeight(1);
+    triangle(190, 240, 320, 170, 250, 300
+    );
     pop();
 
     push();
-    fill(97, 56, 30);
+    fill('brown');
     noStroke();
-    ellipse(570, 100, 150, 90);
+    strokeWeight(1);
+    triangle(390, 140, 400, 70, 350, 100
+    );
     pop();
 
-    push();
-    fill(97, 56, 30);
-    noStroke();
-    ellipse(630, 100, 150, 90);
-    pop();
 
-    push();
-    fill(97, 56, 30);
-    noStroke();
-    ellipse(630, 50, 150, 90);
-    pop();
 
-    push();
-    fill(97, 56, 30);
-    noStroke();
-    ellipse(330, 50, 150, 90);
-    pop();
 
-    push();
-    fill(97, 56, 30);
-    noStroke();
-    ellipse(430, 50, 150, 90);
-    pop();
 
-    push();
-    fill(97, 56, 30);
-    noStroke();
-    ellipse(530, 50, 150, 90);
-    pop();
 
-    push();
-    fill(97, 56, 30);
-    noStroke();
-    ellipse(530, 30, 150, 90);
-    pop();
 
-    push();
-    fill(97, 56, 30);
-    noStroke();
-    ellipse(300, 150, 150, 90);
-    pop();
 
-    push();
-    fill(97, 56, 30);
-    noStroke();
-    ellipse(700, 150, 150, 90);
-    pop();
 
-    push();
-    fill(97, 56, 30);
-    noStroke();
-    ellipse(700, 100, 150, 90);
-    pop();
 
-    push();
-    fill(97, 56, 30);
-    noStroke();
-    ellipse(270, 200, 150, 90);
-    pop();
 
-    push();
-    fill(97, 56, 30);
-    noStroke();
-    ellipse(750, 200, 150, 90);
-    pop();
-
-    push();
-    fill(97, 56, 30);
-    noStroke();
-    ellipse(750, 270, 150, 90);
-    pop();
-
-    push();
-    fill(97, 56, 30);
-    noStroke();
-    ellipse(250, 270, 150, 90);
-    pop();
 
 
 
