@@ -120,14 +120,14 @@ function draw() {
     fill(66, 46, 34);
     noStroke();
     strokeWeight(1);
-    ellipse(780, 130, 200)
+    ellipse(780, 130, 200) //right
     pop();
 
     push();
     fill(66, 46, 34);
     noStroke();
     strokeWeight(1);
-    ellipse(220, 130, 200)
+    ellipse(230, 130, 200) //left
     pop();
 
 
@@ -140,7 +140,7 @@ function draw() {
     arc(500, 150, 350, 250, PI + TWO_PI, TWO_PI); //right  eye
     pop();
 
-    //hair bows
+    //hair bows - left side
     push();
     fill('brown');
     noStroke();
@@ -153,10 +153,37 @@ function draw() {
     fill('brown');
     noStroke();
     strokeWeight(1);
-    triangle(390, 140, 400, 70, 350, 100
-    );
+    triangle(300, 180, 380, 80, 430, 140);
     pop();
 
+    push();
+    fill('brown');
+    noStroke();
+    strokeWeight(1);
+    ellipse(300, 185, 60);
+    pop();
+
+    //hair bows - right side 
+    push();
+    fill('brown');
+    noStroke();
+    strokeWeight(1);
+    triangle(700, 190, 630, 80, 550, 110);
+    pop();
+
+    push();
+    fill('brown');
+    noStroke();
+    strokeWeight(1);
+    triangle(690, 180, 750, 300, 800, 250);
+    pop();
+
+    push();
+    fill('brown');
+    noStroke();
+    strokeWeight(1);
+    ellipse(700, 185, 60);
+    pop();
 
 
 
