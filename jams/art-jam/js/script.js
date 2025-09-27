@@ -49,19 +49,73 @@ function draw() {
     ellipse(500, 290, 430, 430);
     pop();
 
+    //eyes
     push();
     noFill();
     stroke('black');
     strokeWeight(3);
-    arc(590, 260, 90, 80, PI + QUARTER_PI, TWO_PI);
+    arc(580, 260, 90, 80, PI + TWO_PI, TWO_PI); //left eye
     pop();
 
     push();
     noFill();
     stroke('black');
     strokeWeight(3);
-    arc(380, 260, 90, 80, PI + QUARTER_PI, TWO_PI);
+    arc(420, 260, 90, 80, PI + TWO_PI, TWO_PI); //right  eye
     pop();
+
+    //NOSE
+    push();
+    noFill();
+    stroke('black');
+    strokeWeight(3);
+    arc(500, 300, 10, 80, 0, PI + QUARTER_PI, OPEN);
+    pop();
+
+    //mouth
+    push();
+    noFill();
+    stroke(181, 33, 89);
+    strokeWeight(3);
+    arc(500, 380, 130, 150, 0, PI + TWO_PI, OPEN);
+    pop();
+
+
+    //eyebrows - left
+    push();
+    noFill();
+    stroke(74, 33, 24);
+    strokeWeight(1);
+    arc(580, 200, 60, 20, PI + TWO_PI, TWO_PI);
+    pop();
+
+
+    //eyebrows - right
+    push();
+    noFill();
+    stroke(74, 33, 24);
+    strokeWeight(1);
+    arc(420, 200, 60, 20, PI + TWO_PI, TWO_PI);
+    pop();
+
+    //cheeks - right
+    push();
+    fill(184, 15, 94);
+    noStroke();
+    strokeWeight(1);
+    ellipse(600, 320, 70)
+    pop();
+
+    //cheeks - left
+    push();
+    fill(184, 15, 94);
+    noStroke();
+    strokeWeight(1);
+    ellipse(400, 320, 70)
+    pop();
+
+
+
 
 
 
