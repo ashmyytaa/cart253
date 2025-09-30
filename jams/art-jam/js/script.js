@@ -22,6 +22,7 @@ let cheeks = {
     x2: 400,
     y2: 320,
     fill: "#c216612d",
+
     fills: {
         blush: "#7d121261",
         happy: "#c216612d",
@@ -43,7 +44,6 @@ let hair = {
     },
 
     fills: {
-
         pink: "#f46cc0fd",
         brown: "#32210fff",
     },
@@ -54,16 +54,23 @@ let hair = {
 
 let bowDetail = {
     fill: "#368dc4ff",
+    stroke: "#133246ff",
 }
 
-//backgroun will have a default purple color
-let backgroundShade = "170, 66, 245";
+let bubbles = {
+    x: undefined,
+    y: undefined,
+    fill: "#d5dee31b",
+    size: 50,
+};
+
 
 /**
  * Creates the background color of my canvas, where my portait will be displayed.
 */
 function setup() {
     createCanvas(1000, 600);
+    background("#133246ff");
 }
 
 
@@ -72,19 +79,13 @@ function setup() {
 */
 function draw() {
 
-
-    //frameRate of 3 because I want to use to to make my background 
-    //change colors but at a relatively small pace.
-    frameRate(3);
-
-    //muticolor background
-    let r = random(0, 200);
-    let g = random(0, 130);
-    let b = random(0, 170);
-    background(r, g, b);
-
     blushing();
     hairChange();
+    bubblesBackground();
+
+
+
+
 
 
 
@@ -186,23 +187,23 @@ function draw() {
     //bottom bow triangle
     push();
     fill(bowDetail.fill);
-    noStroke();
-    strokeWeight(1);
+    stroke(bowDetail.stroke);
+    strokeWeight(1.5);
     triangle(190, 240, 320, 170, 250, 300
     );
     pop();
     //top bow triangle
     push();
     fill(bowDetail.fill);
-    noStroke();
-    strokeWeight(1);
+    stroke(bowDetail.stroke);
+    strokeWeight(1.5);
     triangle(300, 180, 380, 80, 430, 140);
     pop();
     //bow button
     push();
     fill(bowDetail.fill);
-    noStroke();
-    strokeWeight(1);
+    stroke(bowDetail.stroke);
+    strokeWeight(1.5);
     ellipse(300, 185, 60);
     pop();
 
@@ -211,22 +212,22 @@ function draw() {
     //top bow triangle
     push();
     fill(bowDetail.fill);
-    noStroke();
-    strokeWeight(1);
+    stroke(bowDetail.stroke);
+    strokeWeight(1.5);
     triangle(700, 190, 630, 80, 550, 110);
     pop();
     //bottom bow triangle
     push();
     fill(bowDetail.fill);
-    noStroke();
-    strokeWeight(1);
+    stroke(bowDetail.stroke);
+    strokeWeight(1.5);
     triangle(690, 180, 750, 300, 800, 250);
     pop();
     //bow button
     push();
     fill(bowDetail.fill);
-    noStroke();
-    strokeWeight(1);
+    stroke(bowDetail.stroke);
+    strokeWeight(1.5);
     ellipse(700, 185, 60);
     pop();
 
@@ -237,13 +238,11 @@ function draw() {
 }
 
 function blushing() {
-
     const distanceOne = dist(mouseX, mouseY, cheeks.x1, cheeks.y1);
     const distanceTwo = dist(mouseX, mouseY, cheeks.x2, cheeks.y2);
 
     const mouseOverlapping = (distanceOne < cheeks.size / 2 || distanceTwo < cheeks.size / 2);
     if (mouseOverlapping) {
-
         cheeks.fill = cheeks.fills.blush;
     }
     else {
@@ -257,9 +256,25 @@ function blushing() {
 function hairChange() {
     if (mouseIsPressed) {
         hair.fill = hair.fills.pink;
-
     }
     else {
         hair.fill = hair.fills.brown;
     }
+}
+
+function bubblesBackground() {
+
+    push();
+    frameRate = 2;
+    fill(bubbles.fill);
+    noStroke();
+    bubbles.x = random(0, width);
+    bubbles.y = random(0, height);
+    ellipse(bubbles.x, bubbles.y, bubbles.size);
+
+    pop();
+
+
+
+
 }
