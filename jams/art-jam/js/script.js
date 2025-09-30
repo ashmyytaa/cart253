@@ -8,6 +8,12 @@
 
 "use strict";
 
+const head = {
+    fill: "#c28744ff",
+    x: 500,
+    y: 290,
+    size: 430,
+}
 
 let cheeks = {
     x1: 600,
@@ -17,7 +23,7 @@ let cheeks = {
     y2: 320,
     fill: "#c216612d",
     fills: {
-        blush: "#7d1212b3",
+        blush: "#7d121261",
         happy: "#c216612d",
     }
 };
@@ -38,33 +44,17 @@ let hair = {
 
     fills: {
 
-        pink: "#f46cc0e7",
-        blonde: "#fbb15dd6",
+        pink: "#f46cc0fd",
+        brown: "#32210fff",
     },
 
 
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+let bowDetail = {
+    fill: "#368dc4ff",
+}
 
 //backgroun will have a default purple color
 let backgroundShade = "170, 66, 245";
@@ -74,10 +64,6 @@ let backgroundShade = "170, 66, 245";
 */
 function setup() {
     createCanvas(1000, 600);
-
-
-
-
 }
 
 
@@ -92,20 +78,21 @@ function draw() {
     frameRate(3);
 
     //muticolor background
-    let r = random(0, 255);
-    let g = random(0, 255);
-    let b = random(0, 255);
+    let r = random(0, 200);
+    let g = random(0, 130);
+    let b = random(0, 170);
     background(r, g, b);
 
     blushing();
+    hairChange();
 
 
 
     //head - which is in a ellipse shape
     push();
-    fill(194, 142, 58);
+    fill(head.fill);
     noStroke();
-    ellipse(500, 290, 430, 430);
+    ellipse(head.x, head.y, head.size);
     pop();
 
     //eyes - left 
@@ -134,7 +121,7 @@ function draw() {
     //mouth
     push();
     noFill();
-    stroke(181, 33, 89, 200);
+    stroke(128, 22, 60, 200);
     strokeWeight(3);
     arc(500, 380, 100, 90, 0, PI + TWO_PI, OPEN); //using arc again to create a smile 
     pop();
@@ -198,7 +185,7 @@ function draw() {
     //hair bows - left 
     //bottom bow triangle
     push();
-    fill('brown');
+    fill(bowDetail.fill);
     noStroke();
     strokeWeight(1);
     triangle(190, 240, 320, 170, 250, 300
@@ -206,14 +193,14 @@ function draw() {
     pop();
     //top bow triangle
     push();
-    fill('brown');
+    fill(bowDetail.fill);
     noStroke();
     strokeWeight(1);
     triangle(300, 180, 380, 80, 430, 140);
     pop();
     //bow button
     push();
-    fill('brown');
+    fill(bowDetail.fill);
     noStroke();
     strokeWeight(1);
     ellipse(300, 185, 60);
@@ -223,21 +210,21 @@ function draw() {
     //hair bows - right  
     //top bow triangle
     push();
-    fill('brown');
+    fill(bowDetail.fill);
     noStroke();
     strokeWeight(1);
     triangle(700, 190, 630, 80, 550, 110);
     pop();
     //bottom bow triangle
     push();
-    fill('brown');
+    fill(bowDetail.fill);
     noStroke();
     strokeWeight(1);
     triangle(690, 180, 750, 300, 800, 250);
     pop();
     //bow button
     push();
-    fill('brown');
+    fill(bowDetail.fill);
     noStroke();
     strokeWeight(1);
     ellipse(700, 185, 60);
@@ -254,8 +241,8 @@ function blushing() {
     const distanceOne = dist(mouseX, mouseY, cheeks.x1, cheeks.y1);
     const distanceTwo = dist(mouseX, mouseY, cheeks.x2, cheeks.y2);
 
-    const mouseIsOverlapping = (distanceOne < cheeks.size / 2 || distanceTwo < cheeks.size / 2);
-    if (mouseIsOverlapping) {
+    const mouseOverlapping = (distanceOne < cheeks.size / 2 || distanceTwo < cheeks.size / 2);
+    if (mouseOverlapping) {
 
         cheeks.fill = cheeks.fills.blush;
     }
@@ -263,4 +250,16 @@ function blushing() {
         cheeks.fill = cheeks.fills.happy;
     }
 
+}
+
+
+
+function hairChange() {
+    if (mouseIsPressed) {
+        hair.fill = hair.fills.pink;
+
+    }
+    else {
+        hair.fill = hair.fills.brown;
+    }
 }
