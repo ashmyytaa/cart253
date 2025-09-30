@@ -9,6 +9,63 @@
 "use strict";
 
 
+let cheeks = {
+    x1: 600,
+    y1: 320,
+    size: 90,
+    x2: 400,
+    y2: 320,
+    fill: "#c216612d",
+    fills: {
+        blush: "#7d1212b3",
+        happy: "#c216612d",
+    }
+};
+
+let hair = {
+    fill: "#442c10ff",
+    size: 200,
+
+    left: {
+        x: 230,
+        y: 130,
+    },
+
+    right: {
+        x: 770,
+        y: 130,
+    },
+
+    fills: {
+
+        pink: "#f46cc0e7",
+        blonde: "#fbb15dd6",
+    },
+
+
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //backgroun will have a default purple color
 let backgroundShade = "170, 66, 245";
 
@@ -39,6 +96,8 @@ function draw() {
     let g = random(0, 255);
     let b = random(0, 255);
     background(r, g, b);
+
+    blushing();
 
 
 
@@ -98,39 +157,39 @@ function draw() {
 
     //cheeks - right
     push();
-    fill(184, 15, 94, 20);
+    fill(cheeks.fill);
     noStroke();
     strokeWeight(1);
-    ellipse(600, 320, 90)
+    ellipse(cheeks.x1, cheeks.y1, cheeks.size)
     pop();
     //cheeks - left
     push();
-    fill(184, 15, 94, 20);
+    fill(cheeks.fill);
     noStroke();
     strokeWeight(1);
-    ellipse(400, 320, 90)
+    ellipse(cheeks.x2, cheeks.y2, cheeks.size)
     pop();
 
 
     //hair - right
     push();
-    fill(66, 46, 34);
+    fill(hair.fill);
     noStroke();
     strokeWeight(1);
-    ellipse(770, 130, 200)
-    pop();
-    //hair - left
-    push();
-    fill(66, 46, 34);
-    noStroke();
-    strokeWeight(1);
-    ellipse(230, 130, 200) //left
+    ellipse(hair.right.x, hair.right.y, hair.size)
     pop();
 
+    //hair - left
+    push();
+    fill(hair.fill);
+    noStroke();
+    strokeWeight(1);
+    ellipse(hair.left.x, hair.left.y, hair.size)
+    pop();
 
     //hairr front bangs
     push();
-    fill(66, 46, 34);
+    fill(hair.fill);
     noStroke();
     strokeWeight(1);
     arc(500, 150, 350, 250, PI + TWO_PI, TWO_PI); // using a filled arc to do like an half ellipse for my front bangs
@@ -188,16 +247,20 @@ function draw() {
 
 
 
+}
 
+function blushing() {
 
+    const distanceOne = dist(mouseX, mouseY, cheeks.x1, cheeks.y1);
+    const distanceTwo = dist(mouseX, mouseY, cheeks.x2, cheeks.y2);
 
+    const mouseIsOverlapping = (distanceOne < cheeks.size / 2 || distanceTwo < cheeks.size / 2);
+    if (mouseIsOverlapping) {
 
-
-
-
-
-
-
-
+        cheeks.fill = cheeks.fills.blush;
+    }
+    else {
+        cheeks.fill = cheeks.fills.happy;
+    }
 
 }
