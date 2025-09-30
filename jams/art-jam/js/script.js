@@ -60,9 +60,13 @@ let bowDetail = {
 let bubbles = {
     x: undefined,
     y: undefined,
-    fill: "#d5dee31b",
+    fill: "#84d2ff13",
     size: 50,
 };
+
+let hairAccessory = {
+    x
+}
 
 
 /**
@@ -79,31 +83,31 @@ function setup() {
 */
 function draw() {
 
+    //function calling:
+
+    //function where the user hovers their mouse over the portrait's cheeks, they change color
     blushing();
+    //function where when the user presses the mouse anywhere on the canvas, the hair color of the portait changes
     hairChange();
+    //function where transparent circles mimicking bubbles fills up the canvas until it turns the canvas into another color
     bubblesBackground();
 
 
-
-
-
-
-
-    //head - which is in a ellipse shape
+    //head - shape of an ellipse
     push();
     fill(head.fill);
     noStroke();
     ellipse(head.x, head.y, head.size);
     pop();
 
-    //eyes - left 
+    //eyes - left side
     push();
     noFill();
     stroke('black');
     strokeWeight(2);
-    arc(600, 260, 110, 70, PI + TWO_PI, TWO_PI); //using arc to create a closed lid eye 
+    arc(600, 260, 110, 70, PI + TWO_PI, TWO_PI); //using arc to create a closed eyelid
     pop();
-    // eyes - right 
+    // eyes - right side 
     push();
     noFill();
     stroke('black');
@@ -116,7 +120,7 @@ function draw() {
     noFill();
     stroke('black');
     strokeWeight(2);
-    arc(500, 300, 20, 50, 0, PI + QUARTER_PI, OPEN); //using arc to create my nose shape 
+    arc(500, 300, 20, 50, 0, PI + QUARTER_PI, OPEN); //using arc to create my nose shape
     pop();
 
     //mouth
@@ -128,14 +132,14 @@ function draw() {
     pop();
 
 
-    //eyebrows - right
+    //eyebrows - right side
     push();
     noFill();
     stroke(74, 33, 24);
     strokeWeight(1);
     arc(580, 200, 50, 20, PI + TWO_PI, TWO_PI); //using arc to create my eyebrows
     pop();
-    //eyebrows - left
+    //eyebrows - left side
     push();
     noFill();
     stroke(74, 33, 24);
@@ -143,14 +147,14 @@ function draw() {
     arc(420, 200, 50, 20, PI + TWO_PI, TWO_PI); //using arc to create my eyebrows
     pop();
 
-    //cheeks - right
+    //cheeks - right side
     push();
     fill(cheeks.fill);
     noStroke();
     strokeWeight(1);
     ellipse(cheeks.x1, cheeks.y1, cheeks.size)
     pop();
-    //cheeks - left
+    //cheeks - left side
     push();
     fill(cheeks.fill);
     noStroke();
@@ -159,23 +163,21 @@ function draw() {
     pop();
 
 
-    //hair - right
+    //hair - right side
     push();
     fill(hair.fill);
     noStroke();
     strokeWeight(1);
     ellipse(hair.right.x, hair.right.y, hair.size)
     pop();
-
-    //hair - left
+    //hair - left side
     push();
     fill(hair.fill);
     noStroke();
     strokeWeight(1);
     ellipse(hair.left.x, hair.left.y, hair.size)
     pop();
-
-    //hairr front bangs
+    //hairr front side
     push();
     fill(hair.fill);
     noStroke();
@@ -183,8 +185,9 @@ function draw() {
     arc(500, 150, 350, 250, PI + TWO_PI, TWO_PI); // using a filled arc to do like an half ellipse for my front bangs
     pop();
 
-    //hair bows - left 
-    //bottom bow triangle
+    //hair bows - left side
+
+    //bottom  left triangle
     push();
     fill(bowDetail.fill);
     stroke(bowDetail.stroke);
@@ -192,14 +195,14 @@ function draw() {
     triangle(190, 240, 320, 170, 250, 300
     );
     pop();
-    //top bow triangle
+    //top left triangle
     push();
     fill(bowDetail.fill);
     stroke(bowDetail.stroke);
     strokeWeight(1.5);
     triangle(300, 180, 380, 80, 430, 140);
     pop();
-    //bow button
+    //left bow buttom
     push();
     fill(bowDetail.fill);
     stroke(bowDetail.stroke);
@@ -208,22 +211,23 @@ function draw() {
     pop();
 
 
-    //hair bows - right  
-    //top bow triangle
+    //hair bows - right side
+
+    //top right triangle
     push();
     fill(bowDetail.fill);
     stroke(bowDetail.stroke);
     strokeWeight(1.5);
     triangle(700, 190, 630, 80, 550, 110);
     pop();
-    //bottom bow triangle
+    //bottom right triangle
     push();
     fill(bowDetail.fill);
     stroke(bowDetail.stroke);
     strokeWeight(1.5);
     triangle(690, 180, 750, 300, 800, 250);
     pop();
-    //bow button
+    //right bow button
     push();
     fill(bowDetail.fill);
     stroke(bowDetail.stroke);
@@ -237,38 +241,43 @@ function draw() {
 
 }
 
+//function that when the mouse overlaps cheeks, it changes the cheeks color
 function blushing() {
+
+    //calculating the distance between the mouth and the cheeks, for it right side and left side
     const distanceOne = dist(mouseX, mouseY, cheeks.x1, cheeks.y1);
     const distanceTwo = dist(mouseX, mouseY, cheeks.x2, cheeks.y2);
-
+    //calculates when the mouse is inside the cheeks by seeing if the mouse position is on the radius of the cheeks
     const mouseOverlapping = (distanceOne < cheeks.size / 2 || distanceTwo < cheeks.size / 2);
+    //conditional statement where is checks if the mouse is overlapping/inside the cheeks
     if (mouseOverlapping) {
-        cheeks.fill = cheeks.fills.blush;
+        cheeks.fill = cheeks.fills.blush; //changes colors if the mouse overlaps the cheeks
     }
     else {
-        cheeks.fill = cheeks.fills.happy;
+        cheeks.fill = cheeks.fills.happy; //remain a default colour when the mouse is not overlappnig the cheeks
     }
 
 }
 
 
-
+//function where it checks whether the mouse is being pressed in the canvas, and if so it changes the hair color
 function hairChange() {
-    if (mouseIsPressed) {
+    if (mouseIsPressed) { //using mouseIsPressed event
         hair.fill = hair.fills.pink;
     }
     else {
-        hair.fill = hair.fills.brown;
+        hair.fill = hair.fills.brown; //keeps the default brown hair color when the mouse is not being pressed
     }
 }
 
+//function where it creates the circles to mimick bubbles, for it to be projected onto the backgorund
 function bubblesBackground() {
 
     push();
     frameRate = 2;
     fill(bubbles.fill);
     noStroke();
-    bubbles.x = random(0, width);
+    bubbles.x = random(0, width); //using random() to generate random positions for the x and y values of my bubbles
     bubbles.y = random(0, height);
     ellipse(bubbles.x, bubbles.y, bubbles.size);
 
