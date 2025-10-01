@@ -58,15 +58,20 @@ let bowDetail = {
 }
 
 let bubbles = {
-    x: undefined,
-    y: undefined,
+    x1: 0,
+    x2: 1000,
+    x3: 0,
+    y1: 100,
+    y2: 300,
+    y3: 500,
     fill: "#84d2ff13",
     size: 50,
 };
 
 let hairAccessory = {
-    x
-}
+    fill: "#ffffffff",
+    size: 10,
+};
 
 
 /**
@@ -237,6 +242,110 @@ function draw() {
 
 
 
+    //creating the hair accesories - left side
+    push();
+    fill(hairAccessory.fill);
+    noStroke();
+    ellipse(140, 100, hairAccessory.size);
+    pop();
+
+    push();
+    fill(hairAccessory.fill);
+    noStroke();
+    ellipse(155, 98, hairAccessory.size);
+    pop();
+
+
+    push();
+    fill(hairAccessory.fill);
+    noStroke();
+    ellipse(170, 90, hairAccessory.size);
+    pop();
+
+    push();
+    fill(hairAccessory.fill);
+    noStroke();
+    ellipse(185, 80, hairAccessory.size);
+    pop();
+
+    push();
+    fill(hairAccessory.fill);
+    noStroke();
+    ellipse(199, 69, hairAccessory.size);
+    pop();
+
+    push();
+    fill(hairAccessory.fill);
+    noStroke();
+    ellipse(210, 55, hairAccessory.size);
+    pop();
+
+    push();
+    fill(hairAccessory.fill);
+    noStroke();
+    ellipse(220, 40, hairAccessory.size);
+    pop();
+
+    //hair accesories - right side
+    push();
+    fill(hairAccessory.fill);
+    noStroke();
+    ellipse(750, 40, hairAccessory.size);
+    pop();
+
+    push();
+    fill(hairAccessory.fill);
+    noStroke();
+    ellipse(753, 50, hairAccessory.size);
+    pop();
+
+    push();
+    fill(hairAccessory.fill);
+    noStroke();
+    ellipse(760, 60, hairAccessory.size);
+    pop();
+
+    push();
+    fill(hairAccessory.fill);
+    noStroke();
+    ellipse(770, 70, hairAccessory.size);
+    pop();
+
+    push();
+    fill(hairAccessory.fill);
+    noStroke();
+    ellipse(785, 75, hairAccessory.size);
+    pop();
+
+    push();
+    fill(hairAccessory.fill);
+    noStroke();
+    ellipse(800, 78, hairAccessory.size);
+    pop();
+
+
+    push();
+    fill(hairAccessory.fill);
+    noStroke();
+    ellipse(818, 79, hairAccessory.size);
+    pop();
+
+    push();
+    fill(hairAccessory.fill);
+    noStroke();
+    ellipse(835, 75, hairAccessory.size);
+    pop();
+
+
+
+
+
+
+
+
+
+
+
 
 
 }
@@ -274,16 +383,19 @@ function hairChange() {
 function bubblesBackground() {
 
     push();
-    frameRate = 2;
     fill(bubbles.fill);
-    noStroke();
-    bubbles.x = random(0, width); //using random() to generate random positions for the x and y values of my bubbles
-    bubbles.y = random(0, height);
-    ellipse(bubbles.x, bubbles.y, bubbles.size);
-
+    strokeWeight(0.5);
+    let x1 = random(1000);
+    let y1 = random(600);
+    // point(x1, y1);
+    ellipse(x1, y1, bubbles.size);
     pop();
 
 
 
+
+}
+
+function hairBowChange() {
 
 }
