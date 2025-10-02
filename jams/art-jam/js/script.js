@@ -313,9 +313,9 @@ function hairChange() {
 //function where it creates the circles to mimick bubbles, for it to be projected onto the backgorund
 function bubblesBackground() {
 
-    //conditional that checks if the frame count equals 60
+    //conditional the remainder to check if 60 frames have passed, which equals one second
     if (frameCount % 60 === 0) {
-        bubbles.x = random(0, width);
+        bubbles.x = random(0, width); //will display a bubble at a random position every 60 frames (every second)
         bubbles.y = random(0, height);
     }
 

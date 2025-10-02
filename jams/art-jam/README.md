@@ -21,7 +21,7 @@ This projects allows the user to interact with the portait with its mouse, to be
 
 Here are some screenshots that show how my portait looks like: 
 
-> ![Image of a clown face](./assets/images/clown.png)
+> ![Image of my portrait](./assets/images/smiling-lady.png)
 
 ## Attribution
 
