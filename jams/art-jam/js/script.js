@@ -12,8 +12,17 @@ const head = {
     fill: "#c28744ff",
     x: 500,
     y: 290,
-    size: 430,
+    size: 425,
 }
+
+let ears = {
+    x1: 290,
+    y1: 265,
+    x2: 710,
+    y2: 265,
+    fill: "#c28744ff",
+    size: 60,
+};
 
 let cheeks = {
     x1: 600,
@@ -44,8 +53,8 @@ let hair = {
     },
 
     fills: {
-        pink: "#f46cc0fd",
-        brown: "#32210fff",
+        lightBrown: "#724501ff",
+        brown: "#3b1f01ff",
     },
 
 
@@ -58,6 +67,10 @@ let bowDetail = {
     size: 40,
     bowMinSize: 30,
     bowMaxSize: 80,
+    polka: {
+        size: 5,
+        fill: "#e8edf0ff",
+    }
 }
 
 let bubbles = {
@@ -66,6 +79,12 @@ let bubbles = {
     fill: "#84d2ff09",
     size: 50,
 };
+
+let earrings = {
+    fill: "#efc907ff",
+    size: 15,
+};
+
 
 
 /**
@@ -166,6 +185,20 @@ function draw() {
     ellipse(cheeks.x2, cheeks.y2, cheeks.size)
     pop();
 
+    //ears - left side
+    push();
+    fill(ears.fill);
+    noStroke();
+    ellipse(ears.x1, ears.y1, ears.size);
+    pop();
+
+    //ears - right side
+    push();
+    fill(ears.fill);
+    noStroke();
+    ellipse(ears.x2, ears.y2, ears.size);
+    pop();
+
 
     //hair - right side
     push();
@@ -241,6 +274,23 @@ function draw() {
 
 
 
+    //earrings - left side
+    push();
+    fill(earrings.fill);
+    noStroke();
+    ellipse(285, 300, earrings.size);
+    pop();
+    //earrings - right side
+    push();
+    fill(earrings.fill);
+    noStroke();
+    ellipse(713, 300, earrings.size);
+    pop();
+
+
+
+
+
 
 
 
@@ -278,7 +328,7 @@ function blushing() {
 //function where it checks whether the mouse is being pressed in the canvas, and if so it changes the hair color
 function hairChange() {
     if (mouseIsPressed) { //using mouseIsPressed event
-        hair.fill = hair.fills.pink;
+        hair.fill = hair.fills.lightBrown;
     }
     else {
         hair.fill = hair.fills.brown; //keeps the default brown hair color when the mouse is not being pressed
@@ -292,13 +342,10 @@ function bubblesBackground() {
         bubbles.x = random(0, width);
         bubbles.y = random(0, height);
     }
-
     push();
     noFill();
     stroke(bubbles.fill);
     strokeWeight(3);
-    // bubbles.x = random(0, 1000);
-    // bubbles.y = random(0, 600);
     ellipse(bubbles.x, bubbles.y, bubbles.size);
     pop();
 
