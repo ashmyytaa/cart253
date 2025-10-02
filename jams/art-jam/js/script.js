@@ -68,7 +68,7 @@ let bowDetail = {
     bowMinSize: 30,
     bowMaxSize: 80,
     fill: {
-        r: 28,
+        r: 100,
         g: 106,
         b: 200,
     }
@@ -274,8 +274,8 @@ function draw() {
     pop();
 
     // bowDetail.fill.b = bowDetail.fill.b - 0.255;
-    bowDetail.fill.g = bowDetail.fill.g - 0.05;
-    bowDetail.fill.r = bowDetail.fill.r - 0.05;
+    bowDetail.fill.g = bowDetail.fill.g - 0.255;
+    bowDetail.fill.r = bowDetail.fill.r - 0.255;
 
 
     //earrings - left side

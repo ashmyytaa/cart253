@@ -1,32 +1,33 @@
-# TITLE OF PROJECT
+# Art Jam - Smiling Lady
 
-AUTHOR NAME
+Ashmitha Kanagiah
 
 [View this project online](URL_FOR_THE_RUNNING_PROJECT)
 
 ## Description
 
-This description should help the reader understand what the program is, anything they should know to be able to experience it (controls, special features, etc.), and what the desired user experience is. For example:
+*Smiling Lady* is a cute portrait of a lady that is smiling her qay through life. She
+is radiating a positive attitude and vibe when looking at the portrait. The user is able to engage with this portait using its mouse.
 
-> *The Mayor of Clown Town* is a simulator experience that allows the user to control a small town populated entirely by clowns.
+When the mouse is pressed, wherever on the canvas, the hair of smiling lady changes colors. It changes from a dark brown color, to a light brown color!
 
-> The experience is controlled via the mouse, with left click selecting a clown and bringing up a menu of options such as "slip of banana peel" or "get into impossible capacious clown-car."
+Also, when the user hovers its mouse onto the cheeks of smiling lady, the cheeks changes colors as well!
 
-> The project is meant to give the user a sense of what it would be the mayor of a town of clowns, eventually getting the sense that clowns are not taking their civic duties seriously.
+The background also projects circles, mimicking bubbles, that pops out randomly onto the background of the portait. 
+
+This projects allows the user to interact with the portait with its mouse, to be able to change and variate certain parts of the portraits's characteristics. 
 
 ## Screenshot(s)
 
-This bit should have some images of the program running so that the reader has a sense of what it looks like. For example:
+Here are some screenshots that show how my portait looks like: 
 
 > ![Image of a clown face](./assets/images/clown.png)
 
 ## Attribution
 
-This bit should attribute any code, assets or other elements used taken from other sources. For example:
+For the code of mh project, I referred to the p5 reference website, as well as all the course materials, and in-class challenges done so far. 
 
 > - This project uses [p5.js](https://p5js.org).
-> - The clown image is a capture of the clown from the Apple emoji character set.
-> - The barking sound effect is "single dog bark 1" by crazymonke9 from freesound.org: https://freesound.org/people/crazymonke9/sounds/418107/
 
 ## License
 
