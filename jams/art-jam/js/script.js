@@ -2,20 +2,24 @@
  * ART JAM
  * Ashmitha Kanagiah
  * 
- * Self Portrait.
- * I did a simple portait of a girl. There are mutiple animations that compose my portrait such as: 
+ * Smiling Lady
+ * Smiling lady is a portrait of a cute lady who is smiling her way through life, she looks
+ * relaxes and radiates positive energy. The user is able to interact with the portrait by using
+ * the mouse. 
  */
 
 "use strict";
 
-const head = {
+//variable declaration
+
+const head = { //head variable
     fill: "#c28744ff",
     x: 500,
     y: 290,
     size: 425,
 }
 
-let ears = {
+let ears = { //ears variable
     x1: 290,
     y1: 265,
     x2: 710,
@@ -24,7 +28,7 @@ let ears = {
     size: 60,
 };
 
-let cheeks = {
+let cheeks = { //cheeks variable
     x1: 600,
     y1: 320,
     size: 110,
@@ -38,7 +42,7 @@ let cheeks = {
     }
 };
 
-let hair = {
+let hair = { //hair variable
     fill: "#442c10ff",
     size: 200,
 
@@ -56,17 +60,15 @@ let hair = {
         lightBrown: "#724501ff",
         brown: "#3b1f01ff",
     },
-
-
 };
 
 
-let bowDetail = {
-
+let bowDetail = { //variable for the details for my bows
     stroke: "#133246ff",
     size: 40,
     bowMinSize: 30,
     bowMaxSize: 80,
+
     fill: {
         r: 100,
         g: 106,
@@ -74,22 +76,21 @@ let bowDetail = {
     }
 }
 
-let bubbles = {
+let bubbles = { //variable for the bubbles that are on the background
     x: undefined,
     y: undefined,
     fill: "#84d2ff09",
     size: 50,
 };
 
-let earrings = {
+let earrings = { //earrings variable
     fill: "#efc907ff",
     size: 15,
 };
 
 
-
 /**
- * Creates the background color of my canvas, where my portait will be displayed.
+ * Creation of my canvas size as well as the background color of my canvas, where my portait will be displayed.
 */
 function setup() {
     createCanvas(1000, 600);
@@ -98,21 +99,17 @@ function setup() {
 
 
 /**
- * The draw functions draws the shapes of my portrait.
+ * The draw functions draws the shapes that compose my portait, as well as it includes the functions
+ * that are being called for them to be executed.
 */
 function draw() {
 
-
     //function calling:
+    blushing();  //function where the user hovers their mouse over the portrait's cheeks, the cheeks change color
+    hairChange();  //function where when the user presses the mouse anywhere on the canvas, the hair color of the portait changes
+    bubblesBackground();  //function where bubbles are filling up background of my canvas, at random positions and at a slow pace
+    hairBowChange();  //function that increses and decreses the size of the bow buttons
 
-    //function where the user hovers their mouse over the portrait's cheeks, they change color
-    blushing();
-    //function where when the user presses the mouse anywhere on the canvas, the hair color of the portait changes
-    hairChange();
-    //function where transparent circles mimicking bubbles fills up the canvas until it turns the canvas into another color
-    bubblesBackground();
-    //function that increses and decreses the size of the bow buttons
-    hairBowChange();
 
 
     //head - shape of an ellipse
@@ -134,7 +131,7 @@ function draw() {
     noFill();
     stroke('black');
     strokeWeight(2);
-    arc(410, 260, 110, 70, PI + TWO_PI, TWO_PI); //using arc to create a closed lid eye 
+    arc(410, 260, 110, 70, PI + TWO_PI, TWO_PI); //using arc to create a closed eyelid
     pop();
 
     //nose
@@ -152,7 +149,6 @@ function draw() {
     strokeWeight(5);
     arc(500, 380, 100, 90, 0, PI + TWO_PI, OPEN); //using arc again to create a smile 
     pop();
-
 
     //eyebrows - right side
     push();
@@ -190,14 +186,12 @@ function draw() {
     noStroke();
     ellipse(ears.x1, ears.y1, ears.size);
     pop();
-
     //ears - right side
     push();
     fill(ears.fill);
     noStroke();
     ellipse(ears.x2, ears.y2, ears.size);
     pop();
-
 
     //hair - right side
     push();
@@ -218,14 +212,11 @@ function draw() {
     fill(hair.fill);
     noStroke();
     strokeWeight(1);
-    arc(500, 150, 350, 250, PI + TWO_PI, TWO_PI); // using a filled arc to do like an half ellipse for my front bangs
+    arc(500, 150, 350, 250, PI + TWO_PI, TWO_PI); //using a filled arc to do like an half ellipse for my front bangs
     pop();
 
     //hair bows - left side
-
-
-    //bottom  left triangle
-    push();
+    push();  //bottom  left triangle
     fill(bowDetail.fill.r, bowDetail.fill.g, bowDetail.fill.b);
     stroke(bowDetail.stroke);
     strokeWeight(1.5);
@@ -247,12 +238,8 @@ function draw() {
     ellipse(300, 185, bowDetail.size);
     pop();
 
-
     //hair bows - right side
-
-
-    //top right triangle
-    push();
+    push();  //top right triangle
     fill(bowDetail.fill.r, bowDetail.fill.g, bowDetail.fill.b);
     stroke(bowDetail.stroke);
     strokeWeight(1.5);
@@ -273,7 +260,8 @@ function draw() {
     ellipse(700, 185, bowDetail.size);
     pop();
 
-    // bowDetail.fill.b = bowDetail.fill.b - 0.255;
+
+    //Fomula that changes the fill color of my bows, to achieve a dark blue shade
     bowDetail.fill.g = bowDetail.fill.g - 0.255;
     bowDetail.fill.r = bowDetail.fill.r - 0.255;
 
@@ -291,34 +279,17 @@ function draw() {
     ellipse(713, 300, earrings.size);
     pop();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
 
-//function that when the mouse overlaps cheeks, it changes the cheeks color
+//function where when the mouse overlaps cheeks, it changes the cheeks color
 function blushing() {
 
-    //calculating the distance between the mouth and the cheeks, for it right side and left side
+    //calculating the distance between the mouse and the cheeks, for the right side and left side
     const distanceOne = dist(mouseX, mouseY, cheeks.x1, cheeks.y1);
     const distanceTwo = dist(mouseX, mouseY, cheeks.x2, cheeks.y2);
     //calculates when the mouse is inside the cheeks by seeing if the mouse position is on the radius of the cheeks
     const mouseOverlapping = (distanceOne < cheeks.size / 2 || distanceTwo < cheeks.size / 2);
-    //conditional statement where is checks if the mouse is overlapping/inside the cheeks
+    //conditional statement where it checks if the mouse is overlapping/inside the cheeks
     if (mouseOverlapping) {
         cheeks.fill = cheeks.fills.blush; //changes colors if the mouse overlaps the cheeks
     }
@@ -342,19 +313,22 @@ function hairChange() {
 //function where it creates the circles to mimick bubbles, for it to be projected onto the backgorund
 function bubblesBackground() {
 
+    //conditional that checks if the frame count equals 60
     if (frameCount % 60 === 0) {
         bubbles.x = random(0, width);
         bubbles.y = random(0, height);
     }
-    push();
+
+    push(); //  creation of my bubbles
     noFill();
     stroke(bubbles.fill);
     strokeWeight(3);
     ellipse(bubbles.x, bubbles.y, bubbles.size);
     pop();
 
+
 }
-//where where the size of the bow button changes
+//function where the size of the bow button changes, gets bigger
 function hairBowChange() {
     bowDetail.size += 0.1;
     bowDetail.size = constrain(bowDetail.size, bowDetail.bowMinSize, bowDetail.bowMaxSize);
