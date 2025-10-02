@@ -62,14 +62,15 @@ let hair = {
 
 
 let bowDetail = {
-    fill: "#368dc4ff",
+
     stroke: "#133246ff",
     size: 40,
     bowMinSize: 30,
     bowMaxSize: 80,
-    polka: {
-        size: 5,
-        fill: "#e8edf0ff",
+    fill: {
+        r: 28,
+        g: 106,
+        b: 200,
     }
 }
 
@@ -100,8 +101,6 @@ function setup() {
  * The draw functions draws the shapes of my portrait.
 */
 function draw() {
-
-
 
 
     //function calling:
@@ -224,9 +223,10 @@ function draw() {
 
     //hair bows - left side
 
+
     //bottom  left triangle
     push();
-    fill(bowDetail.fill);
+    fill(bowDetail.fill.r, bowDetail.fill.g, bowDetail.fill.b);
     stroke(bowDetail.stroke);
     strokeWeight(1.5);
     triangle(190, 240, 320, 170, 250, 300
@@ -234,14 +234,14 @@ function draw() {
     pop();
     //top left triangle
     push();
-    fill(bowDetail.fill);
+    fill(bowDetail.fill.r, bowDetail.fill.g, bowDetail.fill.b);
     stroke(bowDetail.stroke);
     strokeWeight(1.5);
     triangle(300, 180, 380, 80, 430, 140);
     pop();
     //left bow buttom
     push();
-    fill(bowDetail.fill);
+    fill(bowDetail.fill.r, bowDetail.fill.g, bowDetail.fill.b);
     stroke(bowDetail.stroke);
     strokeWeight(1.5);
     ellipse(300, 185, bowDetail.size);
@@ -250,28 +250,32 @@ function draw() {
 
     //hair bows - right side
 
+
     //top right triangle
     push();
-    fill(bowDetail.fill);
+    fill(bowDetail.fill.r, bowDetail.fill.g, bowDetail.fill.b);
     stroke(bowDetail.stroke);
     strokeWeight(1.5);
     triangle(700, 190, 630, 80, 550, 110);
     pop();
     //bottom right triangle
     push();
-    fill(bowDetail.fill);
+    fill(bowDetail.fill.r, bowDetail.fill.g, bowDetail.fill.b);
     stroke(bowDetail.stroke);
     strokeWeight(1.5);
     triangle(690, 180, 750, 300, 800, 250);
     pop();
     //right bow button
     push();
-    fill(bowDetail.fill);
+    fill(bowDetail.fill.r, bowDetail.fill.g, bowDetail.fill.b);
     stroke(bowDetail.stroke);
     strokeWeight(1.5);
     ellipse(700, 185, bowDetail.size);
     pop();
 
+    // bowDetail.fill.b = bowDetail.fill.b - 0.255;
+    bowDetail.fill.g = bowDetail.fill.g - 0.05;
+    bowDetail.fill.r = bowDetail.fill.r - 0.05;
 
 
     //earrings - left side
@@ -354,5 +358,4 @@ function bubblesBackground() {
 function hairBowChange() {
     bowDetail.size += 0.1;
     bowDetail.size = constrain(bowDetail.size, bowDetail.bowMinSize, bowDetail.bowMaxSize);
-
 }

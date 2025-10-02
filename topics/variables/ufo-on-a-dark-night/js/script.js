@@ -15,8 +15,13 @@ let ufo = {
     // Dimensions
     width: 150,
     height: 50,
-    // Fill colour (greyscale)
-    fill: 255
+    // Fill colour (greyscale) = 255
+    fill: {
+        r: 0,
+        g: 0,
+        b: 255
+
+    }
 };
 
 // Shade to fill the sky (background)
@@ -49,7 +54,7 @@ function draw() {
 
     // UFO gradually becomes darker
     // I mean, activating quantum thrust transition...
-    ufo.fill = ufo.fill * 0.999;
+    ufo.fill.b = ufo.fill.b * 0.999;
 
     // UFO's dimensions become smaller over time
     // ... as it flies away into the distance! ET... gone home...
@@ -58,7 +63,7 @@ function draw() {
 
     // Draw the UFO based on its properties
     push();
-    fill(ufo.fill);
+    fill(ufo.fill.b);
     noStroke();
     ellipse(ufo.x, ufo.y, ufo.width, ufo.height);
     pop();
