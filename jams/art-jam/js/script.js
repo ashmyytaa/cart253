@@ -4,14 +4,16 @@
  * 
  * Smiling Lady
  * Smiling lady is a portrait of a cute lady who is smiling her way through life, she looks
- * relaxes and radiates positive energy. The user is able to interact with the portrait by using
- * the mouse. 
+ * relaxed and radiates positive energy. The user is able to interact with the portrait by using
+ * the mouse. When the user presses the mouse, the hair color of the portrait changes. Also, when the
+ * user's mouse overlaps the portraits's cheeks, the cheeks changes colors as well. Other animations that
+ * are included are the bow button on the bows of my portrait that changes size as well as the
+ * background that displays bubbles at random positions on the canvas. 
  */
 
 "use strict";
 
-//variable declaration
-
+//variable declaration:
 const head = { //head variable
     fill: "#c28744ff",
     x: 500,
@@ -99,17 +101,17 @@ function setup() {
 
 
 /**
- * The draw functions draws the shapes that compose my portait, as well as it includes the functions
- * that are being called for them to be executed.
+ * The draw functions draws the shapes that compose my portait. It also contains the functions that I
+ * have created, for them to be called in the draw function. Those functions that I have created are for
+ * the purpose of creating interactions and animations with my project.
 */
 function draw() {
 
     //function calling:
-    blushing();  //function where the user hovers their mouse over the portrait's cheeks, the cheeks change color
+    blushing();  //function where when the user hovers their mouse over the portrait's cheeks, the cheeks change color
     hairChange();  //function where when the user presses the mouse anywhere on the canvas, the hair color of the portait changes
-    bubblesBackground();  //function where bubbles are filling up background of my canvas, at random positions and at a slow pace
-    hairBowChange();  //function that increses and decreses the size of the bow buttons
-
+    bubblesBackground();  //function where bubbles are filling up the background of my canvas, at random positions and at a slow pace
+    hairBowChange();  //function that increses and decreses the size of the bow buttons on the bows
 
 
     //head - shape of an ellipse
@@ -207,16 +209,16 @@ function draw() {
     strokeWeight(1);
     ellipse(hair.left.x, hair.left.y, hair.size)
     pop();
-    //hairr front side
+    //hair front side
     push();
     fill(hair.fill);
     noStroke();
     strokeWeight(1);
-    arc(500, 150, 350, 250, PI + TWO_PI, TWO_PI); //using a filled arc to do like an half ellipse for my front bangs
+    arc(500, 150, 350, 250, PI + TWO_PI, TWO_PI); //using a filled arc to do an half ellipse to draw the front of the hair of my portrait
     pop();
 
     //hair bows - left side
-    push();  //bottom  left triangle
+    push();  //bottom left triangle
     fill(bowDetail.fill.r, bowDetail.fill.g, bowDetail.fill.b);
     stroke(bowDetail.stroke);
     strokeWeight(1.5);
@@ -243,14 +245,14 @@ function draw() {
     fill(bowDetail.fill.r, bowDetail.fill.g, bowDetail.fill.b);
     stroke(bowDetail.stroke);
     strokeWeight(1.5);
-    triangle(700, 190, 630, 80, 550, 110);
+    triangle(700, 190, 630, 80, 550, 110);  //using triangle to create the wings of my bows
     pop();
     //bottom right triangle
     push();
     fill(bowDetail.fill.r, bowDetail.fill.g, bowDetail.fill.b);
     stroke(bowDetail.stroke);
     strokeWeight(1.5);
-    triangle(690, 180, 750, 300, 800, 250);
+    triangle(690, 180, 750, 300, 800, 250);  //using triangle to create the wings of my bows
     pop();
     //right bow button
     push();
@@ -261,7 +263,8 @@ function draw() {
     pop();
 
 
-    //Fomula that changes the fill color of my bows, to achieve a dark blue shade
+    //Fomula that changes the fill color of my bows, to achieve a dark blue shade.
+    //Only decreasing the fill for the red and green color, since I want to achieve a vibrant dark blue shade
     bowDetail.fill.g = bowDetail.fill.g - 0.255;
     bowDetail.fill.r = bowDetail.fill.r - 0.255;
 
@@ -287,7 +290,7 @@ function blushing() {
     //calculating the distance between the mouse and the cheeks, for the right side and left side
     const distanceOne = dist(mouseX, mouseY, cheeks.x1, cheeks.y1);
     const distanceTwo = dist(mouseX, mouseY, cheeks.x2, cheeks.y2);
-    //calculates when the mouse is inside the cheeks by seeing if the mouse position is on the radius of the cheeks
+    //calculates when the mouse is inside the cheeks by seeing if the mouse's position is on the radius of the cheeks
     const mouseOverlapping = (distanceOne < cheeks.size / 2 || distanceTwo < cheeks.size / 2);
     //conditional statement where it checks if the mouse is overlapping/inside the cheeks
     if (mouseOverlapping) {
@@ -300,7 +303,7 @@ function blushing() {
 }
 
 
-//function where it checks whether the mouse is being pressed in the canvas, and if so it changes the hair color
+//function where it checks whether the mouse is being pressed in the canvas, and if so, it changes the hair color
 function hairChange() {
     if (mouseIsPressed) { //using mouseIsPressed event
         hair.fill = hair.fills.lightBrown;
@@ -310,13 +313,14 @@ function hairChange() {
     }
 }
 
-//function where it creates the circles to mimick bubbles, for it to be projected onto the backgorund
+
+//function where it creates the circles to mimick bubbles at random positions, for it to be displayed onto the background
 function bubblesBackground() {
 
-    //conditional the remainder to check if 60 frames have passed, which equals one second
+    //conditional to check the remainder. to check if 60 frames have passed, which equals to one second
     if (frameCount % 60 === 0) {
         bubbles.x = random(0, width); //will display a bubble at a random position every 60 frames (every second)
-        bubbles.y = random(0, height);
+        bubbles.y = random(0, height); //random values will be generated for the x and y positions for each of my bubbles
     }
 
     push(); //  creation of my bubbles
@@ -326,10 +330,11 @@ function bubblesBackground() {
     ellipse(bubbles.x, bubbles.y, bubbles.size);
     pop();
 
-
 }
+
+
 //function where the size of the bow button changes, gets bigger
 function hairBowChange() {
     bowDetail.size += 0.1;
-    bowDetail.size = constrain(bowDetail.size, bowDetail.bowMinSize, bowDetail.bowMaxSize);
+    bowDetail.size = constrain(bowDetail.size, bowDetail.bowMinSize, bowDetail.bowMaxSize); // using contrain so that it eventually stops getting bigger
 }
