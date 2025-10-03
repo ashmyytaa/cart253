@@ -25,6 +25,11 @@ Animations:
 
 This projects allows the user to interact with the portait with its mouse, as well as it included animations that I designed!
 
+New tools/functions:
+
+The new tools that we haven't looked at in class that I implemented on my project is the arc()
+and the triangle(). I used those to create certain shapes for my portrait. I also used the remainder
+operator % for one of my functions. I used it in my bubblesBackground() function. 
 ## Screenshot(s)
 
 Here is a screenshot that shows how my portait looks like: 
