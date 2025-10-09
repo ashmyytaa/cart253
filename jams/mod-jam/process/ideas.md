@@ -52,9 +52,27 @@
 
 25. i can do a space theme? frog in a spacesuit, space suit hat on top of frog head? and the challenge is to catch stars instead of bugs?
 
-26. concept 
+26. scoring system cannot just be a random number on the screen, maybe if in the space, the score appears on one of the moons? if in a pond, i can put the score system in like water?
+
+27. i wont just let the score system be on the side of the screen like a counter, rather the score system will only show up on the screen whenver score up or score down like it will appear on the screen and then disappear.
+
+28. should i put multiple levels? should each level be a different theme, different environnement, that builds up to a story?
+
+29. iinstead of frog sliding with the mouse movement, i can add some shakiness to it? or even do the whole boody and have the frog move on the screen with the mouse?
+
+30. concept idea: frog has to get to the center of the earth (the lava center) and has to basicallly go thought all the layers of the earth which will be all the layers to surpass??? and the end goal is the lava center? 
+
+31. frog goes on a mission to save its baby frog child? concept where the frog has to play levels to receive hints on each succesful level, to help find its child?
+
+32. concept where frog is at FrogUniversity and like the challenge wont even be to catch bugs, but to catch numbers, math equations, french questions and like the whole game is the frog taking an exam and the scoring system will be the exam result?? (THIS MIGHT BE IT TBH)
+
+33. I can make the frog sliding on the bottom, on the top, on the left and right too depending on my levels
+
+34. only a catching flies game? maybe a different level can be a completely different game? 
+
+35. can make a funny storyline too? frog has to beat levels to catch the gold chocolate? frog has to beat levels by killing other frogs? frog is the villan in the story?
 
 
 
 
-**Frog eating flies but it gets harder and harder to catch them**
+
