@@ -1,8 +1,9 @@
 /**
- * Trisolaris
+ * Trisolaris Returns (get it?)
  * Pippin
  * 
- * Draws the three suns of Trisolaris. Poorly.
+ * Draws the three suns of Trisolaris. Calculate their colour
+ * based on their parameters.
  */
 
 "use strict";
@@ -21,19 +22,37 @@ function draw() {
     // Sky blue
     background("#87ceeb");
 
-    // Draw the three suns of Trisolaris
     drawSun(500, 100, 80);
     drawSun(350, 180, 200);
     drawSun(120, 100, 160);
 }
 
 /**
- * Draws a sun at specific position and size
+ * Draws a Trisolarian sun
  */
 function drawSun(x, y, size) {
+    // Calculate the stroke weight of the sun
+    let weight = calculateStrokeWeight(x, y);
+
     push();
-    noStroke();
+    strokeWeight(weight);
+    stroke("#ffff00");
     fill("#f99736");
     ellipse(x, y, size);
     pop();
+}
+
+/**
+ * Adds the two parameters together and returns the result
+ */
+function calculateStrokeWeight(x, y) {
+    // Calculate the stroke weight of a sun based on
+    // the distance of the mouse position
+    const minWeight = 20;
+    const maxWeight = 1;
+    let d = dist(mouseX, mouseY, x, y);
+    let result = map(d, 0, width, minWeight, maxWeight);
+    // Actually return the result of our calculation to wherever this
+    // function was called
+    return result;
 }
