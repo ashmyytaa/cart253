@@ -1,6 +1,6 @@
 /**
- * Frogfrogfrog
- * Pippin Barr
+ * Mod Jam
+ * Ashmitha Kanagiah
  * 
  * A game of catching flies with your frog-tongue
  * 
@@ -9,45 +9,101 @@
  * - Click to launch the tongue
  * - Catch flies
  * 
- * Made with p5
- * https://p5js.org/
+ 
  */
 
 "use strict";
 
-// Our frog
+//Constant Frog
 const frog = {
-    // The frog's body has a position and size
+
     body: {
         x: 320,
         y: 520,
-        size: 150
+        size: 150,
+
+        eye: {
+            x: 200,
+            y: 450,
+            size: 10
+        }
     },
-    // The frog's tongue has a position, size, speed, and state
+
     tongue: {
         x: undefined,
         y: 480,
         size: 20,
-        speed: 20,
-        // Determines how the tongue moves each frame
+        speed: 50,
+
         state: "idle" // State can be: idle, outbound, inbound
+    },
+
+    leftEye: {
+        x: 200,
+        y: 450,
+        size: 30
+    },
+
+    leftPupil: {
+        x: 200,
+        y: 450,
+        size: 10
+    },
+
+    rightEye: {
+        x: 300,
+        y: 450,
+        size: 30
+    },
+
+    rightPupil: {
+        x: 300,
+        y: 450,
+        size: 10
+    },
+
+    leftEar: {
+        x: 240,
+        y: 440,
+        size: 40
+    },
+
+    rightEar: {
+        x: 300,
+        y: 440,
+        size: 40
+    },
+
+
+
+};
+
+
+//constant fly
+const fly = {
+    x: 0,
+    y: undefined, // Will be random
+    size: 20,
+    speed: 5,
+
+    wings: {
+        x: 0,
+        y: undefined, // will be random
+        size: 10,
+        height: 25
     }
 };
 
-// Our fly
-// Has a position, size, and speed of horizontal movement
-const fly = {
-    x: 0,
-    y: 200, // Will be random
-    size: 10,
-    speed: 3
-};
+
+
+
 
 /**
  * Creates the canvas and initializes the fly
  */
 function setup() {
     createCanvas(640, 480);
+    angleMode(DEGREES);
 
     // Give the fly its first random position
     resetFly();
@@ -61,6 +117,7 @@ function draw() {
     moveTongue();
     drawFrog();
     checkTongueFlyOverlap();
+
 }
 
 /**
@@ -69,37 +126,70 @@ function draw() {
  */
 function moveFly() {
     // Move the fly
-    fly.x += fly.speed;
+
     // Handle the fly going off the canvas
-    if (fly.x > width) {
+
+
+    if (fly.y = fly.wings.y) {
+
+
+        fly.x += fly.speed;
+        fly.wings.x += fly.speed;
+
+
+    }
+    if (fly.x > width && fly.wings.x > width) {
         resetFly();
     }
+
+
 }
 
 /**
  * Draws the fly as a black circle
  */
 function drawFly() {
+
+    push();
+    stroke("#000000");
+    fill("#ffffffff");
+    ellipse(fly.wings.x, fly.wings.y, fly.wings.size, fly.wings.height);
+    pop();
+
     push();
     noStroke();
     fill("#000000");
-    ellipse(fly.x, fly.y, fly.size);
+    ellipse(fly.x, fly.y, fly.size, 7);
     pop();
+
+
+
 }
 
 /**
  * Resets the fly to the left with a random y
  */
 function resetFly() {
-    fly.x = 0;
+    fly.x = random(-3, 3);
+    fly.wings.x = 0;
     fly.y = random(0, 300);
+    fly.wings.y = random(0, 300);
 }
 
 /**
  * Moves the frog to the mouse position on x
  */
 function moveFrog() {
+
     frog.body.x = mouseX;
+    frog.rightEye.x = mouseX - 25;
+    frog.rightPupil.x = mouseX - 25;
+    frog.leftEye.x = mouseX + 25;
+    frog.leftPupil.x = mouseX + 25;
+    frog.leftEar.x = mouseX - 25;
+    frog.rightEar.x = mouseX + 25;
+
+
 }
 
 /**
@@ -150,10 +240,52 @@ function drawFrog() {
 
     // Draw the frog's body
     push();
-    fill("#00ff00");
+    fill("#d41a84ff");
     noStroke();
     ellipse(frog.body.x, frog.body.y, frog.body.size);
     pop();
+
+
+    //draw frogs ears
+    push();
+    fill("#d41a84ff");
+    noStroke();
+    ellipse(frog.leftEar.x, frog.leftEar.y, frog.leftEar.size);
+    pop();
+
+    push();
+    fill("#d41a84ff");
+    noStroke();
+    ellipse(frog.rightEar.x, frog.rightEar.y, frog.rightEar.size);
+    pop();
+
+    //draw frog's eyes
+    push();
+    fill("#ffffffff");
+    noStroke();
+    ellipse(frog.rightEye.x, frog.rightEye.y, frog.rightEye.size);
+    pop();
+
+    push();
+    fill("#000000ff");
+    noStroke();
+    ellipse(frog.rightPupil.x, frog.rightPupil.y, frog.rightPupil.size);
+    pop();
+
+    push();
+    fill("#ffffffff");
+    noStroke();
+    ellipse(frog.leftEye.x, frog.leftEye.y, frog.leftEye.size);
+    pop();
+
+    push();
+    fill("#000000ff");
+    noStroke();
+    ellipse(frog.leftPupil.x, frog.leftPupil.y, frog.leftPupil.size);
+    pop();
+
+
+
 }
 
 /**
@@ -163,10 +295,13 @@ function checkTongueFlyOverlap() {
     // Get distance from tongue to fly
     const d = dist(frog.tongue.x, frog.tongue.y, fly.x, fly.y);
     // Check if it's an overlap
-    const eaten = (d < frog.tongue.size/2 + fly.size/2);
+    // tongue.zie /2 + fly.size /2
+    const eaten = (d < frog.tongue.size + fly.size);
     if (eaten) {
         // Reset the fly
         resetFly();
+
+
         // Bring back the tongue
         frog.tongue.state = "inbound";
     }
@@ -180,3 +315,6 @@ function mousePressed() {
         frog.tongue.state = "outbound";
     }
 }
+
+
+
