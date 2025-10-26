@@ -16,20 +16,48 @@
 
 //Constant Frog
 const frog = {
-
-    body: {
+    body: { //frog body
         x: 320,
         y: 520,
         size: 150,
 
-        eye: {
+        eye: { //frog eye
             x: 200,
             y: 450,
             size: 10
         }
     },
-
-    tongue: {
+    leftEye: { //frog left eye shape
+        x: 200,
+        y: 450,
+        size: 30
+    },
+    leftPupil: { //frog right pupil
+        x: 200,
+        y: 450,
+        size: 10
+    },
+    rightEye: {//frog right eye shape
+        x: 300,
+        y: 450,
+        size: 30
+    },
+    rightPupil: {//frog right pupil
+        x: 300,
+        y: 450,
+        size: 10
+    },
+    leftEar: {//frog left ear
+        x: 240,
+        y: 440,
+        size: 40
+    },
+    rightEar: {//frog right ear
+        x: 300,
+        y: 440,
+        size: 40
+    },
+    tongue: { //frog tongue
         x: undefined,
         y: 480,
         size: 20,
@@ -37,45 +65,6 @@ const frog = {
 
         state: "idle" // State can be: idle, outbound, inbound
     },
-
-    leftEye: {
-        x: 200,
-        y: 450,
-        size: 30
-    },
-
-    leftPupil: {
-        x: 200,
-        y: 450,
-        size: 10
-    },
-
-    rightEye: {
-        x: 300,
-        y: 450,
-        size: 30
-    },
-
-    rightPupil: {
-        x: 300,
-        y: 450,
-        size: 10
-    },
-
-    leftEar: {
-        x: 240,
-        y: 440,
-        size: 40
-    },
-
-    rightEar: {
-        x: 300,
-        y: 440,
-        size: 40
-    },
-
-
-
 };
 
 
@@ -86,7 +75,7 @@ const fly = {
     size: 20,
     speed: 5,
 
-    wings: {
+    wings: { //frog wings
         x: 0,
         y: undefined, // will be random
         size: 10,
@@ -95,9 +84,7 @@ const fly = {
 };
 
 
-
-
-let bg;
+let bg; //for background image
 /**
  * Creates the canvas and initializes the fly
  */
@@ -106,7 +93,6 @@ function setup() {
 
     createCanvas(900, 480);
 
-    // angleMode(DEGREES);
 
     // Give the fly its first random position
     resetFly();
@@ -322,6 +308,14 @@ function mousePressed() {
     if (frog.tongue.state === "idle") {
         frog.tongue.state = "outbound";
     }
+}
+
+
+/**
+ * Scoring system is displayed
+ */
+function scoreSystem() {
+
 }
 
 
