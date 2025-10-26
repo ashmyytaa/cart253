@@ -96,14 +96,16 @@ const fly = {
 
 
 
-let angle = 0;
-centerx = 200;
-centery = 300;
+
+let bg;
 /**
  * Creates the canvas and initializes the fly
  */
 function setup() {
-    createCanvas(1200, 480);
+    bg = loadImage('assets/images/bg.jpg');
+
+    createCanvas(900, 480);
+
     // angleMode(DEGREES);
 
     // Give the fly its first random position
@@ -111,7 +113,7 @@ function setup() {
 }
 
 function draw() {
-    background("#87ceeb");
+    background(bg);
     moveFly();
     drawFly();
     moveFrog();
@@ -137,10 +139,6 @@ function moveFly() {
         fly.wings.x += 1;
         fly.y = + 150 * sin(frameCount * 0.05) + 150;
         fly.wings.y = + 150 * sin(frameCount * 0.05) + 150;
-
-
-
-
 
     }
 
