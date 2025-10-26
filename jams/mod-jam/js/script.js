@@ -96,14 +96,15 @@ const fly = {
 
 
 
-
-
+let angle = 0;
+centerx = 200;
+centery = 300;
 /**
  * Creates the canvas and initializes the fly
  */
 function setup() {
-    createCanvas(640, 480);
-    angleMode(DEGREES);
+    createCanvas(1200, 480);
+    // angleMode(DEGREES);
 
     // Give the fly its first random position
     resetFly();
@@ -132,18 +133,24 @@ function moveFly() {
 
     if (fly.y = fly.wings.y) {
 
+        fly.x += 1;
+        fly.wings.x += 1;
+        fly.y = + 150 * sin(frameCount * 0.05) + 150;
+        fly.wings.y = + 150 * sin(frameCount * 0.05) + 150;
 
-        fly.x += fly.speed;
-        fly.wings.x += fly.speed;
+
+
 
 
     }
+
     if (fly.x > width && fly.wings.x > width) {
         resetFly();
     }
-
-
 }
+
+
+
 
 /**
  * Draws the fly as a black circle
@@ -198,6 +205,9 @@ function moveFrog() {
 function moveTongue() {
     // Tongue matches the frog's x
     frog.tongue.x = frog.body.x;
+
+
+
     // If the tongue is idle, it doesn't do anything
     if (frog.tongue.state === "idle") {
         // Do nothing
