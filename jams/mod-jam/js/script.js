@@ -85,6 +85,9 @@ const fly = {
 
 
 let bg; //for background image
+let time;
+let score;
+
 /**
  * Creates the canvas and initializes the fly
  */
@@ -92,6 +95,7 @@ function setup() {
     bg = loadImage('assets/images/bg.jpg');
 
     createCanvas(900, 480);
+    score = 0;
 
 
     // Give the fly its first random position
@@ -106,6 +110,7 @@ function draw() {
     moveTongue();
     drawFrog();
     checkTongueFlyOverlap();
+    scoreSystem();
 
 }
 
@@ -294,6 +299,7 @@ function checkTongueFlyOverlap() {
     if (eaten) {
         // Reset the fly
         resetFly();
+        score++;
 
 
         // Bring back the tongue
@@ -315,8 +321,26 @@ function mousePressed() {
  * Scoring system is displayed
  */
 function scoreSystem() {
+    text("score", 700, 40);
+    text(score, 700, 60);
 
+    if (score > 5) {
+        push();
+        textSize(80);
+        fill('red');
+        text("YOU WIN", 200, 200);
+        pop();
+
+        push();
+        textSize(30);
+        fill('red');
+        text("Press any key to move to the next level!", 200, 350);
+        pop();
+    }
 }
+
+
+
 
 
 
