@@ -83,8 +83,6 @@ const fly = {
     }
 };
 
-
-let bg; //for background image
 let time;
 let score;
 
@@ -92,7 +90,7 @@ let score;
  * Creates the canvas and initializes the fly
  */
 function setup() {
-    bg = loadImage('assets/images/bg.jpg');
+
 
     createCanvas(900, 480);
     score = 0;
@@ -103,14 +101,17 @@ function setup() {
 }
 
 function draw() {
-    background(bg);
-    moveFly();
-    drawFly();
+    background(50, 168, 82);
     moveFrog();
     moveTongue();
     drawFrog();
     checkTongueFlyOverlap();
     scoreSystem();
+
+    moveFly();
+    drawFly();
+
+
 
 }
 
@@ -122,15 +123,11 @@ function moveFly() {
     // Move the fly
 
     // Handle the fly going off the canvas
-
-
     if (fly.y = fly.wings.y) {
-
         fly.x += 1;
         fly.wings.x += 1;
         fly.y = + 150 * sin(frameCount * 0.05) + 150;
         fly.wings.y = + 150 * sin(frameCount * 0.05) + 150;
-
     }
 
     if (fly.x > width && fly.wings.x > width) {
@@ -145,7 +142,6 @@ function moveFly() {
  * Draws the fly as a black circle
  */
 function drawFly() {
-
     push();
     stroke("#000000");
     fill("#ffffffff");
@@ -157,8 +153,6 @@ function drawFly() {
     fill("#000000");
     ellipse(fly.x, fly.y, fly.size, 7);
     pop();
-
-
 
 }
 
@@ -176,7 +170,6 @@ function resetFly() {
  * Moves the frog to the mouse position on x
  */
 function moveFrog() {
-
     frog.body.x = mouseX;
     frog.rightEye.x = mouseX - 25;
     frog.rightPupil.x = mouseX - 25;
@@ -184,8 +177,6 @@ function moveFrog() {
     frog.leftPupil.x = mouseX + 25;
     frog.leftEar.x = mouseX - 25;
     frog.rightEar.x = mouseX + 25;
-
-
 }
 
 /**
@@ -194,8 +185,6 @@ function moveFrog() {
 function moveTongue() {
     // Tongue matches the frog's x
     frog.tongue.x = frog.body.x;
-
-
 
     // If the tongue is idle, it doesn't do anything
     if (frog.tongue.state === "idle") {
@@ -244,7 +233,6 @@ function drawFrog() {
     ellipse(frog.body.x, frog.body.y, frog.body.size);
     pop();
 
-
     //draw frogs ears
     push();
     fill("#d41a84ff");
@@ -282,9 +270,6 @@ function drawFrog() {
     noStroke();
     ellipse(frog.leftPupil.x, frog.leftPupil.y, frog.leftPupil.size);
     pop();
-
-
-
 }
 
 /**
@@ -298,15 +283,13 @@ function checkTongueFlyOverlap() {
     const eaten = (d < frog.tongue.size + fly.size);
     if (eaten) {
         // Reset the fly
-        resetFly();
+        resetFly(fly);
         score++;
-
 
         // Bring back the tongue
         frog.tongue.state = "inbound";
     }
 }
-
 /**
  * Launch the tongue on click (if it's not launched yet)
  */
@@ -315,7 +298,6 @@ function mousePressed() {
         frog.tongue.state = "outbound";
     }
 }
-
 
 /**
  * Scoring system is displayed
@@ -338,6 +320,13 @@ function scoreSystem() {
         pop();
     }
 }
+
+
+function createBackground() {
+    fill(50, 168, 82);
+}
+
+
 
 
 

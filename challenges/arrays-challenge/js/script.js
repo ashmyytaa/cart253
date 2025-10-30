@@ -11,7 +11,7 @@ let balls = [];
  */
 function setup() {
     // Create the canvas
-    createCanvas(500, 500);
+    createCanvas(600, 600);
     // Create the ball
     ball1 = createBall();
 }
@@ -24,7 +24,7 @@ function createBall() {
     let newBall = {
         x: random(0, width),
         y: random(0, height),
-        size: random(10, 20),
+        size: random(10, 40),
 
         fill: {
             r: random(0, 255),
@@ -46,7 +46,7 @@ function createBall() {
  * Moves and draws the ball
  */
 function draw() {
-    background("#de829fff");
+    background('black');
 
     for (let newBall of balls) {
         moveBall(newBall);
@@ -100,3 +100,4 @@ function mousePressed() {
     let newBall = createBall();
     balls.push(newBall);
 }
+
