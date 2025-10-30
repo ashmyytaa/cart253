@@ -1,8 +1,8 @@
 /**
- * Boingo
- * Pippin Barr
+ * Infinity Stones
+ * Ashmitha, Nerly, Yaxuan
  *
- * A ball that bounces around on the canvas
+ * A ball that bounces around on the canvas and the user can create as much as they want by presseing their mouse.
  */
 
 let balls = [];
@@ -21,12 +21,17 @@ function setup() {
  */
 function createBall() {
     // Create a ball object with appropriate properties
-
     let newBall = {
         x: random(0, width),
         y: random(0, height),
         size: random(10, 20),
-        fill: random(0, 255),
+
+        fill: {
+            r: random(0, 255),
+            g: random(0, 255),
+            b: random(255),
+            a: random(200, 255),
+        },
 
         velocity: {
             x: random(-5, 5),
@@ -41,7 +46,7 @@ function createBall() {
  * Moves and draws the ball
  */
 function draw() {
-    background("#87ceeb");
+    background("#d75f85ff");
 
     for (let newBall of balls) {
         moveBall(newBall);
@@ -85,16 +90,13 @@ function bounceBall(newBall) {
 function drawBall(newBall) {
     push();
     noStroke();
-    fill(newBall.fill);
+    fill(newBall.fill.r, newBall.fill.g, newBall.fill.b, newBall.fill.a);
     ellipse(newBall.x, newBall.y, newBall.size);
     pop();
 }
 
+//function where when the user presses the mouse, a new ball creates
 function mousePressed() {
-
     let newBall = createBall();
     balls.push(newBall);
-
-
-
 }
