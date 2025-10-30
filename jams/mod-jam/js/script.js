@@ -101,15 +101,16 @@ function setup() {
 }
 
 function draw() {
+
     background(50, 168, 82);
     moveFrog();
     moveTongue();
     drawFrog();
     checkTongueFlyOverlap();
     scoreSystem();
-
     moveFly();
     drawFly();
+    drawBackground();
 
 
 
@@ -322,9 +323,55 @@ function scoreSystem() {
 }
 
 
-function createBackground() {
-    fill(50, 168, 82);
+//mimicking underwater!
+function drawBackground() {
+
+    push();
+    fill('blue');
+    noStroke();
+    ellipse(300, 450, 150)
+    pop();
+
+    push();
+    fill('blue');
+    noStroke();
+    ellipse(450, 450, 200)
+    pop();
+
+
+    push();
+    fill('blue');
+    noStroke();
+    ellipse(600, 450, 150)
+    pop();
+
+    push();
+    fill('blue');
+    noStroke();
+    ellipse(700, 450, 100)
+    pop();
+
+
+    push();
+    fill('blue');
+    noStroke();
+    ellipse(200, 450, 100)
+    pop();
+
+    push();
+    fill('blue');
+    noStroke();
+    ellipse(100, 450, 200)
+    pop();
+
+    push();
+    fill('blue');
+    noStroke();
+    ellipse(800, 450, 200)
+    pop();
+
 }
+
 
 
 
