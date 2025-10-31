@@ -102,7 +102,12 @@ function setup() {
 
 function draw() {
 
-    background(50, 168, 82);
+
+
+    background("#75b0d5ff");
+    wave(300, 0.001, "#298bc8ff", 1);
+    wave(600, 0.001, "#55afe7ff", 2);
+    wave(900, 0.001, "#8cc9efff", 3);
     moveFrog();
     moveTongue();
     drawFrog();
@@ -110,7 +115,8 @@ function draw() {
     scoreSystem();
     moveFly();
     drawFly();
-    drawBackground();
+
+
 
 
 
@@ -323,54 +329,37 @@ function scoreSystem() {
 }
 
 
-//mimicking underwater!
-function drawBackground() {
+
+//function wave
+function wave(waveHeight, waveScale, waveColor, waveAddition) {
+    let noiseLevel = waveHeight;
+    let noiseScale = waveScale;
 
     push();
-    fill('blue');
-    noStroke();
-    ellipse(300, 450, 150)
+    fill(waveColor);        // fill the wave with your chosen color
+    noStroke();     // remove outline (optional)
+
+    beginShape();
+    for (let x = 0; x < width; x += waveAddition) {
+        let nx = noiseScale * x;
+        let nt = noiseScale * frameCount;
+        let y = noiseLevel * noise(nx, nt);
+        vertex(x, y);
+    }
+
+    // close the shape along the bottom of the canvas
+    vertex(width, height);
+    vertex(0, height);
+    endShape(CLOSE);
+
     pop();
-
-    push();
-    fill('blue');
-    noStroke();
-    ellipse(450, 450, 200)
-    pop();
-
-
-    push();
-    fill('blue');
-    noStroke();
-    ellipse(600, 450, 150)
-    pop();
-
-    push();
-    fill('blue');
-    noStroke();
-    ellipse(700, 450, 100)
-    pop();
-
-
-    push();
-    fill('blue');
-    noStroke();
-    ellipse(200, 450, 100)
-    pop();
-
-    push();
-    fill('blue');
-    noStroke();
-    ellipse(100, 450, 200)
-    pop();
-
-    push();
-    fill('blue');
-    noStroke();
-    ellipse(800, 450, 200)
-    pop();
-
 }
+
+
+
+
+
+
 
 
 
