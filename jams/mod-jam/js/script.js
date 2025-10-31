@@ -102,12 +102,10 @@ function setup() {
 
 function draw() {
 
-
-
-    background("#75b0d5ff");
-    wave(300, 0.001, "#298bc8ff", 1);
-    wave(600, 0.001, "#55afe7ff", 2);
-    wave(900, 0.001, "#8cc9efff", 3);
+    background("#ffffffff");
+    wave(300, 0.002, "#298bc8ff", 1);
+    wave(600, 0.002, "#55afe7ff", 2);
+    wave(900, 0.002, "#8cc9efff", 3);
     moveFrog();
     moveTongue();
     drawFrog();
@@ -115,9 +113,6 @@ function draw() {
     scoreSystem();
     moveFly();
     drawFly();
-
-
-
 
 
 }
@@ -152,13 +147,14 @@ function drawFly() {
     push();
     stroke("#000000");
     fill("#ffffffff");
+    //triangle(fly.wings.x, fly.wings.y, fly.wings.size, fly.wings.height, 86, 75);
     ellipse(fly.wings.x, fly.wings.y, fly.wings.size, fly.wings.height);
     pop();
 
     push();
     noStroke();
     fill("#000000");
-    ellipse(fly.x, fly.y, fly.size, 7);
+    ellipse(fly.x, fly.y, fly.size, 15);
     pop();
 
 }
