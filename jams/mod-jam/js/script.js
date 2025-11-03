@@ -102,7 +102,7 @@ function setup() {
 
 function draw() {
 
-    background("#ffffffff");
+    background("#7ac7eaff");
 
     bgOne();
     scoreSystem();
@@ -318,13 +318,17 @@ function scoreSystem() {
         pop();
     }
 
-    if (score >= 10 && score < 20) {
+    if (score >= 10 && score < 15) {
         bgThree();
     }
 
 
-    if (score >= 20 && score < 30) {
+    if (score >= 15 && score < 20) {
         bgFour();
+    }
+
+    if (score >= 20) {
+        bgFive();
     }
 
     text("score", 700, 40);
@@ -382,6 +386,13 @@ function bgFour() {
     wave(300, 0.002, "#0b3a56ff", 1);
     wave(600, 0.002, "#052031ff", 2);
     wave(900, 0.002, "#0a283bff", 3);
+}
+
+function bgFive() {
+    background("#0d2431ff");
+    wave(300, 0.002, "#071c29ff", 1);
+    wave(600, 0.002, "#0c1b25ff", 2);
+    wave(900, 0.002, "#030f17ff", 3);
 }
 
 
