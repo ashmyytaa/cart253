@@ -103,6 +103,7 @@ function setup() {
 function draw() {
 
     background("#ffffffff");
+
     bgOne();
     scoreSystem();
     moveFrog();
@@ -305,8 +306,7 @@ function mousePressed() {
  * Scoring system is displayed
  */
 function scoreSystem() {
-    text("score", 700, 40);
-    text(score, 700, 60);
+
 
     if (score >= 5 && score < 10) {
         bgTwo();
@@ -327,12 +327,8 @@ function scoreSystem() {
         bgFour();
     }
 
-
-
-
-
-
-
+    text("score", 700, 40);
+    text(score, 700, 60);
 
 }
 
@@ -368,32 +364,24 @@ function bgOne() {
     wave(300, 0.002, "#7ec6f3ff", 1);
     wave(600, 0.002, "#91caedff", 2);
     wave(900, 0.002, "#7bc2efff", 3);
-
 }
-
-
 function bgTwo() {
+    background("#4294c0ff");
     wave(300, 0.002, "#66b2e1ff", 1);
     wave(600, 0.002, "#478cb8ff", 2);
     wave(900, 0.002, "#3c84b1ff", 3);
 }
-
 function bgThree() {
-
+    background("#2b6f94ff");
     wave(300, 0.002, "#366785ff", 1);
     wave(600, 0.002, "#266992ff", 2);
     wave(900, 0.002, "#12547cff", 3);
-
-
 }
-
 function bgFour() {
-
+    background("#184158ff");
     wave(300, 0.002, "#0b3a56ff", 1);
     wave(600, 0.002, "#052031ff", 2);
     wave(900, 0.002, "#0a283bff", 3);
-
-
 }
 
 
