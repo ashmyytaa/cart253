@@ -103,14 +103,13 @@ function setup() {
 function draw() {
 
     background("#ffffffff");
-    wave(300, 0.002, "#298bc8ff", 1);
-    wave(600, 0.002, "#55afe7ff", 2);
-    wave(900, 0.002, "#8cc9efff", 3);
+    bgOne();
+    scoreSystem();
     moveFrog();
     moveTongue();
     drawFrog();
     checkTongueFlyOverlap();
-    scoreSystem();
+
     moveFly();
     drawFly();
 
@@ -309,19 +308,32 @@ function scoreSystem() {
     text("score", 700, 40);
     text(score, 700, 60);
 
-    if (score > 5) {
+    if (score >= 5 && score < 10) {
+        bgTwo();
+
         push();
         textSize(80);
         fill('red');
         text("YOU WIN", 200, 200);
         pop();
-
-        push();
-        textSize(30);
-        fill('red');
-        text("Press any key to move to the next level!", 200, 350);
-        pop();
     }
+
+    if (score >= 10 && score < 20) {
+        bgThree();
+    }
+
+
+    if (score >= 20 && score < 30) {
+        bgFour();
+    }
+
+
+
+
+
+
+
+
 }
 
 
@@ -349,6 +361,39 @@ function wave(waveHeight, waveScale, waveColor, waveAddition) {
     endShape(CLOSE);
 
     pop();
+}
+
+
+function bgOne() {
+    wave(300, 0.002, "#7ec6f3ff", 1);
+    wave(600, 0.002, "#91caedff", 2);
+    wave(900, 0.002, "#7bc2efff", 3);
+
+}
+
+
+function bgTwo() {
+    wave(300, 0.002, "#66b2e1ff", 1);
+    wave(600, 0.002, "#478cb8ff", 2);
+    wave(900, 0.002, "#3c84b1ff", 3);
+}
+
+function bgThree() {
+
+    wave(300, 0.002, "#366785ff", 1);
+    wave(600, 0.002, "#266992ff", 2);
+    wave(900, 0.002, "#12547cff", 3);
+
+
+}
+
+function bgFour() {
+
+    wave(300, 0.002, "#0b3a56ff", 1);
+    wave(600, 0.002, "#052031ff", 2);
+    wave(900, 0.002, "#0a283bff", 3);
+
+
 }
 
 
