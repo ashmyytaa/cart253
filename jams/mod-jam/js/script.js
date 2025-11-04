@@ -61,7 +61,7 @@ const frog = {
         x: undefined,
         y: 480,
         size: 20,
-        speed: 50,
+        speed: 20,
 
         state: "idle" // State can be: idle, outbound, inbound
     },
@@ -71,9 +71,10 @@ const frog = {
 //constant fly
 const fly = {
     x: 0,
+
     y: undefined, // Will be random
     size: 20,
-    speed: 5,
+    speed: 15,
 
     wings: { //frog wings
         x: 0,
@@ -104,7 +105,6 @@ function setup() {
 }
 
 function draw() {
-
     background("#7ac7eaff");
 
     bgOne();
@@ -112,10 +112,6 @@ function draw() {
     moveFrog();
     moveTongue();
     drawFrog();
-
-
-
-
 }
 
 /**
@@ -136,6 +132,10 @@ function moveFly() {
     if (fly.x > width && fly.wings.x > width) {
         resetFly();
     }
+
+
+
+
 }
 
 
@@ -145,6 +145,7 @@ function moveFly() {
  * Draws the fly as a black circle
  */
 function drawFly() {
+    //fly one
     push();
     stroke("#000000");
     fill("#ffffffff");
@@ -158,6 +159,7 @@ function drawFly() {
     ellipse(fly.x, fly.y, fly.size, 15);
     pop();
 
+
 }
 
 /**
@@ -168,6 +170,9 @@ function resetFly() {
     fly.wings.x = 0;
     fly.y = random(0, 300);
     fly.wings.y = random(0, 300);
+
+
+
 }
 
 /**
@@ -282,18 +287,26 @@ function drawFrog() {
 function checkTongueFlyOverlap() {
     // Get distance from tongue to fly
     const d = dist(frog.tongue.x, frog.tongue.y, fly.x, fly.y);
+
     // Check if it's an overlap
     // tongue.zie /2 + fly.size /2
     const eaten = (d < frog.tongue.size + fly.size);
+
     if (eaten) {
         // Reset the fly
-        resetFly(fly);
+        resetFly(fly.x, fly.y, fly.wings.x, fly.wings.y);
         score++;
 
         // Bring back the tongue
         frog.tongue.state = "inbound";
     }
+
+
 }
+
+
+
+
 /**
  * Launch the tongue on click (if it's not launched yet)
  */
