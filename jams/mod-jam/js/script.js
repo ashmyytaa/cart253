@@ -109,10 +109,8 @@ function draw() {
     moveFrog();
     moveTongue();
     drawFrog();
-    checkTongueFlyOverlap();
 
-    moveFly();
-    drawFly();
+
 
 
 }
@@ -308,31 +306,62 @@ function mousePressed() {
 function scoreSystem() {
 
 
+
     if (score >= 5 && score < 10) {
         bgTwo();
 
+
         push();
-        textSize(80);
+        textSize(50);
         fill('red');
-        text("YOU WIN", 200, 200);
+        text("Kepp going down!", 200, 200);
         pop();
+
+
     }
 
     if (score >= 10 && score < 15) {
         bgThree();
+
+        push();
+        textSize(50);
+        fill('red');
+        text("Yes letsgo!", 200, 200);
+        pop();
+
     }
 
 
     if (score >= 15 && score < 20) {
         bgFour();
+
+        push();
+        textSize(50);
+        fill('red');
+        text("Almost there!", 200, 200);
+        pop();
+
+
     }
 
-    if (score >= 20) {
-        bgFive();
-    }
+    checkTongueFlyOverlap();
+    moveFly();
+    drawFly();
 
     text("score", 700, 40);
     text(score, 700, 60);
+
+    if (score >= 20) {
+        bgFive();
+
+        push();
+        textSize(50);
+        fill('red');
+        text("You win!", 200, 200);
+        pop();
+
+    }
+
 
 }
 
