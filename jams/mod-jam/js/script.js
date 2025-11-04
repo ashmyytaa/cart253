@@ -86,6 +86,9 @@ const fly = {
 let time;
 let score;
 
+var balls = [];
+
+
 /**
  * Creates the canvas and initializes the fly
  */
@@ -348,23 +351,25 @@ function scoreSystem() {
     moveFly();
     drawFly();
 
+    push();
     text("score", 700, 40);
     text(score, 700, 60);
+    pop();
 
     if (score >= 20) {
         bgFive();
+        treasureExplosion();
 
         push();
         textSize(50);
-        fill('red');
-        text("You win!", 200, 200);
+        fill('white');
+        strokeWeight(4)
+        stroke('black');
+        text("You win! You found the gold mine!!", 100, 200);
         pop();
-
     }
 
-
 }
-
 
 
 //function wave
@@ -394,9 +399,9 @@ function wave(waveHeight, waveScale, waveColor, waveAddition) {
 
 
 function bgOne() {
-    wave(300, 0.002, "#7ec6f3ff", 1);
-    wave(600, 0.002, "#91caedff", 2);
-    wave(900, 0.002, "#7bc2efff", 3);
+    wave(300, 0.002, "rgba(74, 141, 217, 1)", 1);
+    wave(600, 0.002, "#26a2f0ff", 2);
+    wave(900, 0.002, "#108bd8ff", 3);
 }
 function bgTwo() {
     background("#4294c0ff");
@@ -422,6 +427,47 @@ function bgFive() {
     wave(300, 0.002, "#071c29ff", 1);
     wave(600, 0.002, "#0c1b25ff", 2);
     wave(900, 0.002, "#030f17ff", 3);
+}
+
+
+function treasureExplosion() {
+
+    var ball = {
+        x: random(0, width),
+        y: random(0, height),
+        size: random(5, 50),
+        speed: random(1, 5),
+        col: color(random(255)),
+
+        fills: {
+            r: 255,
+            g: 215,
+            b: 0,
+            a: 200,
+        },
+    };
+
+
+    balls.push(ball);
+
+
+    for (var i = 0; i < balls.length; i++) {
+
+        push()
+        fill(balls[i].fills.r, balls[i].fills.g, balls[i].fills.b, balls[i].fills.a);
+        noStroke();
+        ellipse(balls[i].x, balls[i].y, balls[i].size);
+        pop();
+
+        balls[i].y += balls[i].speed;
+        if (balls[i].y > height - balls[i].size / 2 ||
+            balls[i].y < balls[i].size / 2) {
+            balls[i].speed = -balls[i].speed
+        }
+
+
+    }
+
 }
 
 
