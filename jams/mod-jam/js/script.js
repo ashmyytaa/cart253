@@ -86,6 +86,7 @@ const fly = {
 
 let time;
 let score;
+let filling = false;
 
 var balls = [];
 
@@ -108,6 +109,7 @@ function draw() {
     background("#7ac7eaff");
 
     bgOne();
+
     scoreSystem();
     moveFrog();
     moveTongue();
@@ -296,6 +298,7 @@ function checkTongueFlyOverlap() {
         // Reset the fly
         resetFly(fly.x, fly.y, fly.wings.x, fly.wings.y);
         score++;
+        filling = true;
 
         // Bring back the tongue
         frog.tongue.state = "inbound";
@@ -323,6 +326,7 @@ function scoreSystem() {
 
 
 
+
     if (score >= 5 && score < 10) {
         bgTwo();
 
@@ -332,6 +336,8 @@ function scoreSystem() {
         fill('red');
         text("Kepp going down!", 200, 200);
         pop();
+
+
 
 
     }
@@ -364,10 +370,21 @@ function scoreSystem() {
     moveFly();
     drawFly();
 
-    push();
-    text("score", 700, 40);
-    text(score, 700, 60);
+    // push();
+    //  text("score", 700, 40);
+    //  text(score, 700, 60);
+    //  pop();
+
+
+
+
+    //  score = constrain(score, 200, width);
+    push()
+    noStroke();
+    fill(100, 100, 250);
+    rect(0, 50, score, 50);
     pop();
+
 
     if (score >= 20) {
         bgFive();
@@ -391,8 +408,8 @@ function wave(waveHeight, waveScale, waveColor, waveAddition) {
     let noiseScale = waveScale;
 
     push();
-    fill(waveColor);        // fill the wave with your chosen color
-    noStroke();     // remove outline (optional)
+    fill(waveColor);
+    noStroke();
 
     beginShape();
     for (let x = 0; x < width; x += waveAddition) {
@@ -402,7 +419,7 @@ function wave(waveHeight, waveScale, waveColor, waveAddition) {
         vertex(x, y);
     }
 
-    // close the shape along the bottom of the canvas
+
     vertex(width, height);
     vertex(0, height);
     endShape(CLOSE);
@@ -480,6 +497,26 @@ function treasureExplosion() {
 
 
     }
+
+}
+
+function scoreProgress() {
+
+
+
+
+
+    score = constrain(score, 200, width);
+    push()
+    noStroke();
+    fill(100, 100, 250);
+    rect(0, 50, score, 20);
+    pop();
+
+
+    // if (score >= width) {
+    //      score = 0; 
+    //  }
 
 }
 
