@@ -324,6 +324,7 @@ function mousePressed() {
  */
 function scoreSystem() {
 
+    let progress = 0;
 
 
 
@@ -333,7 +334,7 @@ function scoreSystem() {
 
 
 
-        score += 50;
+        progress = 100;
 
 
         push();
@@ -346,8 +347,10 @@ function scoreSystem() {
 
     }
 
-    if (score >= 100 && score < 200) {
+    if (score >= 10 && score < 15) {
         bgThree();
+
+        progress = 150;
 
         push();
         textSize(50);
@@ -358,8 +361,10 @@ function scoreSystem() {
     }
 
 
-    if (score >= 200 && score < 300) {
+    if (score >= 15 && score < 20) {
         bgFour();
+
+        progress = 200;
 
         push();
         textSize(50);
@@ -374,23 +379,15 @@ function scoreSystem() {
     moveFly();
     drawFly();
 
-    // push();
-    //  text("score", 700, 40);
-    //  text(score, 700, 60);
-    //  pop();
 
-
-
-
-    //  score = constrain(score, 200, width);
     push()
     noStroke();
-    fill(100, 100, 250);
-    rect(0, 50, score, 50);
+    fill(235, 52, 91, 80);
+    rect(100, 50, progress, 20);
     pop();
 
 
-    if (score >= 400) {
+    if (score >= 20) {
         bgFive();
         treasureExplosion();
 
@@ -504,25 +501,7 @@ function treasureExplosion() {
 
 }
 
-function scoreProgress() {
 
-
-
-
-
-    score = constrain(score, 200, width);
-    push()
-    noStroke();
-    fill(100, 100, 250);
-    rect(0, 50, score, 20);
-    pop();
-
-
-    // if (score >= width) {
-    //      score = 0; 
-    //  }
-
-}
 
 
 
