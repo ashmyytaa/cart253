@@ -175,10 +175,10 @@ function resetFly() {
 /**
  * Moves the frog to the mouse position on x
  */
-function moveFrog() {
+function moveFrog() { //moves all the different parts of the frog and fly along the x-axis, coordinatly with the mouse mouvement
     frog.body.x = mouseX;
     frog.rightEye.x = mouseX - 25;
-    frog.rightPupil.x = mouseX - 25;
+    frog.rightPupil.x = mouseX - 25; //adding +25 or -25 so that shapes dont overlap with the mouseX
     frog.leftEye.x = mouseX + 25;
     frog.leftPupil.x = mouseX + 25;
     frog.leftEar.x = mouseX - 25;
@@ -240,13 +240,13 @@ function drawFrog() {
     pop();
 
     //draw frogs ears
-    push();
+    push(); //left ear
     fill("#d41a84ff");
     noStroke();
     ellipse(frog.leftEar.x, frog.leftEar.y, frog.leftEar.size);
     pop();
 
-    push();
+    push(); //right ear
     fill("#d41a84ff");
     noStroke();
     ellipse(frog.rightEar.x, frog.rightEar.y, frog.rightEar.size);
@@ -263,7 +263,7 @@ function drawFrog() {
     ellipse(frog.rightEye.x, frog.rightEye.y, frog.rightEye.size);
     pop();
 
-    push();
+    push(); //right pupil
     fill("#000000ff");
     noStroke();
     ellipse(frog.rightPupil.x + pupilSpeedX, frog.rightPupil.y + pupilSpeedY, frog.rightPupil.size);
@@ -275,7 +275,7 @@ function drawFrog() {
     ellipse(frog.leftEye.x, frog.leftEye.y, frog.leftEye.size);
     pop();
 
-    push();
+    push(); //left pupil
     fill("#000000ff");
     noStroke();
     ellipse(frog.leftPupil.x + pupilSpeedX, frog.leftPupil.y + pupilSpeedY, frog.leftPupil.size);
@@ -296,7 +296,7 @@ function checkTongueFlyOverlap() {
     if (eaten) {
         // Reset the fly
         resetFly(fly.x, fly.y, fly.wings.x, fly.wings.y);
-        score++;
+        score++; //adds up to the score each time the frog catches a fly
 
         // Bring back the tongue
         frog.tongue.state = "inbound";
@@ -320,19 +320,18 @@ function mousePressed() {
  */
 function scoreSystem() {
 
-    let progress = 0;
+    let progress = 0; //declared a progress variable, that will be used later on for our progress bar
 
     if (score >= 5 && score < 10) {
         bgTwo();
 
         progress = 100;
 
-
         push();
         textSize(15);
         fill('white');
-        drawingContext.shadowBlur = 50; // Adjust for desired blurriness
-        drawingContext.shadowColor = color(255, 255, 255);
+        drawingContext.shadowBlur = 50; // features that i found online that adds glow to a text
+        drawingContext.shadowColor = color(255, 255, 255); //features that i found online that adds glow to a text
         text("Progress: 1000ft deep", 550, 25);
         pop();
 
@@ -343,13 +342,11 @@ function scoreSystem() {
 
         progress = 150;
 
-
-
         push();
         textSize(15);
         fill('white');
-        drawingContext.shadowBlur = 50; // Adjust for desired blurriness
-        drawingContext.shadowColor = color(255, 255, 255);
+        drawingContext.shadowBlur = 50; // features that i found online that adds glow to a text
+        drawingContext.shadowColor = color(255, 255, 255); //features that i found online that adds glow to a text
         text("Progress: 2000ft deep", 550, 25);
         pop();
     }
@@ -364,17 +361,19 @@ function scoreSystem() {
         push();
         textSize(15);
         fill('white');
-        drawingContext.shadowBlur = 50; // Adjust for desired blurriness
-        drawingContext.shadowColor = color(255, 255, 255);
+        drawingContext.shadowBlur = 50; // Afeatures that i found online that adds glow to a text
+        drawingContext.shadowColor = color(255, 255, 255); //features that i found online that adds glow to a text
         text("Progress: 3000ft deep", 550, 25);
         pop();
 
     }
+
+    //function calling
     checkTongueFlyOverlap();
     moveFly();
     drawFly();
 
-
+    //rectangle that displays the progress bar that is relative to the progress of when the frog catches flies
     push()
     noStroke();
     fill(235, 52, 91, 80);
@@ -487,7 +486,7 @@ function treasureExplosion() {
     }
 }
 
-
+//function that displays the title screen
 function showTitleScreen() {
 
     background("#0d2431ff");
