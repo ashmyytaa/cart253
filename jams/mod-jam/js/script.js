@@ -331,6 +331,11 @@ function scoreSystem() {
         bgTwo();
 
 
+
+
+        score += 50;
+
+
         push();
         textSize(50);
         fill('red');
@@ -339,10 +344,9 @@ function scoreSystem() {
 
 
 
-
     }
 
-    if (score >= 10 && score < 15) {
+    if (score >= 100 && score < 200) {
         bgThree();
 
         push();
@@ -354,7 +358,7 @@ function scoreSystem() {
     }
 
 
-    if (score >= 15 && score < 20) {
+    if (score >= 200 && score < 300) {
         bgFour();
 
         push();
@@ -386,7 +390,7 @@ function scoreSystem() {
     pop();
 
 
-    if (score >= 20) {
+    if (score >= 400) {
         bgFive();
         treasureExplosion();
 
