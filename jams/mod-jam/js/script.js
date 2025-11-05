@@ -6,7 +6,8 @@
  * As you keep catching flies, you keep entering into the dept of the ocean,
  * to then reach the bottom of the ocean which contains the treasure mines, where
  * there is an unlimited amount of gold. 
- * 
+ * There is NO loosing in this game you are only winning as u reach the treasure mine, which marks the end of the game.
+ 
  * Instructions:
  * - Move the frog with your mouse
  * - Click to launch the tongue,
@@ -107,7 +108,7 @@ function setup() {
 }
 
 function draw() {
-    background("#7ac7eaff");
+    background("#00aeffff");
 
     if (gameState === "start") {
         showTitleScreen() //Title screen will show up since we initialized beforehand that gameState = start
@@ -326,11 +327,15 @@ function scoreSystem() {
 
         progress = 100;
 
+
         push();
-        textSize(20);
-        fill('red');
-        text("Kepp going down!", 400, 50);
+        textSize(15);
+        fill('white');
+        drawingContext.shadowBlur = 50; // Adjust for desired blurriness
+        drawingContext.shadowColor = color(255, 255, 255);
+        text("Progress: 1000ft deep", 550, 25);
         pop();
+
     }
 
     if (score >= 10 && score < 15) {
@@ -338,10 +343,14 @@ function scoreSystem() {
 
         progress = 150;
 
+
+
         push();
-        textSize(20);
-        fill('red');
-        text("Yes letsgo!", 400, 50);
+        textSize(15);
+        fill('white');
+        drawingContext.shadowBlur = 50; // Adjust for desired blurriness
+        drawingContext.shadowColor = color(255, 255, 255);
+        text("Progress: 2000ft deep", 550, 25);
         pop();
     }
 
@@ -350,10 +359,14 @@ function scoreSystem() {
         bgFour();
 
         progress = 200;
+
+
         push();
-        textSize(20);
-        fill('red');
-        text("Almost there!", 400, 50);
+        textSize(15);
+        fill('white');
+        drawingContext.shadowBlur = 50; // Adjust for desired blurriness
+        drawingContext.shadowColor = color(255, 255, 255);
+        text("Progress: 3000ft deep", 550, 25);
         pop();
 
     }
@@ -361,10 +374,11 @@ function scoreSystem() {
     moveFly();
     drawFly();
 
+
     push()
     noStroke();
     fill(235, 52, 91, 80);
-    rect(100, 50, progress, 20);
+    rect(550, 35, progress, 20);
     pop();
 
 
@@ -408,15 +422,15 @@ function wave(waveHeight, waveScale, waveColor, waveAddition) {
 
 
 function bgOne() {
-    wave(300, 0.002, "rgba(74, 141, 217, 1)", 1);
-    wave(600, 0.002, "#26a2f0ff", 2);
-    wave(900, 0.002, "#108bd8ff", 3);
+    wave(300, 0.002, "rgba(17, 152, 220, 1)", 1);
+    wave(600, 0.002, "#2ca8d1ff", 2);
+    wave(900, 0.002, "#3ecffbff", 3);
 }
 function bgTwo() {
-    background("#4294c0ff");
-    wave(300, 0.002, "#66b2e1ff", 1);
-    wave(600, 0.002, "#478cb8ff", 2);
-    wave(900, 0.002, "#3c84b1ff", 3);
+    background("#3eade9ff");
+    wave(300, 0.002, "#3194d2ff", 1);
+    wave(600, 0.002, "#0099f9ff", 2);
+    wave(900, 0.002, "#237ab0ff", 3);
 }
 function bgThree() {
     background("#2b6f94ff");
