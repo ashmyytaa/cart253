@@ -1,13 +1,17 @@
 /**
- * Mod Jam
+ * Frog Diving - Mod Jam
  * Ashmitha Kanagiah
  * 
- * A game of catching flies with your frog-tongue
+ * A game of catching flies with the tongue of our frog.
+ * As you keep catching flies, you keep entering into the dept of the ocean,
+ * to then reach the bottom of the ocean which contains the treasure mines, where
+ * there is an unlimited amount of gold. 
  * 
  * Instructions:
  * - Move the frog with your mouse
- * - Click to launch the tongue
- * - Catch flies
+ * - Click to launch the tongue,
+ * - Click to launch the tongue, to catch flies
+ * - When flies are being catches, you can see your progress on your progress bar. 
  * 
  
  */
@@ -66,40 +70,37 @@ const frog = {
         state: "idle" // State can be: idle, outbound, inbound
     },
 };
-
-
 //constant fly
 const fly = {
-    x: 0,
+
+    x: 0, //Will be defined later on
 
     y: undefined, // Will be random
     size: 20,
     speed: 50,
 
     wings: { //frog wings
-        x: 0,
+        x: 0, //Will be defined later on
         y: undefined, // will be random
         size: 10,
         height: 25
     }
 };
 
-let time;
-let score;
-let gameState = "start";
 
-var balls = [];
+let score; // To track the amount of flies catched by the frog & to be used to determine the frog's progress.
+let gameState = "start"; //To be able to launch the title screen and game mode
+
+var balls = []; //Empty array balls which will mimick our gold for our treasure mine.
 
 
 /**
- * Creates the canvas and initializes the fly
+ * Creates the canvas
  */
 function setup() {
 
-
     createCanvas(900, 480);
-    score = 0;
-
+    score = 0; //Sets the score to zero
 
     // Give the fly its first random position
     resetFly();
@@ -109,11 +110,11 @@ function draw() {
     background("#7ac7eaff");
 
     if (gameState === "start") {
-        showTitleScreen()
-    } else if (gameState === "maingame") {
+        showTitleScreen() //Title screen will show up since we initialized beforehand that gameState = start
 
+    } else if (gameState === "maingame") { //Maingame will contain the components of our frog diving game
+        //All the functions that compose our frog diving game are called here
         bgOne();
-
         scoreSystem();
         moveFrog();
         moveTongue();
@@ -121,66 +122,52 @@ function draw() {
     }
 }
 
-
-
 /**
- * Moves the fly according to its speed
- * Resets the fly if it gets all the way to the right
+ * Moves the fly according to a fixed speed
+ * Resets the fly if it gets all the way to the right of the canvas
  */
 function moveFly() {
-    // Move the fly
 
-    // Handle the fly going off the canvas
-    if (fly.y = fly.wings.y) {
-        fly.x += 5;
-        fly.wings.x += 5;
-        fly.y = + 150 * sin(frameCount * 0.05) + 150;
-        fly.wings.y = + 150 * sin(frameCount * 0.05) + 150;
+
+    if (fly.y = fly.wings.y) { //Checks if the fly body and fly wings coordinate togheter, since they get random y values
+
+        fly.x += 5; //X moves to the right by + 5
+        fly.wings.x += 5; //X moves to the right by + 5
+        fly.y = + 150 * sin(frameCount * 0.05) + 150; //Y moves along to the right with a sine function, and also made sure that the fly dosent move upoff the canvas
+        fly.wings.y = + 150 * sin(frameCount * 0.05) + 150; //Y moves along to the right with a sine function, and also made sure that the fly dosent move upoff the canvas
     }
 
-    if (fly.x > width && fly.wings.x > width) {
-        resetFly();
+    if (fly.x > width && fly.wings.x > width) { //Checks if fly reaches the end of the canvas on the right side
+        resetFly(); //Resets fly if fly reaches the right-end of the canvas
     }
-
-
-
-
 }
-
-
-
-
 /**
  * Draws the fly as a black circle
  */
 function drawFly() {
-    //fly one
+    //draws the fly wings
     push();
     stroke("#000000");
     fill("#ffffffff");
-    //triangle(fly.wings.x, fly.wings.y, fly.wings.size, fly.wings.height, 86, 75);
     ellipse(fly.wings.x, fly.wings.y, fly.wings.size, fly.wings.height);
     pop();
-
+    //draw the fly
     push();
     noStroke();
     fill("#000000");
     ellipse(fly.x, fly.y, fly.size, 15);
     pop();
-
-
 }
 
 /**
  * Resets the fly to the left with a random y
  */
 function resetFly() {
-    fly.x = random(-3, 3);
+
+    fly.x = random(-3, 3); //x-value gets resetted a random value between -3 and 3
     fly.wings.x = 0;
-    fly.y = random(0, 300);
-    fly.wings.y = random(0, 300);
-
-
+    fly.y = random(0, 300); //y-value gets resetted on the canvas a random position
+    fly.wings.y = random(0, 300); //y-value gets resetted on the canvas a random position
 
 }
 
@@ -265,7 +252,11 @@ function drawFrog() {
     pop();
 
     //draw frog's eyes
-    push();
+    let moveSpeed = 15; // speed of how the eyes pupil will move
+    let pupilSpeedX = map(mouseX, 0, width, -moveSpeed, moveSpeed); //using map() to make the pupils move with mouseX along the x-axis
+    let pupilSpeedY = map(mouseY, 0, height, -moveSpeed, moveSpeed); //using map() to make the pupils move with mouseY along the y-axis
+
+    push(); //right eye
     fill("#ffffffff");
     noStroke();
     ellipse(frog.rightEye.x, frog.rightEye.y, frog.rightEye.size);
@@ -274,10 +265,10 @@ function drawFrog() {
     push();
     fill("#000000ff");
     noStroke();
-    ellipse(frog.rightPupil.x, frog.rightPupil.y, frog.rightPupil.size);
+    ellipse(frog.rightPupil.x + pupilSpeedX, frog.rightPupil.y + pupilSpeedY, frog.rightPupil.size);
     pop();
 
-    push();
+    push(); //left eye
     fill("#ffffffff");
     noStroke();
     ellipse(frog.leftEye.x, frog.leftEye.y, frog.leftEye.size);
@@ -286,7 +277,7 @@ function drawFrog() {
     push();
     fill("#000000ff");
     noStroke();
-    ellipse(frog.leftPupil.x, frog.leftPupil.y, frog.leftPupil.size);
+    ellipse(frog.leftPupil.x + pupilSpeedX, frog.leftPupil.y + pupilSpeedY, frog.leftPupil.size);
     pop();
 }
 
@@ -309,8 +300,6 @@ function checkTongueFlyOverlap() {
         // Bring back the tongue
         frog.tongue.state = "inbound";
     }
-
-
 }
 
 
@@ -332,25 +321,16 @@ function scoreSystem() {
 
     let progress = 0;
 
-
-
     if (score >= 5 && score < 10) {
         bgTwo();
 
-
-
-
         progress = 100;
-
 
         push();
         textSize(20);
         fill('red');
         text("Kepp going down!", 400, 50);
         pop();
-
-
-
     }
 
     if (score >= 10 && score < 15) {
@@ -363,7 +343,6 @@ function scoreSystem() {
         fill('red');
         text("Yes letsgo!", 400, 50);
         pop();
-
     }
 
 
@@ -371,20 +350,16 @@ function scoreSystem() {
         bgFour();
 
         progress = 200;
-
         push();
         textSize(20);
         fill('red');
         text("Almost there!", 400, 50);
         pop();
 
-
     }
-
     checkTongueFlyOverlap();
     moveFly();
     drawFly();
-
 
     push()
     noStroke();
@@ -394,6 +369,7 @@ function scoreSystem() {
 
 
     if (score >= 20) {
+
         bgFive();
         treasureExplosion();
 
@@ -406,7 +382,6 @@ function scoreSystem() {
         text("You found the gold mine!!", 150, 200);
         pop();
     }
-
 }
 
 
@@ -418,7 +393,6 @@ function wave(waveHeight, waveScale, waveColor, waveAddition) {
     push();
     fill(waveColor);
     noStroke();
-
     beginShape();
     for (let x = 0; x < width; x += waveAddition) {
         let nx = noiseScale * x;
@@ -426,12 +400,9 @@ function wave(waveHeight, waveScale, waveColor, waveAddition) {
         let y = noiseLevel * noise(nx, nt);
         vertex(x, y);
     }
-
-
     vertex(width, height);
     vertex(0, height);
     endShape(CLOSE);
-
     pop();
 }
 
@@ -484,9 +455,7 @@ function treasureExplosion() {
         },
     };
 
-
     balls.push(ball);
-
 
     for (var i = 0; i < balls.length; i++) {
 
@@ -501,10 +470,7 @@ function treasureExplosion() {
             balls[i].y < balls[i].size / 2) {
             balls[i].speed = -balls[i].speed
         }
-
-
     }
-
 }
 
 
@@ -514,8 +480,6 @@ function showTitleScreen() {
     wave(300, 0.002, "#071c29ff", 1);
     wave(600, 0.002, "#0c1b25ff", 2);
     wave(900, 0.002, "#030f17ff", 3);
-
-
 
     push();
     textSize(30)
@@ -538,8 +502,6 @@ function showTitleScreen() {
     if (keyIsPressed) {
         gameState = "maingame"
     }
-
-
 }
 
 
