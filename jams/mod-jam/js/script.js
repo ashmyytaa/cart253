@@ -93,7 +93,12 @@ let score; // To track the amount of flies catched by the frog & to be used to d
 let gameState = "start"; //To be able to launch the title screen and game mode
 
 var balls = []; //Empty array balls which will mimick our gold for our treasure mine.
+var song;
 
+function preload() {
+    soundFormats('mp3');
+    song = loadSound('assets/sounds/water.mp3');
+}
 
 
 /**
@@ -102,6 +107,7 @@ var balls = []; //Empty array balls which will mimick our gold for our treasure 
 function setup() {
 
     createCanvas(900, 480);
+
 
     score = 0; //Sets the score to zero
 
@@ -124,6 +130,15 @@ function draw() {
         moveFrog();
         moveTongue();
         drawFrog();
+    }
+
+    if (mousePressed) {
+        if (!song.isPlaying()) {
+            song.play();
+
+        }
+
+
     }
 }
 
