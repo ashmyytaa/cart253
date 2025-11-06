@@ -94,9 +94,9 @@ let gameState = "start"; //To be able to launch the title screen and game mode
 
 let fishes = [];
 var balls = []; //Empty array balls which will mimick our gold for our treasure mine.
-var song;
+var song; //variable for song
 
-function preload() {
+function preload() { //preloads the song file from our assets
     soundFormats('mp3');
     song = loadSound('assets/sounds/water.mp3');
 }
@@ -108,15 +108,14 @@ function preload() {
 function setup() {
 
     createCanvas(900, 480);
-
-
     score = 0; //Sets the score to zero
 
     // Give the fly its first random position
     resetFly();
-
 }
-
+/**
+ * Creates the shapes + calls functions + begins the game mode + begins the music playing
+ */
 function draw() {
     background("#00aeffff");
 
@@ -128,39 +127,29 @@ function draw() {
         bgOne();
         scoreSystem();
 
-        for (let newFish of fishes) {
+        for (let newFish of fishes) { //creates fish by calling the functions in the for-of loop
             moveFish(newFish);
             bounceFish(newFish);
             drawFish(newFish);
         }
+        //calls the functions that does the frog movements and animations
         moveFrog();
         moveTongue();
         drawFrog();
 
-
     }
 
-
-    if (mousePressed) {
+    if (mousePressed) { //song is being played when mouse is pressed
         if (!song.isPlaying()) {
             song.play();
-
         }
     }
 }
-
-
-
-
-
-
-
 /**
  * Moves the fly according to a fixed speed
  * Resets the fly if it gets all the way to the right of the canvas
  */
 function moveFly() {
-
 
     if (fly.y = fly.wings.y) { //Checks if the fly body and fly wings coordinate togheter, since they get random y values
 
@@ -191,7 +180,6 @@ function drawFly() {
     ellipse(fly.x, fly.y, fly.size, 15);
     pop();
 }
-
 /**
  * Resets the fly to the left with a random y
  */
@@ -203,7 +191,6 @@ function resetFly() {
     fly.wings.y = random(0, 300); //y-value gets resetted on the canvas a random position
 
 }
-
 /**
  * Moves the frog to the mouse position on x
  */
@@ -245,7 +232,6 @@ function moveTongue() {
         }
     }
 }
-
 /**
  * Displays the tongue (tip and line connection) and the frog (body)
  */
@@ -313,7 +299,6 @@ function drawFrog() {
     ellipse(frog.leftPupil.x + pupilSpeedX, frog.leftPupil.y + pupilSpeedY, frog.leftPupil.size);
     pop();
 }
-
 /**
  * Handles the tongue overlapping the fly
  */
@@ -334,8 +319,6 @@ function checkTongueFlyOverlap() {
         frog.tongue.state = "inbound";
     }
 }
-
-
 /**
  * Launch the tongue on click (if it's not launched yet)
  */
@@ -344,15 +327,13 @@ function mousePressed() {
         frog.tongue.state = "outbound";
     }
 
-    let newFish = createFish();
+    let newFish = createFish(); //also launches the fishes upon the user pressing on the mouse
     fishes.push(newFish);
 }
-
 /**
  * Scoring system is displayed
  */
 function scoreSystem() {
-
 
     // checks if the score from the frog catching flies fall within which number range, and according to its score range, it displays a specific backgorund function
     if (score >= 50 && score < 100) {
@@ -370,8 +351,6 @@ function scoreSystem() {
     moveFly(); // function that moves fly
     drawFly(); // function that draws fly
 
-
-
     push();
     textSize(15);
     fill('white');
@@ -379,8 +358,6 @@ function scoreSystem() {
     drawingContext.shadowColor = color(255, 255, 255); //features that i found online that adds glow to a text
     text("Progress: ", 550, 25);
     pop();
-
-
 
     //rectangle that displays the progress bar that is relative to the progress of when the frog catches flies
     push()
@@ -393,11 +370,9 @@ function scoreSystem() {
     pop();
 
 
-
-
     if (score >= 200) {
         bgFive();
-        treasureExplosion(); //cals the treasure explosion function that displays all my balls 
+        treasureExplosion(); //calls the treasure explosion function that displays all my balls 
 
         push();
         textSize(50);
@@ -409,10 +384,10 @@ function scoreSystem() {
         pop();
     }
 }
-
-
-//function wave with parameters
-// used a new feature that i learned on my own called noise (Perlin noise) to create like wavy lines
+/**
+ * function wave with parameters
+ * used a new feature that i learned on my own called noise (Perlin noise) to create like wavy lines
+ */
 function wave(waveHeight, waveScale, waveColor, waveAddition) {
     let noiseLevel = waveHeight;
     let noiseScale = waveScale;
@@ -468,7 +443,9 @@ function bgFive() {
     wave(900, 0.002, "#030f17ff", 3);
 }
 
-
+/**
+ * function that creates the random balls that mimics gold bars, to show the user that they reached the goimg mine 
+ */
 function treasureExplosion() {
 
     if (balls.length < 200) { // checks if the amount of balls created stays withing my constraing which is 200 balls
@@ -540,14 +517,15 @@ function showTitleScreen() {
     }
 }
 
+/**
+ * function that creates fishes and adds it to the emptyy array fishes[]
+ */
 function createFish() {
     // Create a ball object with appropriate properties
     let newFish = {
         x: random(0, width),
         y: random(0, height),
         size: random(35, 40),
-
-
 
         velocity: {
             x: random(-2, 2),
@@ -564,25 +542,27 @@ function moveFish(newFish) {
 }
 
 /**
- * Bounces the ball off the walls
+ * Bounces the fish of the wall
  */
 function bounceFish(newFish) {
-    // Check if the ball has reached the left or right
+    // checks if the fish has reached the left or right
     const bounceX = (newFish.x > width || newFish.x < 0);
-    // Check if the ball has reached the top or bottom
+    // checks if the fish has reached the top or bottom
     const bounceY = (newFish.y > height || newFish.y < 0);
 
-    // Handle bouncing horizontally
+    // fish movement horizontal
     if (bounceX) {
         newFish.velocity.x *= -1;
     }
-    // Handle bouncing vertically
+    // fish movement vertical
     if (bounceY) {
         newFish.velocity.y *= -1;
     }
 }
 
-
+/**
+ * draws the fish
+ */
 function drawFish(newFish) {
     push();
     noStroke();
