@@ -1,4 +1,4 @@
-# Mod Jam - Frog Diving
+# Mod Jam - Frog Dive
 
 Ashmitha Kanagiah
 
@@ -6,7 +6,7 @@ Ashmitha Kanagiah
 
 ## Description
 
-*Frog Diving* is a simple game where the user has to catches flies using the frog's tongue. The more you catch flies, the more you enter the depth of the ocean. At the end, you will reach the big treasure, which is a gold mine filled with gold. There is no loosing in the game, you are only winning, as long as you catch all the fishes and get to the gold mine!
+*Frog Dive* is a simple game where the user has to catches flies using the frog's tongue. The more you catch flies, the more you enter the depth of the ocean. At the end, you will reach the big treasure, which is a gold mine filled with gold. There is no loosing in the game, you are only winning, as long as you catch all the fishes and get to the gold mine!
 
 Mouse interaction: 
 
