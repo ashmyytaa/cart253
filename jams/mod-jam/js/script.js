@@ -92,6 +92,7 @@ const fly = {
 let score; // To track the amount of flies catched by the frog & to be used to determine the frog's progress.
 let gameState = "start"; //To be able to launch the title screen and game mode
 
+let fishes = [];
 var balls = []; //Empty array balls which will mimick our gold for our treasure mine.
 var song;
 
@@ -127,20 +128,30 @@ function draw() {
         bgOne();
         scoreSystem();
 
+        for (let newFish of fishes) {
+            moveFish(newFish);
+            bounceFish(newFish);
+            drawFish(newFish);
+        }
         moveFrog();
         moveTongue();
         drawFrog();
+
+
     }
+
 
     if (mousePressed) {
         if (!song.isPlaying()) {
             song.play();
 
         }
-
-
     }
 }
+
+
+
+
 
 
 
@@ -332,6 +343,9 @@ function mousePressed() {
     if (frog.tongue.state === "idle") {
         frog.tongue.state = "outbound";
     }
+
+    let newFish = createFish();
+    fishes.push(newFish);
 }
 
 /**
@@ -356,6 +370,8 @@ function scoreSystem() {
     moveFly(); // function that moves fly
     drawFly(); // function that draws fly
 
+
+
     push();
     textSize(15);
     fill('white');
@@ -363,6 +379,7 @@ function scoreSystem() {
     drawingContext.shadowColor = color(255, 255, 255); //features that i found online that adds glow to a text
     text("Progress: ", 550, 25);
     pop();
+
 
 
     //rectangle that displays the progress bar that is relative to the progress of when the frog catches flies
@@ -522,6 +539,59 @@ function showTitleScreen() {
         gameState = "maingame"
     }
 }
+
+function createFish() {
+    // Create a ball object with appropriate properties
+    let newFish = {
+        x: random(0, width),
+        y: random(0, height),
+        size: random(35, 40),
+
+
+
+        velocity: {
+            x: random(-2, 2),
+            y: random(-2, 2)
+        }
+    };
+
+    return newFish;
+}
+
+function moveFish(newFish) {
+    newFish.x += newFish.velocity.x;
+    newFish.y += newFish.velocity.y;
+}
+
+/**
+ * Bounces the ball off the walls
+ */
+function bounceFish(newFish) {
+    // Check if the ball has reached the left or right
+    const bounceX = (newFish.x > width || newFish.x < 0);
+    // Check if the ball has reached the top or bottom
+    const bounceY = (newFish.y > height || newFish.y < 0);
+
+    // Handle bouncing horizontally
+    if (bounceX) {
+        newFish.velocity.x *= -1;
+    }
+    // Handle bouncing vertically
+    if (bounceY) {
+        newFish.velocity.y *= -1;
+    }
+}
+
+
+function drawFish(newFish) {
+    push();
+    noStroke();
+    fill('white');
+    textSize(30)
+    text("🐟", newFish.x, newFish.y)
+    pop();
+}
+
 
 
 
