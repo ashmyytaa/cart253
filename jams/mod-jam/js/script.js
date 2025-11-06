@@ -120,6 +120,7 @@ function draw() {
         //All the functions that compose our frog diving game are called here
         bgOne();
         scoreSystem();
+
         moveFrog();
         moveTongue();
         drawFrog();
@@ -323,25 +324,22 @@ function mousePressed() {
  */
 function scoreSystem() {
 
-    //  let progress = 0; //declared a progress variable, that will be used later on for our progress bar
 
+    // checks if the score from the frog catching flies fall within which number range, and according to its score range, it displays a specific backgorund function
     if (score >= 50 && score < 100) {
         bgTwo();
     }
-
     if (score >= 100 && score < 150) {
         bgThree();
     }
-
-
     if (score >= 150 && score < 200) {
         bgFour();
     }
 
     //function calling
-    checkTongueFlyOverlap();
-    moveFly();
-    drawFly();
+    checkTongueFlyOverlap(); // checks if the frog's tongue overlaps the fly
+    moveFly(); // function that moves fly
+    drawFly(); // function that draws fly
 
     push();
     textSize(15);
@@ -363,24 +361,26 @@ function scoreSystem() {
     pop();
 
 
-    if (score >= 200) {
 
+
+    if (score >= 200) {
         bgFive();
-        treasureExplosion();
+        treasureExplosion(); //cals the treasure explosion function that displays all my balls 
 
         push();
         textSize(50);
         noStroke();
         fill('white');
-        drawingContext.shadowBlur = 50; // Adjust for desired blurriness
-        drawingContext.shadowColor = color(255, 255, 255);
+        drawingContext.shadowBlur = 50; // features that i found online that adds glow to a text
+        drawingContext.shadowColor = color(255, 255, 255); // features that i found online that adds glow to a text
         text("You found the gold mine!!", 150, 200);
         pop();
     }
 }
 
 
-//function wave
+//function wave with parameters
+// used a new feature that i learned on my own called noise (Perlin noise) to create like wavy lines
 function wave(waveHeight, waveScale, waveColor, waveAddition) {
     let noiseLevel = waveHeight;
     let noiseScale = waveScale;
@@ -397,35 +397,38 @@ function wave(waveHeight, waveScale, waveColor, waveAddition) {
     }
     vertex(width, height);
     vertex(0, height);
-    endShape(CLOSE);
+    endShape(CLOSE); // to close the shape between the two endpoints
     pop();
 }
 
-
+//functions bgOne that inside calls the wave function declared above, to create my waves for my backgrounds
 function bgOne() {
     wave(300, 0.002, "rgba(17, 152, 220, 1)", 1);
     wave(600, 0.002, "#2ca8d1ff", 2);
     wave(900, 0.002, "#3ecffbff", 3);
 }
+//functions bgTwo that inside calls the wave function declared above, to create my waves for my backgrounds
 function bgTwo() {
     background("#3eade9ff");
     wave(300, 0.002, "#3194d2ff", 1);
     wave(600, 0.002, "#0099f9ff", 2);
     wave(900, 0.002, "#237ab0ff", 3);
 }
+//functions bgThree that inside calls the wave function declared above, to create my waves for my backgrounds
 function bgThree() {
     background("#2b6f94ff");
     wave(300, 0.002, "#366785ff", 1);
     wave(600, 0.002, "#266992ff", 2);
     wave(900, 0.002, "#12547cff", 3);
 }
+//functions bgFour that inside calls the wave function declared above, to create my waves for my backgrounds
 function bgFour() {
     background("#184158ff");
     wave(300, 0.002, "#0b3a56ff", 1);
     wave(600, 0.002, "#052031ff", 2);
     wave(900, 0.002, "#0a283bff", 3);
 }
-
+//functions bgFive that inside calls the wave function declared above, to create my waves for my backgrounds
 function bgFive() {
     background("#0d2431ff");
     wave(300, 0.002, "#071c29ff", 1);
@@ -436,24 +439,27 @@ function bgFive() {
 
 function treasureExplosion() {
 
-    var ball = {
-        x: random(0, width),
-        y: random(0, height),
-        size: random(5, 50),
-        speed: random(1, 5),
+    if (balls.length < 200) { // checks if the amount of balls created stays withing my constraing which is 200 balls
+        var ball = { // draws ball
+            x: random(0, width),
+            y: random(0, height),
+            size: random(5, 60),
+            speed: random(1, 6),
 
-        fills: {
-            r: 255,
-            g: 215,
-            b: 0,
-            a: 200,
-        },
-    };
+            fills: {
+                r: 255,
+                g: 215,
+                b: 0,
+                a: 200,
+            },
+        };
 
-    balls.push(ball);
+        balls.push(ball); //adds the ball to the empty array that I have declared beforehand 
+    }
 
-    for (var i = 0; i < balls.length; i++) {
+    for (var i = 0; i < balls.length; i++) { // checks for each ball that is being created by using a for-loop
 
+        //creates the ball from the array
         push()
         fill(balls[i].fills.r, balls[i].fills.g, balls[i].fills.b, balls[i].fills.a);
         noStroke();
@@ -461,8 +467,8 @@ function treasureExplosion() {
         pop();
 
         balls[i].y += balls[i].speed;
-        if (balls[i].y > height - balls[i].size / 2 ||
-            balls[i].y < balls[i].size / 2) {
+
+        if (balls[i].y > height - balls[i].size / 2 || balls[i].y < balls[i].size / 2) { // checks if balls hit the edge of the canvas (bottom or canvas or top of canvas)
             balls[i].speed = -balls[i].speed
         }
     }
@@ -471,33 +477,43 @@ function treasureExplosion() {
 //function that displays the title screen
 function showTitleScreen() {
 
+    // calls the wave function declared beforehand, to create my waves for my backgrounds
     background("#0d2431ff");
     wave(300, 0.002, "#071c29ff", 1);
     wave(600, 0.002, "#0c1b25ff", 2);
     wave(900, 0.002, "#030f17ff", 3);
 
+    //title and subtitles
     push();
     textSize(30)
     fill('white');
-    drawingContext.shadowBlur = 50; // Adjust for desired blurriness
-    drawingContext.shadowColor = color(255, 255, 255);
+    drawingContext.shadowBlur = 50; // features that i found online that adds glow to a text
+    drawingContext.shadowColor = color(255, 255, 255); // features that i found online that adds glow to a text
     text("🐸Frog diving 🐸", 300, 150)
     pop()
 
     push()
     textSize(20)
     fill('white');
-    drawingContext.shadowBlur = 50; // Adjust for desired blurriness
-    drawingContext.shadowColor = color(255, 255, 255);
+    drawingContext.shadowBlur = 50; // features that i found online that adds glow to a text
+    drawingContext.shadowColor = color(255, 255, 255); // features that i found online that adds glow to a text
     text("Dive deep into the ocean by catching flies,", 250, 300)
-    text("to find the treasure mine!", 300, 330)
-    text("Press any key to start", 300, 400)
+    text("to find the treasure mine!", 350, 330)
+    text("Press any key to start", 350, 400)
     pop();
 
+    // checks if any key is pressed, and if so, it starts the gameplay. (maingame is declared in the setup() function)
     if (keyIsPressed) {
         gameState = "maingame"
     }
 }
+
+
+
+
+
+
+
 
 
 
