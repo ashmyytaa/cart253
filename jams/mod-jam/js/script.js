@@ -95,16 +95,19 @@ let gameState = "start"; //To be able to launch the title screen and game mode
 var balls = []; //Empty array balls which will mimick our gold for our treasure mine.
 
 
+
 /**
  * Creates the canvas
  */
 function setup() {
 
     createCanvas(900, 480);
+
     score = 0; //Sets the score to zero
 
     // Give the fly its first random position
     resetFly();
+
 }
 
 function draw() {
@@ -122,6 +125,8 @@ function draw() {
         drawFrog();
     }
 }
+
+
 
 /**
  * Moves the fly according to a fixed speed
