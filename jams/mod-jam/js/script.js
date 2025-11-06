@@ -258,7 +258,7 @@ function drawFrog() {
     pop();
 
     //draw frog's eyes
-    let moveSpeed = 15; // speed of how the eyes pupil will move
+    let moveSpeed = 10; // speed of how the eyes pupil will move
     let pupilSpeedX = map(mouseX, 0, width, -moveSpeed, moveSpeed); //using map() to make the pupils move with mouseX along the x-axis
     let pupilSpeedY = map(mouseY, 0, height, -moveSpeed, moveSpeed); //using map() to make the pupils move with mouseY along the y-axis
 
@@ -301,14 +301,12 @@ function checkTongueFlyOverlap() {
     if (eaten) {
         // Reset the fly
         resetFly(fly.x, fly.y, fly.wings.x, fly.wings.y);
-        score++; //adds up to the score each time the frog catches a fly
+        score += 10; //adds up to the score each time the frog catches a fly
 
         // Bring back the tongue
         frog.tongue.state = "inbound";
     }
 }
-
-
 
 
 /**
@@ -325,52 +323,19 @@ function mousePressed() {
  */
 function scoreSystem() {
 
-    let progress = 0; //declared a progress variable, that will be used later on for our progress bar
+    //  let progress = 0; //declared a progress variable, that will be used later on for our progress bar
 
-    if (score >= 5 && score < 10) {
+    if (score >= 50 && score < 100) {
         bgTwo();
-
-        progress = 100;
-
-        push();
-        textSize(15);
-        fill('white');
-        drawingContext.shadowBlur = 50; // features that i found online that adds glow to a text
-        drawingContext.shadowColor = color(255, 255, 255); //features that i found online that adds glow to a text
-        text("Progress: 1000ft deep", 550, 25);
-        pop();
-
     }
 
-    if (score >= 10 && score < 15) {
+    if (score >= 100 && score < 150) {
         bgThree();
-
-        progress = 150;
-
-        push();
-        textSize(15);
-        fill('white');
-        drawingContext.shadowBlur = 50; // features that i found online that adds glow to a text
-        drawingContext.shadowColor = color(255, 255, 255); //features that i found online that adds glow to a text
-        text("Progress: 2000ft deep", 550, 25);
-        pop();
     }
 
 
-    if (score >= 15 && score < 20) {
+    if (score >= 150 && score < 200) {
         bgFour();
-
-        progress = 200;
-
-
-        push();
-        textSize(15);
-        fill('white');
-        drawingContext.shadowBlur = 50; // Afeatures that i found online that adds glow to a text
-        drawingContext.shadowColor = color(255, 255, 255); //features that i found online that adds glow to a text
-        text("Progress: 3000ft deep", 550, 25);
-        pop();
-
     }
 
     //function calling
@@ -378,15 +343,27 @@ function scoreSystem() {
     moveFly();
     drawFly();
 
-    //rectangle that displays the progress bar that is relative to the progress of when the frog catches flies
-    push()
-    noStroke();
-    fill(235, 52, 91, 80);
-    rect(550, 35, progress, 20);
+    push();
+    textSize(15);
+    fill('white');
+    drawingContext.shadowBlur = 50; // features that i found online that adds glow to a text
+    drawingContext.shadowColor = color(255, 255, 255); //features that i found online that adds glow to a text
+    text("Progress: ", 550, 25);
     pop();
 
 
-    if (score >= 20) {
+    //rectangle that displays the progress bar that is relative to the progress of when the frog catches flies
+    push()
+    stroke(15, 51, 71, 80)
+    strokeWeight(0.5)
+    fill(11, 40, 56, 80);
+    drawingContext.shadowBlur = 50; // features that i found online that adds glow to a text
+    drawingContext.shadowColor = color(255, 255, 255); //features that i found online that adds glow to a text
+    rect(550, 35, score, 20);
+    pop();
+
+
+    if (score >= 200) {
 
         bgFive();
         treasureExplosion();
