@@ -2,7 +2,7 @@
 
 Ashmitha Kanagiah
 
-[View this project online](https://ashmyytaa.github.io/cart253/jams/mod-jam/)
+[View this game online](https://ashmyytaa.github.io/cart253/jams/mod-jam/)
 
 ## Description
 
@@ -19,7 +19,7 @@ Mouse interaction:
 - Used perlin noise to create my backgrounds for all my water depts. 
 - Eyes moving along the cursor
 - Title screen
-- Progress bar
+- A scoring system ( which i decided to do it in the format of a progress bar)
 
 
 This projects allows the user to enjoy the game and be pleased at all the aesthetics and movements. 
@@ -32,7 +32,7 @@ Here is a screenshot that shows how my game looks like:
 
 ## Attribution
 
-For the code of my project, I referred to the p5.js reference website, as well as all the course materials, and in-class challenges done so far. As well as the examples gaven by the teacher. I also used youtube to watch videos on how to create certain features. 
+For the code of my project, I referred to the p5.js reference website, as well as all the course materials, and in-class challenges done so far. As well as the examples gaven by the teacher. I also used youtube to watch videos on how to create certain features. To mention, we started this project by using the Frogfrogfrog code sample that was provided to us by the teacher. 
 
 > - This project uses [p5.js](https://p5js.org).
 

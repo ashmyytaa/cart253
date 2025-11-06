@@ -389,20 +389,20 @@ function scoreSystem() {
  * used a new feature that i learned on my own called noise (Perlin noise) to create like wavy lines
  */
 function wave(waveHeight, waveScale, waveColor, waveAddition) {
-    let noiseLevel = waveHeight;
-    let noiseScale = waveScale;
+    let noiseLevel = waveHeight; // to determine how tall the wave will go
+    let noiseScale = waveScale; // to determe how wavy it will be along the x-axis
 
-    push();
+    push(); // creates the wave
     fill(waveColor);
     noStroke();
     beginShape();
-    for (let x = 0; x < width; x += waveAddition) {
-        let nx = noiseScale * x;
-        let nt = noiseScale * frameCount;
-        let y = noiseLevel * noise(nx, nt);
+    for (let x = 0; x < width; x += waveAddition) { // checks along the x-axis to pick values to be added for the wave
+        let scale = noiseScale * x;
+        let move = noiseScale * frameCount; // framecount makes the wave move
+        let y = noiseLevel * noise(scale, move);
         vertex(x, y);
     }
-    vertex(width, height);
+    vertex(width, height); // vertex is used to connect all the point to make up the wave
     vertex(0, height);
     endShape(CLOSE); // to close the shape between the two endpoints
     pop();
@@ -442,7 +442,6 @@ function bgFive() {
     wave(600, 0.002, "#0c1b25ff", 2);
     wave(900, 0.002, "#030f17ff", 3);
 }
-
 /**
  * function that creates the random balls that mimics gold bars, to show the user that they reached the goimg mine 
  */
@@ -482,8 +481,9 @@ function treasureExplosion() {
         }
     }
 }
-
-//function that displays the title screen
+/**
+ * function that displays the title screen
+ */
 function showTitleScreen() {
 
     // calls the wave function declared beforehand, to create my waves for my backgrounds
@@ -498,7 +498,7 @@ function showTitleScreen() {
     fill('white');
     drawingContext.shadowBlur = 50; // features that i found online that adds glow to a text
     drawingContext.shadowColor = color(255, 255, 255); // features that i found online that adds glow to a text
-    text("🐸Frog diving 🐸", 300, 150)
+    text("🐸Frog dive🐸", 300, 150)
     pop()
 
     push()
@@ -516,7 +516,6 @@ function showTitleScreen() {
         gameState = "maingame"
     }
 }
-
 /**
  * function that creates fishes and adds it to the emptyy array fishes[]
  */
@@ -535,12 +534,13 @@ function createFish() {
 
     return newFish;
 }
-
+/**
+ * function that moves fishes by using the random velocity that we declared
+ */
 function moveFish(newFish) {
     newFish.x += newFish.velocity.x;
     newFish.y += newFish.velocity.y;
 }
-
 /**
  * Bounces the fish of the wall
  */
@@ -559,7 +559,6 @@ function bounceFish(newFish) {
         newFish.velocity.y *= -1;
     }
 }
-
 /**
  * draws the fish
  */
