@@ -12,7 +12,7 @@ let fortune;
 
 
 function preload() {
-    // Used in preload, loadJSON will just return the data into our variable
+    //Used in preload, loadJSON will just return the data into our variable
     tarot = loadJSON("assets/data/tarot.json");
 }
 
