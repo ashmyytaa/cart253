@@ -22,7 +22,7 @@ function setup() {
 function draw() {
     background(0)
 
-    ground();
+    space();
 
 }
 
@@ -51,6 +51,8 @@ function ground() {
 function space() {
     background(0)
 
+    stars();
+
 
 }
 
@@ -73,4 +75,19 @@ function wave(waveHeight, waveScale, waveColor, waveAddition) {
     vertex(0, height);
     endShape(CLOSE); // to close the shape between the two endpoints
     pop();
+}
+
+
+function stars() {
+    for (let i = 0; i < 50; i++) {  // draw 100 particles
+        let x = random(0, width);
+        let y = random(0, height);
+        push();
+        noStroke();
+        fill('white');
+        drawingContext.shadowBlur = 50; // features that i found online that adds glow to a text
+        drawingContext.shadowColor = color(255, 255, 255);
+        ellipse(x, y, 1.5, 1.5);
+        pop();
+    }
 }
