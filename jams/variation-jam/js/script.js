@@ -1,15 +1,18 @@
 /**
- * Title of Project
- * Author Name
+ * Our Beautiful Earth
+ * Ashmitha Kanagiah
  * 
- * HOW EMBARRASSING! I HAVE NO DESCRIPTION OF MY PROJECT!
- * PLEASE REMOVE A GRADE FROM MY WORK IF IT'S GRADED!
+ * This project is a fun interaction where the user can go through all the main three layers that
+ * we know of which is space, the ground we live in, as well as the underwater. Its a conocept
+ * where....
+
+ *
  */
 
 "use strict";
 
 /**
- * OH LOOK I DIDN'T DESCRIBE SETUP!!
+ * Function setup where we create our canvas
 */
 function setup() {
     createCanvas(900, 600)
@@ -17,7 +20,7 @@ function setup() {
 
 
 /**
- * OOPS I DIDN'T DESCRIBE WHAT MY DRAW DOES!
+ * Function draw where it draws our baackground + calls our functions
 */
 function draw() {
     background(0)
