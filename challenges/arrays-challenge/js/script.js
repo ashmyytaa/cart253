@@ -48,6 +48,9 @@ function createBall() {
 function draw() {
     background('black');
 
+    let newBall = createBall();
+    balls.push(newBall);
+
     for (let newBall of balls) {
         moveBall(newBall);
         bounceBall(newBall);
@@ -96,8 +99,8 @@ function drawBall(newBall) {
 }
 
 //function where when the user presses the mouse, a new ball creates
-function mousePressed() {
-    let newBall = createBall();
-    balls.push(newBall);
-}
+//function mousePressed() {
+//let newBall = createBall();
+// balls.push(newBall);
+//}
 
