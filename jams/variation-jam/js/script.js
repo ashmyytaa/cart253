@@ -22,7 +22,7 @@ function setup() {
 function draw() {
     background(0)
 
-    underwater();
+    ground();
 
 }
 
@@ -37,8 +37,14 @@ function underwater() {
 }
 
 function ground() {
-    background('red')
+    background(122, 192, 230)
 
+
+    push();
+    fill(88, 166, 102);
+    noStroke();
+    rect(0, 400, width, 200)
+    pop();
 
 }
 
