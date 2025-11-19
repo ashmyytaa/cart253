@@ -25,7 +25,7 @@ function setup() {
 function draw() {
     background(0)
 
-    space();
+    underwater();
 
 }
 
@@ -36,6 +36,8 @@ function underwater() {
     wave(300, 0.002, "#071c29ff", 1);
     wave(600, 0.002, "#0c1b25ff", 2);
     wave(900, 0.002, "#030f17ff", 3);
+
+    fishes();
 
 }
 
@@ -54,7 +56,6 @@ function ground() {
 function space() {
     background(0)
 
-    stars();
 
 
 }
@@ -94,3 +95,60 @@ function stars() {
         pop();
     }
 }
+
+
+
+function fishes() {
+
+    for (let i = 0; i < 20; i++) {
+        let x = random(0, width);
+        let y = random(0, height);
+        let x1 = random(0, width);
+        let y1 = random(0, height);
+        let x2 = random(0, width);
+        let y2 = random(0, height);
+
+        if (x === x1 && x2 === y2) {
+
+            push();
+            noStroke();
+            fill(255)
+            triangle(x, y, x1, y1, x2, y2);
+            pop();
+
+            push();
+            noStroke();
+            fill(255)
+            ellipse(x, y, 60, 20)
+
+
+        }
+
+
+
+
+    }
+
+
+
+
+
+
+}
+
+
+/** 
+ * 
+ * SPACE ROECKTT
+ * 
+ *  push();
+    noStroke();
+    fill(255)
+    triangle(30, 70, 30, 50, 60, 60);
+    pop();
+
+    push();
+    noStroke();
+    fill(255)
+    ellipse(60, 60, 70, 10)
+ */
