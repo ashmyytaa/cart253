@@ -22,5 +22,6 @@ This project was also great to interact with. The different variations are super
 
 > Link to project: https://cameliapitsilis-lgtm.github.io/cart253/mod-jam/ 
   
+# 
 
 To conclude, all three projects that I looked at for the response were really nice and fun to play. They were all unique and had great features and aesthetics to them. I got tons of inspiration by looking at these games for future aesthetics or technical aspects that I want to incorporate in my own projects.
