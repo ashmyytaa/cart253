@@ -10,16 +10,25 @@
  */
 
 "use strict";
-
+let coral;
+let algue;
+let blugue;
+let angle = 0;
 let x = [], y = [], x1 = [], y1 = [], x2 = [], y2 = [];
 let vx = [], vy = [];
 
+function preload() {
+    coral = loadImage('/assets/images/coral.png');
+    algue = loadImage('/assets/images/algue.png');
+    blugue = loadImage('/assets/images/blugue.png');
+
+}
 
 /**
  * Function setup where we create our canvas
 */
 function setup() {
-    createCanvas(900, 600)
+    createCanvas(1200, 600)
 
     for (let i = 0; i < 20; i++) {
         x[i] = random(0, width);
@@ -53,6 +62,9 @@ function underwater() {
     wave(300, 0.002, "#071c29ff", 1);
     wave(600, 0.002, "#0c1b25ff", 2);
     wave(900, 0.002, "#030f17ff", 3);
+
+    coralpic();
+
 
     fishes();
 
@@ -118,11 +130,11 @@ function stars() {
 function fishes() {
 
     for (let i = 0; i < 5; i++) {
-        // Move fish
+
         x[i] += vx[i];
         y[i] += vy[i];
 
-        // Bounce off edges
+
         if (x[i] < 0 || x[i] > width) vx[i] *= -1;
         if (y[i] < 0 || y[i] > height) vy[i] *= -1;
 
@@ -130,27 +142,36 @@ function fishes() {
         push();
         translate(x[i], y[i]);
 
-        // If moving left, flip horizontally
+
         if (vx[i] < 0) {
             scale(-1, 1);
         }
 
-        noStroke();
+        noStroke(); //fish head
         fill(113, 197, 227);
-
-        // Body (centered at 0,0)
         ellipse(0, 0, 80, 50);
 
-        // Tail always behind (to the left of body)
+        noStroke(); //fish tail
+        fill(113, 197, 227);
         triangle(-20, 0, -60, -10, -60, 10);
 
-        // Eye (in front)
+        noStroke(); //fish eyes
         fill(0);
-        ellipse(20, -5, 5, 5);
-
+        ellipse(20, 2, 5, 5);
         pop();
     }
 }
+
+function coralpic() {
+    angle += 0.05;
+
+    image(algue, 150, 450 + sin(angle) * 10);
+    image(coral, 10, 290 + sin(angle) * 20);
+    image(blugue, 10, 400 + sin(angle) * 10);
+
+
+}
+
 
 
 /** 
