@@ -13,6 +13,7 @@
 let coral;
 let algue;
 let blugue;
+let seahorse;
 let angle = 0;
 let x = [], y = [], x1 = [], y1 = [], x2 = [], y2 = [];
 let vx = [], vy = [];
@@ -21,6 +22,7 @@ function preload() {
     coral = loadImage('/assets/images/coral.png');
     algue = loadImage('/assets/images/algue.png');
     blugue = loadImage('/assets/images/blugue.png');
+    seahorse = loadImage('/assets/images/seahorse.png');
 
 }
 
@@ -30,7 +32,7 @@ function preload() {
 function setup() {
     createCanvas(1200, 600)
 
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < 50; i++) {
         x[i] = random(0, width);
         y[i] = random(0, height);
         x1[i] = random(0, width);
@@ -64,8 +66,6 @@ function underwater() {
     wave(900, 0.002, "#030f17ff", 3);
 
     coralpic();
-
-
     fishes();
 
 }
@@ -129,7 +129,7 @@ function stars() {
 
 function fishes() {
 
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 50; i++) {
 
         x[i] += vx[i];
         y[i] += vy[i];
@@ -149,15 +149,15 @@ function fishes() {
 
         noStroke(); //fish head
         fill(113, 197, 227);
-        ellipse(0, 0, 80, 50);
+        ellipse(0, 0, 30, 20);
 
         noStroke(); //fish tail
         fill(113, 197, 227);
-        triangle(-20, 0, -60, -10, -60, 10);
+        triangle(0, 0, -30, -10, -30, 10);
 
         noStroke(); //fish eyes
         fill(0);
-        ellipse(20, 2, 5, 5);
+        ellipse(10, 2, 5, 5);
         pop();
     }
 }
@@ -168,6 +168,7 @@ function coralpic() {
     image(algue, 150, 450 + sin(angle) * 10);
     image(coral, 10, 290 + sin(angle) * 20);
     image(blugue, 10, 400 + sin(angle) * 10);
+    image(seahorse, 700, 200 + sin(angle) * 10, 70, 130);
 
 
 }
