@@ -11,11 +11,28 @@
 
 "use strict";
 
+let x = [], y = [], x1 = [], y1 = [], x2 = [], y2 = [];
+let vx = [], vy = [];
+
+
 /**
  * Function setup where we create our canvas
 */
 function setup() {
     createCanvas(900, 600)
+
+    for (let i = 0; i < 20; i++) {
+        x[i] = random(0, width);
+        y[i] = random(0, height);
+        x1[i] = random(0, width);
+        y1[i] = random(0, height);
+        x2[i] = random(0, width);
+        y2[i] = random(0, height);
+
+        // Random speed
+        vx[i] = random(-2, 2);
+        vy[i] = random(-2, 2);
+    }
 }
 
 
@@ -100,40 +117,39 @@ function stars() {
 
 function fishes() {
 
-    for (let i = 0; i < 20; i++) {
-        let x = random(0, width);
-        let y = random(0, height);
-        let x1 = random(0, width);
-        let y1 = random(0, height);
-        let x2 = random(0, width);
-        let y2 = random(0, height);
+    for (let i = 0; i < 5; i++) {
+        // Move fish
+        x[i] += vx[i];
+        y[i] += vy[i];
 
-        if (x === x1 && x2 === y2) {
-
-            push();
-            noStroke();
-            fill(255)
-            triangle(x, y, x1, y1, x2, y2);
-            pop();
-
-            push();
-            noStroke();
-            fill(255)
-            ellipse(x, y, 60, 20)
+        // Bounce off edges
+        if (x[i] < 0 || x[i] > width) vx[i] *= -1;
+        if (y[i] < 0 || y[i] > height) vy[i] *= -1;
 
 
+        push();
+        translate(x[i], y[i]);
+
+        // If moving left, flip horizontally
+        if (vx[i] < 0) {
+            scale(-1, 1);
         }
 
+        noStroke();
+        fill(113, 197, 227);
 
+        // Body (centered at 0,0)
+        ellipse(0, 0, 80, 50);
 
+        // Tail always behind (to the left of body)
+        triangle(-20, 0, -60, -10, -60, 10);
 
+        // Eye (in front)
+        fill(0);
+        ellipse(20, -5, 5, 5);
+
+        pop();
     }
-
-
-
-
-
-
 }
 
 
