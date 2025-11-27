@@ -14,6 +14,9 @@ let coral;
 let algue;
 let blugue;
 let seahorse;
+let houseOne;
+let houseTwo;
+let houseThree;
 let angle = 0;
 let cloud = 0;
 let x = [], y = [], x1 = [], y1 = [], x2 = [], y2 = [];
@@ -24,6 +27,10 @@ function preload() {
     algue = loadImage('/assets/images/algue.png');
     blugue = loadImage('/assets/images/blugue.png');
     seahorse = loadImage('/assets/images/seahorse.png');
+    houseOne = loadImage('/assets/images/houseOne.png');
+    houseTwo = loadImage('/assets/images/houseTwo.png');
+    houseThree = loadImage('/assets/images/houseThree.png');
+
 
 }
 
@@ -275,6 +282,12 @@ function groundObjects() {
     fill(235, 192, 5);
     ellipse(130, 100, 150)
     pop();
+
+
+    image(houseOne, 150, 200, 200, 200);
+    image(houseTwo, 350, 200, 200, 200);
+    image(houseThree, 900, 200, 270, 200);
+
 }
 
 function movingClouds() {
