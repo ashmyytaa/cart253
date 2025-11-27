@@ -34,9 +34,6 @@ function preload() {
     houseTwo = loadImage('assets/images/houseTwo.png');
     planetOne = loadImage('assets/images/planetOne.png');
 
-
-
-
 }
 
 /**
@@ -136,14 +133,18 @@ function ground() {
 function space() {
     background(0)
     stars();
+    image(planetOne, 700, 100, 410, 300);
 
+    push();
+    noStroke();
+    fill(114, 117, 122);
+    ellipse(100, 550, 600);
+    pop();
 
-
-
-    image(planetOne, 900, 100, 300, 200);
-
-    planets();
-
+    moonCraters(100, 300, 50);
+    moonCraters(50, 550, 60);
+    moonCraters(200, 400, 60);
+    moonCraters(300, 520, 60);
 
 
 
@@ -300,8 +301,6 @@ function butterflies() {
         line(0, -10, 15, -15);
         pop();
     }
-
-
 }
 
 
@@ -353,26 +352,14 @@ function drawCloud(x, y, size) {
 }
 
 
-function planets() {
-
-
+function moonCraters(x, y, size) {
 
     push();
-    noStroke();
-    fill(114, 117, 122);
-    ellipse(100, 550, 600);
+    stroke(65, 67, 71);
+    strokeWeight(2);
+    fill(63, 66, 71);
+    ellipse(x, y, size);
     pop();
-
-
-
-    push();
-    stroke(0)
-    fill(0);
-    ellipse(100, 550, 20);
-    pop();
-
-
-
-
 
 }
+
