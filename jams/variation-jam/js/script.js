@@ -15,6 +15,7 @@ let algue;
 let blugue;
 let seahorse;
 let angle = 0;
+let cloud = 0;
 let x = [], y = [], x1 = [], y1 = [], x2 = [], y2 = [];
 let vx = [], vy = [];
 
@@ -88,17 +89,15 @@ function ground() {
     rect(0, 400, width, 200)
     pop();
 
-
+    groundObjects();
+    movingClouds();
     butterflies();
-
 
 
 }
 
 function space() {
     background(0)
-
-
 
 }
 
@@ -230,7 +229,7 @@ function butterflies() {
         push();
         translate(x[i], y[i]);
         noStroke();
-        fill(255, 160, 200);
+        fill(206, 80, 235);
         ellipse(-15, -10, 25, 20); // left upper
         ellipse(15, -10, 25, 20);  // right upper
         pop();
@@ -239,7 +238,7 @@ function butterflies() {
         push();
         translate(x[i], y[i]);
         noStroke();
-        fill(255, 160, 200);
+        fill(206, 80, 235);
         ellipse(-15, 10, 25, 20); // left lower
         ellipse(15, 10, 25, 20);  // right lower
         pop();
@@ -248,20 +247,89 @@ function butterflies() {
         push();
         translate(x[i], y[i]);
         noStroke();
-        fill(80, 40, 30);
+        fill(66, 46, 34);
         rect(-1, -10, 5, 35, 20);
         pop();
 
         //antenna
         push();
         translate(x[i], y[i]);
-        noStroke();
-        stroke(80, 40, 30);
+        stroke(66, 46, 34);
         strokeWeight(1);
         line(0, -10, -15, -15);
         line(0, -10, 15, -15);
         pop();
-
-
     }
+
+
+
+
 }
+
+
+
+function groundObjects() {
+
+    push();
+    noStroke();
+    fill(235, 192, 5);
+    ellipse(130, 100, 150)
+    pop();
+}
+
+function movingClouds() {
+
+    drawCloud(cloud, 50, 110);
+    drawCloud(cloud + 200, 150, 100);
+    drawCloud(cloud - 200, 200, 90);
+
+
+    cloud += 1;
+    if (cloud > width + 200) cloud = -300;
+}
+
+function drawCloud(x, y, size) {
+
+    push();
+    noStroke();
+    fill(255);
+    ellipse(x, y, size * 0.9, size * 0.7);
+    pop();
+
+    push();
+    noStroke();
+    fill(255);
+    ellipse(x - size * 0.5, y + size * 0.2, size * 0.7, size * 0.5);
+    pop();
+
+    push();
+    noStroke();
+    fill(255);
+    ellipse(x + size * 0.5, y + size * 0.2, size * 0.7, size * 0.5);
+    pop();
+
+}
+
+
+
+/**    
+ * 
+ * planey
+ * push();
+    noStroke();
+    fill(255);
+    ellipse(x, y, size, size * 0.8);
+    pop();
+
+    push();
+    noStroke();
+    fill(255);
+    ellipse(x - size * 0.5, y, size * 0.9, size * 0.3);
+    pop();
+
+    push();
+    noStroke();
+    fill(255);
+    ellipse(x + size * 0.5, y, size * 0.9, size * 0.3);
+    pop();
+ */
