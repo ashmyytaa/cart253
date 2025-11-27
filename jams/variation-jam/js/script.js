@@ -13,15 +13,14 @@
 let coral;
 let algue;
 let blugue;
-let seahorse;
 let houseOne;
 let houseTwo;
-let houseThree;
 let planetOne;
 let planetTwo;
 let planetThree;
 let angle = 0;
 let cloud = 0;
+let speedrock = 0;
 let gameState = "start"; //To be able to launch the title screen and game mode
 
 let x = [], y = [], x1 = [], y1 = [], x2 = [], y2 = [];
@@ -31,10 +30,8 @@ function preload() {
     coral = loadImage('/assets/images/coral.png');
     algue = loadImage('/assets/images/algue.png');
     blugue = loadImage('/assets/images/blugue.png');
-    seahorse = loadImage('/assets/images/seahorse.png');
     houseOne = loadImage('/assets/images/houseOne.png');
     houseTwo = loadImage('/assets/images/houseTwo.png');
-    houseThree = loadImage('/assets/images/houseThree.png');
     planetOne = loadImage('/assets/images/planetOne.png');
 
 
@@ -141,7 +138,9 @@ function space() {
     stars();
 
     image(planetOne, 900, 100, 300, 200);
-    planets();
+
+
+
 
 
 
@@ -235,7 +234,6 @@ function coralpic() {
     image(algue, 150, 450 + sin(angle) * 10);
     image(coral, 10, 290 + sin(angle) * 20);
     image(blugue, 10, 400 + sin(angle) * 10);
-    image(seahorse, 700, 200 + sin(angle) * 10, 70, 130);
 
 
 }
@@ -315,7 +313,6 @@ function groundObjects() {
 
     image(houseOne, 150, 200, 200, 200);
     image(houseTwo, 350, 200, 200, 200);
-    image(houseThree, 900, 200, 270, 200);
 
 }
 
@@ -351,24 +348,5 @@ function drawCloud(x, y, size) {
     pop();
 
 }
-
-
-
-
-function planets() {
-
-
-    push();
-    noStroke();
-    fill(255)
-    triangle(30, 70, 30, 50, 60, 60);
-    pop();
-
-    push();
-    noStroke();
-    fill(255)
-    ellipse(60, 60, 70, 10)
-}
-
 
 
