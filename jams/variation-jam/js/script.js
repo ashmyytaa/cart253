@@ -17,8 +17,13 @@ let seahorse;
 let houseOne;
 let houseTwo;
 let houseThree;
+let planetOne;
+let planetTwo;
+let planetThree;
 let angle = 0;
 let cloud = 0;
+let gameState = "start"; //To be able to launch the title screen and game mode
+
 let x = [], y = [], x1 = [], y1 = [], x2 = [], y2 = [];
 let vx = [], vy = [];
 
@@ -30,6 +35,9 @@ function preload() {
     houseOne = loadImage('/assets/images/houseOne.png');
     houseTwo = loadImage('/assets/images/houseTwo.png');
     houseThree = loadImage('/assets/images/houseThree.png');
+    planetOne = loadImage('/assets/images/planetOne.png');
+
+
 
 
 }
@@ -61,7 +69,20 @@ function setup() {
 function draw() {
     background(0)
 
-    ground();
+    if (gameState === "start") {
+        ground();
+    }
+
+    else if (gameState === "maingame") { //Maingame will contain the components of our frog diving game
+        //All the functions that compose our frog diving game are called here
+        underwater();
+    }
+
+    else if (gameState === "secondgame") {
+        space();
+    }
+
+
 
 }
 
@@ -85,6 +106,10 @@ function underwater() {
     coralpic();
     fishes();
 
+    if (keyCode === 27) {
+        gameState = "start"
+    }
+
 
 }
 
@@ -101,10 +126,29 @@ function ground() {
     butterflies();
 
 
+    if (keyCode === DOWN_ARROW) {
+        gameState = "maingame"
+    }
+
+
+    if (keyCode === UP_ARROW) {
+        gameState = "secondgame"
+    }
 }
 
 function space() {
     background(0)
+    stars();
+
+    image(planetOne, 900, 100, 300, 200);
+    planets();
+
+
+
+
+    if (keyCode === 27) {
+        gameState = "start"
+    }
 
 }
 
@@ -148,20 +192,22 @@ function stars() {
 
 function fishes() {
 
-    for (let i = 0; i < 50; i++) {
+    for (let i = 0; i < 20; i++) {
 
         x[i] += vx[i];
         y[i] += vy[i];
 
+        if (x[i] < 0 || x[i] > width) {
+            vx[i] *= -1;
 
-        if (x[i] < 0 || x[i] > width) vx[i] *= -1;
-        if (y[i] < 0 || y[i] > height) vy[i] *= -1;
+        }
+        if (y[i] < 0 || y[i] > height) {
+            vy[i] *= -1;
+        }
 
 
         push();
         translate(x[i], y[i]);
-
-
         if (vx[i] < 0) {
             scale(-1, 1);
         }
@@ -178,6 +224,8 @@ function fishes() {
         fill(0);
         ellipse(10, 2, 5, 5);
         pop();
+
+
     }
 }
 
@@ -205,22 +253,6 @@ function bubbleMouse() {
 }
 
 
-
-/** 
- * 
- * SPACE ROECKTT
- * 
- *  push();
-    noStroke();
-    fill(255)
-    triangle(30, 70, 30, 50, 60, 60);
-    pop();
-
-    push();
-    noStroke();
-    fill(255)
-    ellipse(60, 60, 70, 10)
- */
 
 function butterflies() {
     for (let i = 0; i < 10; i++) {
@@ -269,10 +301,7 @@ function butterflies() {
     }
 
 
-
-
 }
-
 
 
 function groundObjects() {
@@ -325,24 +354,21 @@ function drawCloud(x, y, size) {
 
 
 
-/**    
- * 
- * planey
- * push();
+
+function planets() {
+
+
+    push();
     noStroke();
-    fill(255);
-    ellipse(x, y, size, size * 0.8);
+    fill(255)
+    triangle(30, 70, 30, 50, 60, 60);
     pop();
 
     push();
     noStroke();
-    fill(255);
-    ellipse(x - size * 0.5, y, size * 0.9, size * 0.3);
-    pop();
+    fill(255)
+    ellipse(60, 60, 70, 10)
+}
 
-    push();
-    noStroke();
-    fill(255);
-    ellipse(x + size * 0.5, y, size * 0.9, size * 0.3);
-    pop();
- */
+
+
