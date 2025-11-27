@@ -137,9 +137,12 @@ function space() {
     background(0)
     stars();
 
+
+
+
     image(planetOne, 900, 100, 300, 200);
 
-
+    planets();
 
 
 
@@ -350,3 +353,26 @@ function drawCloud(x, y, size) {
 }
 
 
+function planets() {
+
+
+
+    push();
+    noStroke();
+    fill(114, 117, 122);
+    ellipse(100, 550, 600);
+    pop();
+
+
+
+    push();
+    stroke(0)
+    fill(0);
+    ellipse(100, 550, 20);
+    pop();
+
+
+
+
+
+}
