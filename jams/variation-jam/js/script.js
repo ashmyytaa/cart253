@@ -27,12 +27,12 @@ let x = [], y = [], x1 = [], y1 = [], x2 = [], y2 = [];
 let vx = [], vy = [];
 
 function preload() {
-    coral = loadImage('/assets/images/coral.png');
-    algue = loadImage('/assets/images/algue.png');
-    blugue = loadImage('/assets/images/blugue.png');
-    houseOne = loadImage('/assets/images/houseOne.png');
-    houseTwo = loadImage('/assets/images/houseTwo.png');
-    planetOne = loadImage('/assets/images/planetOne.png');
+    coral = loadImage('assets/images/coral.png');
+    algue = loadImage('assets/images/algue.png');
+    blugue = loadImage('assets/images/blugue.png');
+    houseOne = loadImage('assets/images/houseOne.png');
+    houseTwo = loadImage('assets/images/houseTwo.png');
+    planetOne = loadImage('assets/images/planetOne.png');
 
 
 
