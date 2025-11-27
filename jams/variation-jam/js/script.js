@@ -53,14 +53,23 @@ function setup() {
 function draw() {
     background(0)
 
-    underwater();
+    ground();
 
 }
 
 
 
 function underwater() {
+
     background("#0d2431ff");
+
+    push();
+    noStroke();
+    fill(135, 206, 235, 10);
+    rect(0, 0, width, height);
+    pop();
+
+
     wave(300, 0.002, "#071c29ff", 1);
     wave(600, 0.002, "#0c1b25ff", 2);
     wave(900, 0.002, "#030f17ff", 3);
@@ -68,17 +77,21 @@ function underwater() {
     coralpic();
     fishes();
 
+
 }
 
 function ground() {
     background(122, 192, 230)
-
-
     push();
     fill(88, 166, 102);
     noStroke();
     rect(0, 400, width, 200)
     pop();
+
+
+    butterflies();
+
+
 
 }
 
@@ -174,6 +187,18 @@ function coralpic() {
 }
 
 
+function bubbleMouse() {
+
+    push();
+    let bubbleSize = random(15, 40);
+    noFill();
+    stroke(255, 255, 255, 180);
+    strokeWeight(2);
+    ellipse(mouseX + random(-3, 3), mouseY + random(-3, 3), bubbleSize, bubbleSize);
+    pop();
+}
+
+
 
 /** 
  * 
@@ -190,3 +215,53 @@ function coralpic() {
     fill(255)
     ellipse(60, 60, 70, 10)
  */
+
+function butterflies() {
+    for (let i = 0; i < 10; i++) {
+
+        x[i] += vx[i];
+        y[i] += vy[i];
+
+        if (x[i] < 0 || x[i] > width) vx[i] *= -1;
+        if (y[i] < 0 || y[i] > height) vy[i] *= -1;
+
+
+        //lower wings
+        push();
+        translate(x[i], y[i]);
+        noStroke();
+        fill(255, 160, 200);
+        ellipse(-15, -10, 25, 20); // left upper
+        ellipse(15, -10, 25, 20);  // right upper
+        pop();
+
+        //upper wings
+        push();
+        translate(x[i], y[i]);
+        noStroke();
+        fill(255, 160, 200);
+        ellipse(-15, 10, 25, 20); // left lower
+        ellipse(15, 10, 25, 20);  // right lower
+        pop();
+
+        //body
+        push();
+        translate(x[i], y[i]);
+        noStroke();
+        fill(80, 40, 30);
+        rect(-1, -10, 5, 35, 20);
+        pop();
+
+        //antenna
+        push();
+        translate(x[i], y[i]);
+        noStroke();
+        stroke(80, 40, 30);
+        strokeWeight(1);
+        line(0, -10, -15, -15);
+        line(0, -10, 15, -15);
+        pop();
+
+
+    }
+}
