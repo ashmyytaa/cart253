@@ -16,16 +16,16 @@ function preload() {
 function groundSetup() {
     for (let i = 0; i < 50; i++) {
 
-        x[i] = random(0, width);
-        y[i] = random(0, height);
-        x1[i] = random(0, width);
-        y1[i] = random(0, height);
-        x2[i] = random(0, width);
-        y2[i] = random(0, height);
+        xGround[i] = random(0, width);
+        yGround[i] = random(0, height);
+        xGround1[i] = random(0, width);
+        yGround1[i] = random(0, height);
+        xGround2[i] = random(0, width);
+        yGround2[i] = random(0, height);
 
         // Random speed
-        vx[i] = random(-2, 2);
-        vy[i] = random(-2, 2);
+        vGroundx[i] = random(-2, 2);
+        vGroundy[i] = random(-2, 2);
     }
 
 }
@@ -79,7 +79,7 @@ function butterflies() {
 
         //lower wings
         push();
-        translate(x[i], y[i]);
+        translate(xGround[i], yGround[i]);
         noStroke();
         fill(206, 80, 235);
         ellipse(-15, -10, 25, 20); // left upper
@@ -88,7 +88,7 @@ function butterflies() {
 
         //upper wings
         push();
-        translate(x[i], y[i]);
+        translate(xGround[i], yGround[i]);
         noStroke();
         fill(206, 80, 235);
         ellipse(-15, 10, 25, 20); // left lower
@@ -97,7 +97,7 @@ function butterflies() {
 
         //body
         push();
-        translate(x[i], y[i]);
+        translate(xGround[i], yGround[i]);
         noStroke();
         fill(66, 46, 34);
         rect(-1, -10, 5, 35, 20);
@@ -105,7 +105,7 @@ function butterflies() {
 
         //antenna
         push();
-        translate(x[i], y[i]);
+        translate(xGround[i], yGround[i]);
         stroke(66, 46, 34);
         strokeWeight(1);
         line(0, -10, -15, -15);
@@ -136,24 +136,24 @@ function movingClouds() {
     cloud += 1;
     if (cloud > width + 200) cloud = -300;
 }
-function drawCloud(x, y, size) {
+function drawCloud(xCloud, yCloud, sizeCloud) {
 
     push();
     noStroke();
     fill(255);
-    ellipse(x, y, size * 0.9, size * 0.7);
+    ellipse(xCloud, yCloud, sizeCloud * 0.9, sizeCloud * 0.7);
     pop();
 
     push();
     noStroke();
     fill(255);
-    ellipse(x - size * 0.5, y + size * 0.2, size * 0.7, size * 0.5);
+    ellipse(xCloud - sizeCloud * 0.5, yCloud + sizeCloud * 0.2, sizeCloud * 0.7, sizeCloud * 0.5);
     pop();
 
     push();
     noStroke();
     fill(255);
-    ellipse(x + size * 0.5, y + size * 0.2, size * 0.7, size * 0.5);
+    ellipse(xCloud + sizeCloud * 0.5, yCloud + sizeCloud * 0.2, sizeCloud * 0.7, sizeCloud * 0.5);
     pop();
 
 }

@@ -8,6 +8,8 @@ function preload() {
 
     planetOne = loadImage('assets/images/planetOne.png');
 }
+
+
 function spaceSetup() {
 
 }
@@ -20,7 +22,6 @@ function spaceDraw() {
     stars();
     image(planetOne, 700, 100, 410, 300);
     space();
-
 
 }
 
