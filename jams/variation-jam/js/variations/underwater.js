@@ -12,7 +12,7 @@ let vx = [], vy = [];
 
 
 
-function preload() {
+function preloadUnderwater() {
     coral = loadImage('assets/images/coral.png');
     algue = loadImage('assets/images/algue.png');
     blugue = loadImage('assets/images/blugue.png');

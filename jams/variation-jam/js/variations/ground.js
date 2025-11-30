@@ -7,11 +7,11 @@ let cloud = 0;
 let xGround = [], yGround = [], xGround1 = [], yGround1 = [], xGround2 = [], yGround2 = [];
 let vGroundx = [], vGroundy = [];
 
-function preload() {
+function preloadGround() {
 
     houseOne = loadImage('assets/images/houseOne.png');
     houseTwo = loadImage('assets/images/houseTwo.png');
-    ;
+
 }
 function groundSetup() {
     for (let i = 0; i < 50; i++) {

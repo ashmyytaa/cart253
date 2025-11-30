@@ -4,7 +4,7 @@ let planetThree;
 let speedrock = 0;
 
 
-function preload() {
+function preloadSpace() {
 
     planetOne = loadImage('assets/images/planetOne.png');
 }

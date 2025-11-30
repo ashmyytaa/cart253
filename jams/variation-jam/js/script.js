@@ -11,6 +11,12 @@
 
 let state = "menu";
 
+function preload() {
+    preloadSpace();
+    preloadGround();
+    preloadUnderwater();
+}
+
 /**
  * Create the canvas
 */
