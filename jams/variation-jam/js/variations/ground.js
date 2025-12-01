@@ -4,15 +4,26 @@ let houseTwo;
 let cloud = 0;
 
 
-let xGround = [], yGround = [], xGround1 = [], yGround1 = [], xGround2 = [], yGround2 = [];
-let vGroundx = [], vGroundy = [];
+let xGround = [];
+let yGround = [];
+let xGround1 = [];
+let yGround1 = [];
+let xGround2 = [];
+let yGround2 = [];
+let vGroundx = [];
+let vGroundy = [];
 
+/**
+ * Function preload() that loads my images
+ */
 function preloadGround() {
 
     houseOne = loadImage('assets/images/houseOne.png');
     houseTwo = loadImage('assets/images/houseTwo.png');
 
 }
+
+
 function groundSetup() {
     for (let i = 0; i < 50; i++) {
 
@@ -36,7 +47,6 @@ function groundSetup() {
 function groundDraw() {
 
     ground();
-
     groundObjects();
     movingClouds();
     butterflies();
@@ -54,9 +64,9 @@ function groundKeyPressed(event) {
 /**
  * This will be called whenever the mouse is pressed while the blue variation is active
  */
-//function groundMousePressed() {
+function groundMousePressed() {
 
-//}
+}
 
 function ground() {
     background(122, 192, 230)
@@ -114,7 +124,7 @@ function butterflies() {
     }
 }
 
-
+//function ground objects
 function groundObjects() {
     push();
     noStroke();
@@ -127,6 +137,8 @@ function groundObjects() {
     image(houseTwo, 350, 200, 200, 200);
 
 }
+
+
 function movingClouds() {
     drawCloud(cloud, 50, 110);
     drawCloud(cloud + 200, 150, 100);
@@ -136,20 +148,25 @@ function movingClouds() {
     cloud += 1;
     if (cloud > width + 200) cloud = -300;
 }
+
+//function draw cloud that draws my clouds
 function drawCloud(xCloud, yCloud, sizeCloud) {
 
+    //drawing the top cloud   
     push();
     noStroke();
     fill(255);
     ellipse(xCloud, yCloud, sizeCloud * 0.9, sizeCloud * 0.7);
     pop();
 
+    //drawing the left cloud
     push();
     noStroke();
     fill(255);
     ellipse(xCloud - sizeCloud * 0.5, yCloud + sizeCloud * 0.2, sizeCloud * 0.7, sizeCloud * 0.5);
     pop();
 
+    //drawing the right cloud
     push();
     noStroke();
     fill(255);
