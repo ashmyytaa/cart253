@@ -12,6 +12,8 @@ let xGround2 = [];
 let yGround2 = [];
 let vGroundx = [];
 let vGroundy = [];
+let groundBg = [122, 192, 230]; // default sky color
+
 
 /**
  * Function preload() that loads my images
@@ -45,10 +47,25 @@ function groundSetup() {
  * This will be called every frame when the blue variation is active
  */
 function groundDraw() {
+    background(groundBg);
 
     ground();
-    groundObjects();
+
     movingClouds();
+
+    drawFlower(50, 450);
+    drawFlower(200, 410);
+    drawFlower(300, 430);
+    drawFlower(400, 470);
+    drawFlower(500, 550);
+    drawFlower(600, 420);
+    drawFlower(700, 450);
+    drawFlower(800, 500);
+    drawFlower(900, 530);
+    drawFlower(1000, 440);
+
+
+    groundObjects();
     butterflies();
 }
 
@@ -65,11 +82,12 @@ function groundKeyPressed(event) {
  * This will be called whenever the mouse is pressed while the blue variation is active
  */
 function groundMousePressed() {
+    groundBg = [73, 78, 163];
 
 }
 
 function ground() {
-    background(122, 192, 230)
+
     push();
     fill(88, 166, 102);
     noStroke();
@@ -175,3 +193,28 @@ function drawCloud(xCloud, yCloud, sizeCloud) {
 
 }
 
+function drawFlower(x, y, size = 1) {
+    push();
+    translate(x, y);
+
+    let petalCount = 5;
+    let petalDistance = 10 * size;
+    let petalSize = 15 * size;
+    let centerSize = 15 * size;
+
+
+    noStroke();
+    fill(70, 188, 242);
+    for (let i = 0; i < petalCount; i++) {
+        let angle = (TWO_PI / petalCount) * i;
+        let petalX = cos(angle) * petalDistance;
+        let petalY = sin(angle) * petalDistance;
+        ellipse(petalX, petalY, petalSize);
+    }
+
+    // Draw center
+    fill(255, 230, 90); // yellow
+    ellipse(0, 0, centerSize);
+
+    pop();
+}
