@@ -15,6 +15,8 @@ let vGroundy = [];
 let groundBg = [122, 192, 230]; // default sky color
 
 
+
+
 /**
  * Function preload() that loads my images
  */
@@ -50,7 +52,7 @@ function groundDraw() {
     background(groundBg);
 
     ground();
-
+    groundObjects();
     movingClouds();
 
     drawFlower(50, 450);
@@ -65,7 +67,19 @@ function groundDraw() {
     drawFlower(1000, 440);
 
 
-    groundObjects();
+    drawFlower(45, 580);
+    drawFlower(100, 530);
+    drawFlower(110, 420);
+    drawFlower(130, 470);
+    drawFlower(170, 460);
+    drawFlower(210, 450);
+    drawFlower(600, 570);
+    drawFlower(800, 450);
+    drawFlower(1100, 570);
+    drawFlower(1150, 440);
+
+
+
     butterflies();
 }
 

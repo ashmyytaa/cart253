@@ -5,6 +5,19 @@ let algue;
 let blugue;
 let angle = 0;
 
+let bubbleOne = undefined;
+let bubbleTwo = undefined;
+let bubbleThree = undefined;
+let bubbleFour = undefined;
+let bubbleFive = undefined;
+let bubbleSix = undefined;
+let bubbleSeven = undefined;
+let bubbleEight = undefined;
+let bubbleNine = undefined;
+let bubbleTen = undefined;
+let bubbleEleven = undefined;
+let bubbleTwelve = undefined;
+
 
 
 let x = [], y = [], x1 = [], y1 = [], x2 = [], y2 = [];
@@ -33,6 +46,26 @@ function underwaterSetup() {
         vy[i] = random(-2, 2);
     }
 
+
+    bubbleOne = createBubble(100, 100, 100);
+    bubbleTwo = createBubble(200, 200, 50);
+
+    bubbleThree = createBubble(600, 300, 100);
+    bubbleFour = createBubble(400, 550, 50);
+
+    bubbleFive = createBubble(200, 350, 100);
+    bubbleSix = createBubble(900, 550, 50);
+
+    bubbleSeven = createBubble(1100, 100, 100);
+    bubbleEight = createBubble(800, 200, 50);
+
+    bubbleNine = createBubble(300, 100, 50);
+    bubbleTen = createBubble(350, 400, 100);
+
+    bubbleEleven = createBubble(1000, 500, 100);
+    bubbleTwelve = createBubble(900, 300, 50);
+
+    ;
 }
 
 /**
@@ -41,10 +74,42 @@ function underwaterSetup() {
 function underwaterDraw() {
     underwater();
 
-    coralpic();
+
     fishes();
 
 
+    updateBubble(bubbleOne);
+    updateBubble(bubbleTwo);
+    drawBubble(bubbleOne);
+    drawBubble(bubbleTwo);
+
+    updateBubble(bubbleThree);
+    updateBubble(bubbleFour);
+    drawBubble(bubbleThree);
+    drawBubble(bubbleFour);
+
+    updateBubble(bubbleFive);
+    updateBubble(bubbleSix);
+    drawBubble(bubbleFive);
+    drawBubble(bubbleSix);
+
+    updateBubble(bubbleSeven);
+    updateBubble(bubbleEight);
+    drawBubble(bubbleSeven);
+    drawBubble(bubbleEight);
+
+    updateBubble(bubbleNine);
+    updateBubble(bubbleTen);
+    drawBubble(bubbleNine);
+    drawBubble(bubbleTen);
+
+    updateBubble(bubbleEleven);
+    updateBubble(bubbleTwelve);
+    drawBubble(bubbleEleven);
+    drawBubble(bubbleTwelve);
+
+
+    coralpic();
 }
 
 /**
@@ -150,3 +215,91 @@ function coralpic() {
     image(coral, 10, 290 + sin(angle) * 20);
     image(blugue, 10, 400 + sin(angle) * 10);
 }
+
+
+
+
+
+
+
+
+function createBubble(x, y, size) {
+    const bubble = {
+        // Position and dimensions
+        x: x,
+        y: y,
+        size: size,
+        // How it moves!
+        velocity: {
+            x: 0,
+            y: 0
+        },
+        // Appearance
+        stroke: "#ffffffff"
+    };
+    return bubble;
+}
+
+
+
+
+function updateBubble(bubble) {
+    applyForces(bubble);
+    moveBubble(bubble);
+}
+
+
+
+
+
+
+
+
+
+function applyForces(bubble) {
+    // Apply friction to the stone by multiplying it by a fraction
+    // less than 1, reducing it
+    bubble.velocity.x *= 0.95;
+    bubble.velocity.y *= 0.95;
+    // If it gets close to 0, make it zero
+    if (abs(bubble.velocity.x) < 0.1) {
+        bubble.velocity.x = 0;
+    }
+    if (abs(bubble.velocity.y) < 0.1) {
+        bubble.velocity.y = 0;
+    }
+
+    // If the mouse is in range it affects the stone...
+    const d = dist(mouseX, mouseY, bubble.x, bubble.y);
+    if (d < bubble.size) {
+
+
+
+        bubble.velocity.x += (bubble.x - mouseX) * 0.005;
+        bubble.velocity.y += (bubble.y - mouseY) * 0.005;
+    }
+}
+
+/**
+ * Applies the stone's velocity to its position
+ */
+function moveBubble(bubble) {
+    bubble.x += bubble.velocity.x;
+    bubble.y += bubble.velocity.y;
+
+
+}
+
+/**
+ * Displays a stone as a circle
+ */
+function drawBubble(bubble) {
+    push();
+    noFill();
+    stroke(bubble.stroke)
+    strokeWeight(3)
+    ellipse(bubble.x, bubble.y, bubble.size);
+    pop();
+}
+
+
