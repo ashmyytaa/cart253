@@ -1,10 +1,12 @@
 
-
+//variables for my images
 let coral;
 let algue;
 let blugue;
-let angle = 0;
+let angle = 0; // angle for my images because I will make them move in a certain angle.
 
+
+//variables for my moving bubbles 
 let bubbleOne = undefined;
 let bubbleTwo = undefined;
 let bubbleThree = undefined;
@@ -19,7 +21,7 @@ let bubbleEleven = undefined;
 let bubbleTwelve = undefined;
 
 
-
+//variables for my fishes which are empty arrays for now
 let x = [], y = [], x1 = [], y1 = [], x2 = [], y2 = [];
 let vx = [], vy = [];
 
