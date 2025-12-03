@@ -1,55 +1,62 @@
+/**
+ * This is my ground.js file that contains all the drawing + animation dedicated to the ground
+ * variation. Its functions will be called in the script.js and menu.js to ensure a well functionning
+ * variation menu.
+ */
 
-let houseOne;
-let houseTwo;
-let cloud = 0;
+/**
+ * Variable declarations
+ */
+let houseOne; //variable to store my houseOne image
+let houseTwo; //variable to store my houseTwo image
+let cloud = 0; //variable to store and handle my clouds
 
-
+//empty arrays for my butterflies
 let xGround = [];
 let yGround = [];
-let xGround1 = [];
-let yGround1 = [];
-let xGround2 = [];
-let yGround2 = [];
 let vGroundx = [];
 let vGroundy = [];
-let groundBg = [122, 192, 230]; // default sky color
+
+let bg = [122, 192, 230]; // default background color
 
 /**
  * Function preload() that loads my images
  */
 function preloadGround() {
-
     houseOne = loadImage('assets/images/houseOne.png');
     houseTwo = loadImage('assets/images/houseTwo.png');
 }
 
+/**
+ * Function groundSetup() for my ground variation that gets called once
+ */
 function groundSetup() {
+
+    //for loop that generates random positions for the width and height for my butterflies as well as it speed
     for (let i = 0; i < 50; i++) {
 
-        xGround[i] = random(0, width);
+        xGround[i] = random(0, width); //butterflies x and y positions will be taking the entire space of the canvas randomly
         yGround[i] = random(0, height);
-        xGround1[i] = random(0, width);
-        yGround1[i] = random(0, height);
-        xGround2[i] = random(0, width);
-        yGround2[i] = random(0, height);
 
-        // Random speed
-        vGroundx[i] = random(-2, 2);
+        vGroundx[i] = random(-2, 2); //speed of butterlies will move in a range of -2 and 2 randomly
         vGroundy[i] = random(-2, 2);
     }
 
 }
 
 /**
- * This will be called every frame when the blue variation is active
+ * Function groundDraw() for my ground variation that draws my shapes and initializes functions
  */
 function groundDraw() {
-    background(groundBg);
 
+    background(bg); //background for my canvas
+
+    //Calls the functions ground(), groundObjects(),movingClouds()
     ground();
     groundObjects();
     movingClouds();
 
+    //Calls the drawFlower() function, where I chose my own parameters for the x and y positions
     drawFlower(50, 450);
     drawFlower(200, 410);
     drawFlower(300, 430);
@@ -60,8 +67,6 @@ function groundDraw() {
     drawFlower(800, 500);
     drawFlower(900, 530);
     drawFlower(1000, 440);
-
-
     drawFlower(45, 580);
     drawFlower(100, 530);
     drawFlower(110, 420);
@@ -73,28 +78,31 @@ function groundDraw() {
     drawFlower(1100, 570);
     drawFlower(1150, 440);
 
+    //Calls the butterflies() function
     butterflies();
 }
 
 /**
- * This will be called whenever a key is pressed while the blue variation is active
+ * This will be called whenever a key is pressed while the ground variation is active
  */
 function groundKeyPressed(event) {
-    if (event.keyCode === 27) {
+    if (event.keyCode === 27) { //key 27 = esc key, which will take the user back to the menu screen
         state = "menu";
     }
 }
 
 /**
- * This will be called whenever the mouse is pressed while the blue variation is active
+ * This will be called whenever the mouse is pressed while the ground variation is active
  */
 function groundMousePressed() {
-    groundBg = [73, 78, 163];
+    bg = [73, 78, 163]; //bg changes color when mouse is pressed
 
 }
 
+/**
+ * Function ground that draws the ground in my canvas, to separate the sky from the ground
+ */
 function ground() {
-
     push();
     fill(88, 166, 102);
     noStroke();
@@ -102,17 +110,27 @@ function ground() {
     pop();
 }
 
+/**
+ * Function butterflies that draws butterflies and moves in randomly on the canvas and bounces
+ * of the canvas when it touches the edges of the canvas.
+ */
 function butterflies() {
+    //for loop that draws 10 butterflies in the canvas
     for (let i = 0; i < 10; i++) {
 
+        //adds speed to the x and y positions of our butterlies
         xGround[i] += vGroundx[i];
         yGround[i] += vGroundy[i];
 
-        if (xGround[i] < 0 || xGround[i] > width) vGroundx[i] *= -1;
-        if (yGround[i] < 0 || yGround[i] > height) vGroundy[i] *= -1;
+        //bounces the butterflies of a speed of -2 when it touches the edges of the canvas, either on the width or height
+        if (xGround[i] < 0 || xGround[i] > width) {
+            vGroundx[i] *= -1;
+        }
+        if (yGround[i] < 0 || yGround[i] > height) {
+            vGroundy[i] *= -1;
+        }
 
-
-        //lower wings
+        //draws lower wings of butterflies
         push();
         translate(xGround[i], yGround[i]);
         noStroke();
@@ -121,7 +139,7 @@ function butterflies() {
         ellipse(15, -10, 25, 20);  // right upper
         pop();
 
-        //upper wings
+        //draws upper wings of butterflies
         push();
         translate(xGround[i], yGround[i]);
         noStroke();
@@ -130,7 +148,7 @@ function butterflies() {
         ellipse(15, 10, 25, 20);  // right lower
         pop();
 
-        //body
+        //draws body of butterflies
         push();
         translate(xGround[i], yGround[i]);
         noStroke();
@@ -138,7 +156,7 @@ function butterflies() {
         rect(-1, -10, 5, 35, 20);
         pop();
 
-        //antenna
+        //draws antella of butterflies
         push();
         translate(xGround[i], yGround[i]);
         stroke(66, 46, 34);
@@ -149,48 +167,60 @@ function butterflies() {
     }
 }
 
-//function ground objects
+/**
+ * Function groundObjects() that draws other shapes on the canvas
+ */
 function groundObjects() {
+
+    //draws a sun
     push();
     noStroke();
     fill(235, 192, 5);
     ellipse(130, 100, 150)
     pop();
 
-
+    //adds our images that we preloaded
     image(houseOne, 150, 200, 200, 200);
     image(houseTwo, 350, 200, 200, 200);
 
 }
 
+/**
+ * Function movingClouds() that moves clouds horizontaly on the x-axis from left to right and when it goes off the canvas
+ * on the right side, it stars back at 0
+ */
 function movingClouds() {
-    drawCloud(cloud, 50, 110);
-    drawCloud(cloud + 200, 150, 100);
-    drawCloud(cloud - 200, 200, 90);
+
+    //draws our clouds which is composed of 3 ellipses and I drew 3 clouds
+    drawCloud(cloud, 50, 110); //middles cloud
+    drawCloud(cloud + 200, 150, 100); //right cloud
+    drawCloud(cloud - 200, 200, 90); //left cloud
 
 
-    cloud += 1;
-    if (cloud > width + 200) cloud = -300;
+    cloud += 1; //moves by 1 on the x-axis
+    if (cloud > width + 200) cloud = -300; //resets the clouds back on the left side when it reaches the end on the right side
 }
 
-//function draw cloud that draws my clouds
+/**
+ *Function drawCloud() that draws my clouds and has parameters, because I want to be able to set its properties regarding positions and size
+ */
 function drawCloud(xCloud, yCloud, sizeCloud) {
 
-    //drawing the top cloud   
+    //draws the top cloud   
     push();
     noStroke();
     fill(255);
     ellipse(xCloud, yCloud, sizeCloud * 0.9, sizeCloud * 0.7);
     pop();
 
-    //drawing the left cloud
+    //draws the left cloud
     push();
     noStroke();
     fill(255);
     ellipse(xCloud - sizeCloud * 0.5, yCloud + sizeCloud * 0.2, sizeCloud * 0.7, sizeCloud * 0.5);
     pop();
 
-    //drawing the right cloud
+    //draws the right cloud
     push();
     noStroke();
     fill(255);
@@ -199,28 +229,31 @@ function drawCloud(xCloud, yCloud, sizeCloud) {
 
 }
 
-function drawFlower(x, y, size = 1) {
+/**
+ *Function drawFlower that draws flowers on the canvas, for aesthetics 
+ */
+function drawFlower(x, y) {
+
     push();
     translate(x, y);
-
-    let petalCount = 5;
-    let petalDistance = 10 * size;
-    let petalSize = 15 * size;
-    let centerSize = 15 * size;
-
+    let petalCount = 5; //number of petals the flower has
+    let petalDistance = 10; //distance between the petals and the center
+    let petalSize = 15; //petal size
+    let centerSize = 15; //center size
 
     noStroke();
     fill(70, 188, 242);
+
+    //for loop that draws the petals of the flower in a circle that rounds the the center ellipse
     for (let i = 0; i < petalCount; i++) {
-        let angle = (TWO_PI / petalCount) * i;
-        let petalX = cos(angle) * petalDistance;
-        let petalY = sin(angle) * petalDistance;
-        ellipse(petalX, petalY, petalSize);
+        let angle = (TWO_PI / petalCount) * i; //using TW0_PI for the petals to go on a 360 motion
+        let petalX = cos(angle) * petalDistance; //adds the petals on the x-axis, stretching from the center ellipse
+        let petalY = sin(angle) * petalDistance; //adds the petals on the y-axis, stretching from the center ellipse
+        ellipse(petalX, petalY, petalSize); //draws the petals which are in the shape of ellipse
     }
 
-    // Draw center
-    fill(255, 230, 90); // yellow
-    ellipse(0, 0, centerSize);
-
+    //draws the center of the flowers
+    fill(255, 230, 90);
+    ellipse(0, 0, centerSize); // 0 for x and y positions for it to be centered with the petals
     pop();
 }
