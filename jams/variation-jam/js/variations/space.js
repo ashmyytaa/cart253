@@ -3,6 +3,7 @@ let planetTwo;
 let planetThree;
 let speedrock = 0;
 var offset = 0;
+let star;
 
 
 let particles = [];
@@ -17,7 +18,8 @@ const ellipseHeight = 150;
 
 
 function preloadSpace() {
-    planetOne = loadImage('assets/images/planetOne.png');
+
+    star = loadImage('assets/images/stars.png');
 }
 
 
@@ -49,7 +51,7 @@ function spaceKeyPressed(event) {
  * This will be called whenever the mouse is pressed while the blue variation is active
  */
 function spaceMousePressed() {
-
+    stamp(mouseX, mouseY);
 }
 
 
@@ -194,4 +196,16 @@ function createParticle() {
         g: random(80, 150),
         b: random(150, 220)
     };
+}
+
+
+function stamp(x, y) {
+    push();
+    imageMode(CENTER);
+
+    const speed = abs(movedX) + abs(movedY);
+    const size = map(speed, 0, 30, 60, 20);
+
+    image(star, x, y, size, size);
+    pop();
 }

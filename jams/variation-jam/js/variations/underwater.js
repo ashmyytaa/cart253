@@ -6,6 +6,7 @@ let blugue;
 let angle = 0; // angle for my images because I will make them move in a certain angle.
 
 
+
 //variables for my moving bubbles 
 let bubbleOne = undefined;
 let bubbleTwo = undefined;
@@ -35,6 +36,9 @@ function preloadUnderwater() {
 }
 
 function underwaterSetup() {
+
+
+
     for (let i = 0; i < 50; i++) {
         x[i] = random(0, width);
         y[i] = random(0, height);
@@ -67,17 +71,20 @@ function underwaterSetup() {
     bubbleEleven = createBubble(1000, 500, 100);
     bubbleTwelve = createBubble(900, 300, 50);
 
-    ;
+
 }
 
 /**
  * This will be called every frame when the blue variation is active
  */
 function underwaterDraw() {
+
+    background("#0d2431ff");
     underwater();
 
 
     fishes();
+
 
 
     updateBubble(bubbleOne);
@@ -126,15 +133,18 @@ function underwaterKeyPressed(event) {
 /**
  * This will be called whenever the mouse is pressed while the blue variation is active
  */
-//function underwaterMousePressed() {
 
-//}
+
+function underwaterMousePressed() {
+    stamp(mouseX, mouseY);
+
+}
 
 
 
 function underwater() {
 
-    background("#0d2431ff");
+
 
     push();
     noStroke();
@@ -303,5 +313,4 @@ function drawBubble(bubble) {
     ellipse(bubble.x, bubble.y, bubble.size);
     pop();
 }
-
 
