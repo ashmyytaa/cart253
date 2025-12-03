@@ -1,10 +1,17 @@
-let planetOne;
-let planetTwo;
-let planetThree;
-let speedrock = 0;
-var offset = 0;
-let star;
+/**
+ * This is my space.js file that contains all the drawing + animation dedicated to the space
+ * variation. Its functions will be called in the script.js and menu.js to ensure a well functionning
+ * variation menu.
+ */
 
+
+/**
+ * Variable declarations
+ */
+var offset = 0; //variable offset used in my perlin noise animation, to create waves
+let star; //variable star that stores my stars image
+
+//mooCreater variables that I have initialized 
 let moonCraterOne;
 let moonCraterTwo;
 let moonCraterThree;
@@ -15,26 +22,28 @@ let moonCraterSeven;
 let moonCraterEight;
 let moonCraterNine;
 
+let particles = []; //empty particles array
 
-let particles = [];
-
+//ellise variables declared for my particles animation
 const ellipseX = 500;
 const ellipseY = 200;
 const ellipseSize = 150;
 const ellipseHeight = 150;
 
-
-
-
-
+/**
+ * Function preload() that loads my images
+ */
 function preloadSpace() {
-
     star = loadImage('assets/images/stars.png');
 }
 
-
+/**
+ * Function spaceSetup() for my space variation that gets called once
+ */
 function spaceSetup() {
 
+    //declaring all the properties for the positioning + size of my moon craters because I want them
+    //to be located in specific areas.
     moonCraterOne = moonCraters(100, 300, 50);
     moonCraterTwo = moonCraters(50, 550, 60);
     moonCraterThree = moonCraters(200, 400, 60);
@@ -47,12 +56,11 @@ function spaceSetup() {
 }
 
 /**
- * This will be called every frame when the blue variation is active
+ * Function groundDraw() for my ground variation that draws my shapes and initializes functions
  */
 function spaceDraw() {
-    background(0, 50)
+    background(0, 50);
     stars();
-    //image(planetOne, 700, 100, 410, 300);
     space();
 
     checkOverlap(moonCraterOne);
