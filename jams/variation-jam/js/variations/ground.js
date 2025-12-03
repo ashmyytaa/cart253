@@ -14,9 +14,6 @@ let vGroundx = [];
 let vGroundy = [];
 let groundBg = [122, 192, 230]; // default sky color
 
-
-
-
 /**
  * Function preload() that loads my images
  */
@@ -24,9 +21,7 @@ function preloadGround() {
 
     houseOne = loadImage('assets/images/houseOne.png');
     houseTwo = loadImage('assets/images/houseTwo.png');
-
 }
-
 
 function groundSetup() {
     for (let i = 0; i < 50; i++) {
@@ -77,8 +72,6 @@ function groundDraw() {
     drawFlower(800, 450);
     drawFlower(1100, 570);
     drawFlower(1150, 440);
-
-
 
     butterflies();
 }
@@ -169,7 +162,6 @@ function groundObjects() {
     image(houseTwo, 350, 200, 200, 200);
 
 }
-
 
 function movingClouds() {
     drawCloud(cloud, 50, 110);

@@ -6,7 +6,6 @@ let blugue;
 let angle = 0; // angle for my images because I will make them move in a certain angle.
 
 
-
 //variables for my moving bubbles 
 let bubbleOne = undefined;
 let bubbleTwo = undefined;
@@ -36,8 +35,6 @@ function preloadUnderwater() {
 }
 
 function underwaterSetup() {
-
-
 
     for (let i = 0; i < 50; i++) {
         x[i] = random(0, width);
@@ -70,8 +67,6 @@ function underwaterSetup() {
 
     bubbleEleven = createBubble(1000, 500, 100);
     bubbleTwelve = createBubble(900, 300, 50);
-
-
 }
 
 /**
@@ -82,10 +77,7 @@ function underwaterDraw() {
     background("#0d2431ff");
     underwater();
 
-
     fishes();
-
-
 
     updateBubble(bubbleOne);
     updateBubble(bubbleTwo);
@@ -133,18 +125,13 @@ function underwaterKeyPressed(event) {
 /**
  * This will be called whenever the mouse is pressed while the blue variation is active
  */
-
-
 function underwaterMousePressed() {
     stamp(mouseX, mouseY);
 
 }
 
 
-
 function underwater() {
-
-
 
     push();
     noStroke();
@@ -156,8 +143,6 @@ function underwater() {
     wave(300, 0.002, "#071c29ff", 1);
     wave(600, 0.002, "#0c1b25ff", 2);
     wave(900, 0.002, "#030f17ff", 3);
-
-
 }
 
 
@@ -197,7 +182,6 @@ function fishes() {
             vy[i] *= -1;
         }
 
-
         push();
         translate(x[i], y[i]);
         if (vx[i] < 0) {
@@ -229,12 +213,6 @@ function coralpic() {
 }
 
 
-
-
-
-
-
-
 function createBubble(x, y, size) {
     const bubble = {
         // Position and dimensions
@@ -252,21 +230,10 @@ function createBubble(x, y, size) {
     return bubble;
 }
 
-
-
-
 function updateBubble(bubble) {
     applyForces(bubble);
     moveBubble(bubble);
 }
-
-
-
-
-
-
-
-
 
 function applyForces(bubble) {
     // Apply friction to the stone by multiplying it by a fraction
@@ -284,8 +251,6 @@ function applyForces(bubble) {
     // If the mouse is in range it affects the stone...
     const d = dist(mouseX, mouseY, bubble.x, bubble.y);
     if (d < bubble.size) {
-
-
 
         bubble.velocity.x += (bubble.x - mouseX) * 0.005;
         bubble.velocity.y += (bubble.y - mouseY) * 0.005;

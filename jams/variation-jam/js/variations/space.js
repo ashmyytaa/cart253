@@ -5,6 +5,16 @@ let speedrock = 0;
 var offset = 0;
 let star;
 
+let moonCraterOne;
+let moonCraterTwo;
+let moonCraterThree;
+let moonCraterFour;
+let moonCreaterFive;
+let moonCraterSix;
+let moonCraterSeven;
+let moonCraterEight;
+let moonCraterNine;
+
 
 let particles = [];
 
@@ -24,6 +34,16 @@ function preloadSpace() {
 
 
 function spaceSetup() {
+
+    moonCraterOne = moonCraters(100, 300, 50);
+    moonCraterTwo = moonCraters(50, 550, 60);
+    moonCraterThree = moonCraters(200, 400, 60);
+    moonCraterFour = moonCraters(300, 520, 60);
+    moonCreaterFive = moonCraters(100, 470, 30);
+    moonCraterSix = moonCraters(50, 350, 30);
+    moonCraterSeven = moonCraters(30, 400, 40);
+    moonCraterEight = moonCraters(150, 560, 50);
+    moonCraterNine = moonCraters(350, 430, 40);
 }
 
 /**
@@ -34,6 +54,29 @@ function spaceDraw() {
     stars();
     //image(planetOne, 700, 100, 410, 300);
     space();
+
+    checkOverlap(moonCraterOne);
+    checkOverlap(moonCraterTwo);
+    checkOverlap(moonCraterThree);
+    checkOverlap(moonCraterFour);
+    checkOverlap(moonCreaterFive);
+    checkOverlap(moonCraterSix);
+    checkOverlap(moonCraterSeven);
+    checkOverlap(moonCraterEight);
+    checkOverlap(moonCraterNine);
+
+    drawElement(moonCraterOne);
+    drawElement(moonCraterTwo);
+    drawElement(moonCraterThree);
+    drawElement(moonCraterFour);
+    drawElement(moonCreaterFive);
+    drawElement(moonCraterSix);
+    drawElement(moonCraterSeven);
+    drawElement(moonCraterEight);
+    drawElement(moonCraterNine);
+
+
+
     paintEllipse();
 
 }
@@ -69,19 +112,6 @@ function space() {
     ellipse(100, 550, 600);
     pop();
 
-    moonCraters(100, 300, 50);
-    moonCraters(50, 550, 60);
-    moonCraters(200, 400, 60);
-    moonCraters(300, 520, 60);
-    moonCraters(100, 470, 30);
-    moonCraters(50, 350, 30);
-    moonCraters(30, 400, 40);
-    moonCraters(150, 560, 50);
-    moonCraters(350, 430, 40);
-
-
-
-
     let waveX = 950;
     let waveY = 300;
     let radiusX = 200;
@@ -116,16 +146,6 @@ function stars() {
     }
 }
 
-
-
-function moonCraters(xSpace, ySpace, sizeSpace) {
-    push();
-    stroke(65, 67, 71);
-    strokeWeight(2);
-    fill(63, 66, 71);
-    ellipse(xSpace, ySpace, sizeSpace);
-    pop();
-}
 
 
 function drawWave(waveX, waveY, radiusX, radiusY, gap) {
@@ -207,5 +227,38 @@ function starStamp(x, y) {
     const size = map(speed, 0, 20, 100, 50);
 
     image(star, x, y, size, size);
+    pop();
+}
+
+
+
+function moonCraters(x, y, size) {
+    return {
+        x: x,
+        y: y,
+        size: size,
+        fill: color(63, 66, 71),
+        fills: {
+            noOverlap: color(63, 66, 71),
+            overlap: color(245, 246, 247, 50),
+        }
+    };
+}
+
+function checkOverlap(target) {
+    const d = dist(mouseX, mouseY, target.x, target.y);
+    const overlap = (d < target.size / 2);
+    if (overlap) {
+        target.fill = target.fills.overlap;
+    } else {
+        target.fill = target.fills.noOverlap;
+    }
+}
+
+function drawElement(element) {
+    push();
+    noStroke();
+    fill(element.fill);
+    ellipse(element.x, element.y, element.size);
     pop();
 }
