@@ -51,7 +51,7 @@ function spaceKeyPressed(event) {
  * This will be called whenever the mouse is pressed while the blue variation is active
  */
 function spaceMousePressed() {
-    stamp(mouseX, mouseY);
+    starStamp(mouseX, mouseY);
 }
 
 
@@ -199,12 +199,12 @@ function createParticle() {
 }
 
 
-function stamp(x, y) {
+function starStamp(x, y) {
     push();
     imageMode(CENTER);
 
     const speed = abs(movedX) + abs(movedY);
-    const size = map(speed, 0, 30, 60, 20);
+    const size = map(speed, 0, 20, 100, 50);
 
     image(star, x, y, size, size);
     pop();
