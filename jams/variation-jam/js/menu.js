@@ -10,9 +10,10 @@ G - Ground variation
 U - Underwater variation`
 
 const title = `
-Our Beautiful Universe
+Our Beautiful Universe`
 
-Click on the keys to visit each space and the esc key to come back to the menu.`
+const titleTwo = `
+Click the keys to see each space. Click esc to come back to the menu.`
 
 
 
@@ -26,9 +27,16 @@ function menuDraw() {
 
     push();
     fill(255);
-    textSize(30);
+    textSize(50);
     textAlign(CENTER, CENTER);
     text(title, width / 2, 100);
+    pop();
+
+    push();
+    fill(255);
+    textSize(25);
+    textAlign(CENTER, CENTER);
+    text(titleTwo, width / 2, 170);
     pop();
 
     push();

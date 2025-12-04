@@ -77,6 +77,19 @@ function groundDraw() {
     drawFlower(100, 420);
     drawFlower(440, 450);
     drawFlower(800, 470);
+    drawFlower(550, 550);
+    drawFlower(1150, 540);
+    drawFlower(1000, 450);
+    drawFlower(700, 560);
+    drawFlower(400, 560);
+    drawFlower(310, 440);
+    drawFlower(60, 520);
+    drawFlower(170, 470);
+
+
+
+
+
 
 
     //Calls the butterflies() function
@@ -278,7 +291,7 @@ function rainDrops() {
         push();
         stroke(43, 49, 122);
         strokeWeight(2);
-        line(drop.x, drop.y, drop.x, drop.y + 15);
+        line(drop.x, drop.y, drop.x, drop.y + 5);
         pop();
 
         if (drop.y > height) {
