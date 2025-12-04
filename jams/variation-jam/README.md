@@ -44,7 +44,7 @@ Here is a screenshot that shows how my variations looks like:
 
 ## Attribution
 
-For the code of my project, I referred to the p5.js reference website, as well as all the course materials, and in-class challenges done so far. As well as the examples gaven by the teacher. All the features that I have learned, that we didnt see in class such as the perlin noise, is all referenced with the p5.js website.
+For the code of my project, I referred to the p5.js reference website, as well as all the course materials, and in-class challenges done so far. References also come from in-class examples shows my the teacher such as the "Moving Stones" example, the "Overlapping Circles" example, as well as "Denying Stamp". Weekly challlenges in our class, such as the one for the week we learned arrays, its challenge inspired for my butterflies and fishes animations. The p5.js reference website had features that inspired me for my codes, such as the noise() function and the particles system materials. 
 
 > - This project uses [p5.js](https://p5js.org).
 > - All my images used for my variation jam are from Google Images.
