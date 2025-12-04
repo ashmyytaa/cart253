@@ -204,15 +204,15 @@ function fishes() {
         }
 
         noStroke(); //fish head
-        fill(113, 197, 227);
+        fill(113, 197, 227, 80);
         ellipse(0, 0, 30, 20);
 
         noStroke(); //fish tail
-        fill(113, 197, 227);
+        fill(113, 197, 227, 80);
         triangle(0, 0, -30, -10, -30, 10);
 
         noStroke(); //fish eye
-        fill(0);
+        fill(0, 80);
         ellipse(10, 2, 5, 5);
         pop();
     }
@@ -228,6 +228,11 @@ function coralpic() {
     image(algue, 150, 450 + sin(angle) * 10);
     image(coral, 10, 290 + sin(angle) * 20);
     image(blugue, 10, 400 + sin(angle) * 10);
+
+
+    image(coral, 860, 290 + sin(angle) * 20);
+    image(blugue, 860, 400 + sin(angle) * 10);
+    image(algue, 1000, 450 + sin(angle) * 10);
 }
 
 /**

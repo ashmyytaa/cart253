@@ -35,9 +35,9 @@ I will present how the user can interact with each of my variations:
 
 Here is a screenshot that shows how my variations looks like:
 
-> ![Space Variation](./assets/images/game.png)
-> ![Ground Variation](./assets/images/game.png)
-> ![Underwater Variation](./assets/images/game.png)
+> ![Space Variation](./assets/images/space.png)
+> ![Ground Variation](./assets/images/ground.png)
+> ![Underwater Variation](./assets/images/water.png)
 
 
 ## Attribution
