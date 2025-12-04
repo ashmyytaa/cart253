@@ -23,7 +23,8 @@ I will present how the user can interact with each of my variations:
 - User can press on the mouse to see a star that appears and fades away. Can click as much as you want to see a star appear and disappear.
 
 > Ground Variation
-- User can click on the sky for the background color to change.
+- User can click on the mouse anywhere on the canvas for the colors of the background and ground to change.
+- User can click on "r" or "R", for raindrops to fall from top to bottom. 
 
 > Underwater Variation
 - User can move the bubbles that are on the canvas by moving the mouse. The bubbles move away from the mouse, whenever the mouse is in its range.

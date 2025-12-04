@@ -17,7 +17,12 @@ let yGround = [];
 let vGroundx = [];
 let vGroundy = [];
 
+//empty rain array + false default operator for raining 
+let rain = [];
+let raining = false;
+
 let bg = [122, 192, 230]; // default background color
+let groundFill = [88, 166, 102]; // default ground color
 
 /**
  * Function preload() that loads my images
@@ -42,6 +47,15 @@ function groundSetup() {
         vGroundy[i] = random(-2, 2);
     }
 
+    //for loop that generates random positions for the width and height for my rainDrops function
+    for (let i = 0; i < 150; i++) {
+        //adds the rain property into our empty array
+        rain.push({
+            x: random(width), //anywhere on the canvas in regard of the x-axis
+            y: random(-600, 0) //anywhere in height, but starts above the canvas so that my raindrops can fall smoothly
+        });
+    }
+
 }
 
 /**
@@ -57,29 +71,22 @@ function groundDraw() {
     movingClouds();
 
     //Calls the drawFlower() function, where I chose my own parameters for the x and y positions
-    drawFlower(50, 450);
-    drawFlower(200, 410);
-    drawFlower(300, 430);
-    drawFlower(400, 470);
-    drawFlower(500, 550);
-    drawFlower(600, 420);
-    drawFlower(700, 450);
-    drawFlower(800, 500);
-    drawFlower(900, 530);
-    drawFlower(1000, 440);
-    drawFlower(45, 580);
-    drawFlower(100, 530);
-    drawFlower(110, 420);
-    drawFlower(130, 470);
-    drawFlower(170, 460);
-    drawFlower(210, 450);
-    drawFlower(600, 570);
-    drawFlower(800, 450);
-    drawFlower(1100, 570);
-    drawFlower(1150, 440);
+    drawFlower(640, 500);
+    drawFlower(240, 540);
+    drawFlower(940, 560);
+    drawFlower(100, 420);
+    drawFlower(440, 450);
+    drawFlower(800, 470);
+
 
     //Calls the butterflies() function
     butterflies();
+
+    //calls the raining function once the condition goes from false to true, and that will happen when the user presses on the "r" or "R"
+    //key on the keyboard
+    if (raining) {
+        rainDrops();
+    }
 }
 
 /**
@@ -89,13 +96,18 @@ function groundKeyPressed(event) {
     if (event.keyCode === 27) { //key 27 = esc key, which will take the user back to the menu screen
         state = "menu";
     }
+
+    if (event.keyCode === 82) { //key 82 = "r" or "R" key, which means when the user presses on r, the raining function will be called
+        raining = true;
+    }
 }
 
 /**
  * This will be called whenever the mouse is pressed while the ground variation is active
  */
 function groundMousePressed() {
-    bg = [73, 78, 163]; //bg changes color when mouse is pressed
+    bg = [153, 155, 176]; //bg changes color when mouse is pressed
+    groundFill = [222, 211, 184]; //ground changes color when mouse is pressed
 
 }
 
@@ -104,7 +116,7 @@ function groundMousePressed() {
  */
 function ground() {
     push();
-    fill(88, 166, 102);
+    fill(groundFill);
     noStroke();
     rect(0, 400, width, 200)
     pop();
@@ -256,4 +268,21 @@ function drawFlower(x, y) {
     fill(255, 230, 90);
     ellipse(0, 0, centerSize); // 0 for x and y positions for it to be centered with the petals
     pop();
+}
+
+
+function rainDrops() {
+    for (let drop of rain) {
+
+        drop.y += 7;   //speed at which rate the raindrops will fall for my raining() function
+        push();
+        stroke(43, 49, 122);
+        strokeWeight(2);
+        line(drop.x, drop.y, drop.x, drop.y + 15);
+        pop();
+
+        if (drop.y > height) {
+            drop.y = random(-100, 0); //resets the raindrops when that have reached the bottom of the canvas
+        }
+    }
 }
