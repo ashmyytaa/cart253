@@ -6,7 +6,7 @@ Ashmitha Kanagiah
 
 ## Description
 
-*Our Beautiful Universe* is a simple animation that is composed of three different spaces that the user can enter into. The ground, the space and the underwater. Each variation is a fully animated visual that represents what which spaces the variation is trying to portrait. For some more fun, there is also user interactions included, where there the user can interact with the variations. 
+*Our Beautiful Universe* is a simple animation that is composed of three different spaces that the user can enter into. The ground, the space and the underwater. Each variation is a fully animated visual that represents what which spaces the variation is trying to portrait. For some more fun, there is also user interactions included, where there the user can interact with the variations. It contains also a menu screen where it contains keyboard keys that the user should press, to be transported in its preffered variation.
 
 > *Space Variation* is a beatiful variation that shows the space and three planets that is floating on it. Each planet is animated in some ways as well as this variation contains two ways in where the user can interact with the variation. (Specifics will be provided further down.)
 
@@ -28,6 +28,8 @@ I will present how the user can interact with each of my variations:
 > Underwater Variation
 - User can move the bubbles that are on the canvas by moving the mouse. The bubbles move away from the mouse, whenever the mouse is in its range.
 
+> Menu page
+- User clicks on the keys that are told on the menu page, to be transported in its preffered variation.
 
 ## Screenshot(s)
 
