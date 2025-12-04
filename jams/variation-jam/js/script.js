@@ -1,16 +1,18 @@
 /**
- * Variation Menu
- * Pippin Barr
+ * Variation Menu - Our Beautiful Universe
+ * Ashmitha Kanagiah
  * 
- * A relatively simple example of a set of variations within a single
- * project. (When we learn Object-Oriented Programming this will be a
- * LOT easier.)
+ * 
  */
 
 "use strict";
 
 let state = "menu";
 
+
+/**
+ * Function preload() combines all the preload functions that I have in each of my variation, to prperly load up all my pictures
+*/
 function preload() {
     preloadSpace();
     preloadGround();
@@ -65,17 +67,6 @@ function mousePressed() {
             break;
     }
 }
-
-//function mouseDragged() {
-//  switch (state) {
-//
-//       case "underwater-variation":
-//         underwaterMouseDragged();
-///         break;
-//  }
-//}
-
-
 
 
 /**

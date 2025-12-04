@@ -96,7 +96,7 @@ function spaceDraw() {
  * This will be called whenever a key is pressed while the space variation is active
  */
 function spaceKeyPressed(event) {
-    if (event.keyCode === 27) {
+    if (event.keyCode === 27) {  //key 27 = esc key, which will take the user back to the menu screen
         state = "menu";
     }
 }
