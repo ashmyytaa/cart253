@@ -5,16 +5,16 @@
  */
 
 const menuText = `
-S - Space variation
-G - Ground variation
-U - Underwater variation`
+🆂pace
+🅶round
+🆄nderwater `
 
 const title = `
 Our Beautiful Universe`
 
 const titleTwo = `
-Click the keys to see each space. Click esc to come back to the menu.`
-
+Press the key of the first letter of the space you wish to visit.
+Click esc to come back to the menu.`
 
 
 /**
@@ -25,21 +25,21 @@ function menuDraw() {
     starss(); //calls function stars() that displays my stars on the cavnas
 
 
-    push();
+    push(); //title
     fill(255);
     textSize(50);
     textAlign(CENTER, CENTER);
     text(title, width / 2, 100);
     pop();
 
-    push();
+    push(); //subtitle
     fill(255);
     textSize(25);
     textAlign(CENTER, CENTER);
-    text(titleTwo, width / 2, 170);
+    text(titleTwo, width / 2, 190);
     pop();
 
-    push();
+    push(); //key options
     fill(255);
     textSize(30);
     textAlign(CENTER, CENTER);
