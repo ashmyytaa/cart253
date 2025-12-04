@@ -59,10 +59,13 @@ function spaceSetup() {
  * Function groundDraw() for my ground variation that draws my shapes and initializes functions
  */
 function spaceDraw() {
-    background(0, 50);
-    stars();
-    space();
+    background(0, 50); //draws black bg with a 50 percent transparency to be them able to work with fading in my other functions
 
+    stars(); //calls function stars() that displays my stars on the cavnas
+    space(); //draws my space() function that displays the images i draw in that function
+
+
+    //calls the checkOverlap() function described below and I want to check for each of my moonCraters
     checkOverlap(moonCraterOne);
     checkOverlap(moonCraterTwo);
     checkOverlap(moonCraterThree);
@@ -73,6 +76,7 @@ function spaceDraw() {
     checkOverlap(moonCraterEight);
     checkOverlap(moonCraterNine);
 
+    //calls the drawElement() function that draws my moon craters with its values that ive declared for each of them in spaceSetup()
     drawElement(moonCraterOne);
     drawElement(moonCraterTwo);
     drawElement(moonCraterThree);
@@ -83,14 +87,13 @@ function spaceDraw() {
     drawElement(moonCraterEight);
     drawElement(moonCraterNine);
 
-
-
-    paintEllipse();
+    //calls the drawParticles() function where it draws my particles on my ellipse
+    drawParticles();
 
 }
 
 /**
- * This will be called whenever a key is pressed while the blue variation is active
+ * This will be called whenever a key is pressed while the space variation is active
  */
 function spaceKeyPressed(event) {
     if (event.keyCode === 27) {
@@ -99,39 +102,44 @@ function spaceKeyPressed(event) {
 }
 
 /**
- * This will be called whenever the mouse is pressed while the blue variation is active
+ * This will be called whenever the mouse is pressed while the space variation is active
  */
 function spaceMousePressed() {
     starStamp(mouseX, mouseY);
 }
 
-
+/**
+ * Function space() draws my shapes of my planets as well as animations that belong to them, this function is
+ * kind of a function that like combines multiple functions and shapes togheter and then just then just gets called in draw
+ */
 function space() {
-    push();
+
+    push(); //draws blue planet
     noStroke();
     fill(75, 134, 201);
     ellipse(500, 200, 300);
     pop();
 
-
-    push();
+    push(); //draws grey planet
     noStroke();
     fill(114, 117, 122);
     ellipse(100, 550, 600);
     pop();
 
+    //declaring my properties for waves, which also is used for the positioning of my orange planet
     let waveX = 950;
     let waveY = 300;
     let radiusX = 200;
     let radiusY = 200;
 
-    push();
+    push(); //draws orange planet 
     noStroke();
     fill(173, 99, 45);
     ellipse(waveX, waveY, radiusX * 2, radiusY * 2); // ellipse itself
     pop();
 
 
+    //draws my wave onto the orange planet, four waves will be drawn
     for (let i = 0; i < 4; i++) {
         drawWave(waveX, waveY, radiusX, radiusY, i);
     }
@@ -139,70 +147,75 @@ function space() {
     offset += 0.05; // animate waves
 }
 
-function stars() {
 
-    for (let i = 0; i < 50; i++) {
-        let xStars = random(0, 1200);
-        let yStars = random(0, 600);
-        push();
+/**
+ * Function stars() that draws all the tiny ellipses that makes it look like stars
+ */
+function stars() {
+    for (let i = 0; i < 50; i++) { //50 stars will be drawn
+        let xStars = random(0, width);
+        let yStars = random(0, height);
+
+        push();//draws my stars
         noStroke();
         fill('white');
-        drawingContext.shadowBlur = 50; // features that i found online that adds glow to a text
-        drawingContext.shadowColor = color(255, 255, 255);
-        ellipse(xStars, yStars, 1.5, 1.5);
+        drawingContext.shadowBlur = 50; // features that i found online that adds glow to a fill
+        drawingContext.shadowColor = color(255, 255, 255); // features that i found online that adds glow to a fill
+        ellipse(xStars, yStars, 1.5);
         pop();
     }
 }
 
-
-
+/**
+ * Function drawWave() that does the animation of my waves that does a sine curve movement
+ * I tried to imitate the planetary rings that we see in certain planets in our universe
+ */
 function drawWave(waveX, waveY, radiusX, radiusY, gap) {
+    push();
     stroke(158, 71, 8);
     strokeWeight(3);
-
     noFill();
     beginShape();
-    for (let x = waveX - radiusX; x <= waveX + radiusX; x++) {
+    for (let x = waveX - radiusX; x <= waveX + radiusX; x++) { //for loop that loops accross the width of the ellipse
 
+        //angle at which the waves move from the width of the ellipse, which an offset is added to animate the waves up and down, and a gap is added for my 4
+        // waves to not overlap eachother
         let angle = offset + (x - (waveX - radiusX)) * 0.009 + gap;
+        let y = waveY + sin(angle) * radiusY * 0.2;
 
-
-        let y = waveY + sin(angle) * radiusY * 0.1; // reduce 0.5 to stay well inside
-
-        vertex(x, y);
+        vertex(x, y); //conects all the points on the width if the ellipse to create my waves
     }
     endShape();
+    pop();
 }
 
 
+/**
+ * Function drawParticles() that draws all my small eliipses that make up particles, that will be figured on the
+ * blue planet. 
+ */
+function drawParticles() {
 
-function paintEllipse() {
-
-    // draws the ellipse
-    push();
-    noFill();
-    noStroke();
-    ellipse(ellipseX, ellipseY, ellipseSize * 2, ellipseHeight * 2);
-    pop();
-
-    // add new particles
-    for (let i = 0; i < 5; i++) {
+    //adds 2 particles to the empty particles array that we declared above
+    for (let i = 0; i < 2; i++) {
         particles.push(createParticle());
     }
 
-    // draws the particles
+    // draws the particles and loops through the array
     for (let i = particles.length - 1; i >= 0; i--) {
-        let p = particles[i];
+        let particle = particles[i];
 
-        // fading away particles
-        p.max -= 2;
+        //speed at which rate the particles are fading away
+        particle.alpha -= 5;
 
-        fill(p.r, p.g, p.b, p.max);
+        push(); //draws our particles
+        fill(particle.r, particle.g, particle.b, particle.alpha);
         noStroke();
-        ellipse(p.x, p.y, p.size);
+        ellipse(particle.x, particle.y, particle.size);
+        pop();
 
-        // Remove dead particles
-        if (p.max <= 0) {
+        //removes the particles from the array using splice. it removes the particles that have been fully faded away
+        if (particle.alpha <= 0) {
             particles.splice(i, 1);
         }
     }
@@ -210,36 +223,39 @@ function paintEllipse() {
 
 // Function to create a particle inside the ellipse
 function createParticle() {
-    let angle = random(TWO_PI);
-    let r = sqrt(random());
-    let x = ellipseX + r * ellipseSize * cos(angle);
+    let angle = random(TWO_PI); //random direction within a full circle
+    let r = random(); //random position further from the center
+    let x = ellipseX + r * ellipseSize * cos(angle); //makes sure the particles stay withing the positions of our blue circle
     let y = ellipseY + r * ellipseHeight * sin(angle);
 
-    return {
+    return { //returns our created particle
         x: x,
         y: y,
         size: random(5, 10),
-        max: 150,
-        r: random(50, 120),
+        alpha: 400,
+        r: random(50, 120), //colors to be in the blue/gray shades
         g: random(80, 150),
         b: random(150, 220)
+
     };
 }
 
-
+/**
+ * Function starStamp() that shows a star whenever the user clicks on the mouse. The star fades away each time. 
+ */
 function starStamp(x, y) {
+
     push();
     imageMode(CENTER);
-
     const speed = abs(movedX) + abs(movedY);
     const size = map(speed, 0, 20, 100, 50);
-
     image(star, x, y, size, size);
     pop();
 }
 
-
-
+/**
+ * Function moocCraters() that returns the drawings and properties for my moon craters that belong on the grey planet
+ */
 function moonCraters(x, y, size) {
     return {
         x: x,
@@ -253,6 +269,10 @@ function moonCraters(x, y, size) {
     };
 }
 
+/**
+ * FFunction checkOverlap() that checks if mouse overlaps the ellipses that serve as moon craters. This code is derived
+ * from one of the example codes we have seen in our course material. 
+ */
 function checkOverlap(target) {
     const d = dist(mouseX, mouseY, target.x, target.y);
     const overlap = (d < target.size / 2);
@@ -263,6 +283,10 @@ function checkOverlap(target) {
     }
 }
 
+/**
+ * Function drawElement() that draws my moon craters.This code is derived
+ * from one of the example codes we have seen in our course material. 
+ */
 function drawElement(element) {
     push();
     noStroke();
