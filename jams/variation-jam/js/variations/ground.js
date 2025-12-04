@@ -86,12 +86,6 @@ function groundDraw() {
     drawFlower(60, 520);
     drawFlower(170, 470);
 
-
-
-
-
-
-
     //Calls the butterflies() function
     butterflies();
 
@@ -119,8 +113,8 @@ function groundKeyPressed(event) {
  * This will be called whenever the mouse is pressed while the ground variation is active
  */
 function groundMousePressed() {
-    bg = [153, 155, 176]; //bg changes color when mouse is pressed
-    groundFill = [222, 211, 184]; //ground changes color when mouse is pressed
+    bg = [219, 149, 171]; //bg changes color when mouse is pressed
+    groundFill = [145, 102, 86]; //ground changes color when mouse is pressed
 
 }
 

@@ -61,18 +61,18 @@ function underwaterSetup() {
     bubbleTwo = createBubble(200, 200, 50);
 
     bubbleThree = createBubble(600, 300, 100);
-    bubbleFour = createBubble(400, 550, 50);
+    bubbleFour = createBubble(400, 200, 50);
 
     bubbleFive = createBubble(200, 350, 100);
-    bubbleSix = createBubble(900, 550, 50);
+    bubbleSix = createBubble(900, 250, 50);
 
     bubbleSeven = createBubble(1100, 100, 100);
-    bubbleEight = createBubble(800, 200, 50);
+    bubbleEight = createBubble(800, 150, 50);
 
     bubbleNine = createBubble(300, 100, 50);
-    bubbleTen = createBubble(350, 400, 100);
+    bubbleTen = createBubble(350, 300, 100);
 
-    bubbleEleven = createBubble(1000, 500, 100);
+    bubbleEleven = createBubble(1000, 300, 100);
     bubbleTwelve = createBubble(900, 300, 50);
 }
 
@@ -233,6 +233,10 @@ function coralpic() {
     image(coral, 750, 290 + sin(angle) * 20);
     image(blugue, 860, 400 + sin(angle) * 10);
     image(algue, 1000, 450 + sin(angle) * 10);
+
+    image(coral, 600, 290 + sin(angle) * 20);
+    image(blugue, 650, 400 + sin(angle) * 10);
+    image(algue, 400, 450 + sin(angle) * 10);
 }
 
 /**
