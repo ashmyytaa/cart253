@@ -230,7 +230,7 @@ function coralpic() {
     image(blugue, 10, 400 + sin(angle) * 10);
 
 
-    image(coral, 860, 290 + sin(angle) * 20);
+    image(coral, 750, 290 + sin(angle) * 20);
     image(blugue, 860, 400 + sin(angle) * 10);
     image(algue, 1000, 450 + sin(angle) * 10);
 }
@@ -249,7 +249,7 @@ function createBubble(x, y, size) {
             y: 0,
         },
 
-        stroke: "#ffffffff" //fill color
+        stroke: [255, 255, 255, 150] //fill color
     };
     return bubble; //returns the propreties of our bubble
 }
