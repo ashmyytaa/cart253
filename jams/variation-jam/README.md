@@ -1,35 +1,52 @@
-# TITLE OF PROJECT
+# Variation Jam - Our Beutiful Universe
 
-AUTHOR NAME
+Ashmitha Kanagiah
 
-[View this project online](URL_FOR_THE_RUNNING_PROJECT)
+[View this game online](https://ashmyytaa.github.io/cart253/jams/variation-jam/)
 
 ## Description
 
-This description should help the reader understand what the program is, anything they should know to be able to experience it (controls, special features, etc.), and what the desired user experience is. For example:
+*Our Beautiful Universe* is a simple animation that is composed of three different spaces that the user can enter into. The ground, the space and the underwater. Each variation is a fully animated visual that represents what which spaces the variation is trying to portrait. For some more fun, there is also user interactions included, where there the user can interact with the variations. 
 
-> *The Mayor of Clown Town* is a simulator experience that allows the user to control a small town populated entirely by clowns.
+> *Space Variation* is a beatiful variation that shows the space and three planets that is floating on it. Each planet is animated in some ways as well as this variation contains two ways in where the user can interact with the variation. (Specifics will be provided further down.)
 
-> The experience is controlled via the mouse, with left click selecting a clown and bringing up a menu of options such as "slip of banana peel" or "get into impossible capacious clown-car."
+> *Ground Variation* is a variation that shows a calming landscape. There are animations in this variation that makes the landscape look visually pleasing and moving as well as this variation contains one way where the user can interact with it. (Specifics will be provided further down.)
 
-> The project is meant to give the user a sense of what it would be the mayor of a town of clowns, eventually getting the sense that clowns are not taking their civic duties seriously.
+> *Underwater Variation* is a variation that shows a portion of the underwaters of the ocea. This variation is heavily inspired by my mod-jam, as the core idea and aethetics are being used in my mod-jam. This variation also contains one way in which the user can interact with it (Specifics will be provided further down.)
+
+## Technical specifications
+
+I will present how the user can interact with each of my variations:
+
+> Space Variation
+- User can hover its mouse on the moon craters that belongs on the gray planet, and they can watch the moon craters change colors!
+- User can press on the mouse to see a star that appears and fades away. Can click as much as you want to see a star appear and disappear.
+
+> Ground Variation
+- User can click on the sky for the background color to change.
+
+> Underwater Variation
+- User can move the bubbles that are on the canvas by moving the mouse. The bubbles move away from the mouse, whenever the mouse is in its range.
+
 
 ## Screenshot(s)
 
-This bit should have some images of the program running so that the reader has a sense of what it looks like. For example:
+Here is a screenshot that shows how my variations looks like:
 
-> ![Image of a clown face](./assets/images/clown.png)
+> ![Space Variation](./assets/images/game.png)
+> ![Ground Variation](./assets/images/game.png)
+> ![Underwater Variation](./assets/images/game.png)
+
 
 ## Attribution
 
-This bit should attribute any code, assets or other elements used taken from other sources. For example:
+For the code of my project, I referred to the p5.js reference website, as well as all the course materials, and in-class challenges done so far. As well as the examples gaven by the teacher. All the features that I have learned, that we didnt see in class such as the perlin noise, is all referenced with the p5.js website.
 
 > - This project uses [p5.js](https://p5js.org).
-> - The clown image is a capture of the clown from the Apple emoji character set.
-> - The barking sound effect is "single dog bark 1" by crazymonke9 from freesound.org: https://freesound.org/people/crazymonke9/sounds/418107/
+> - All my images used for my variation jam are from Google Images.
 
 ## License
 
-This bit should include the license you want to apply to your work. For example:
+No extra licence have been added to my project.
 
 > This project is licensed under a Creative Commons Attribution ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.en)) license with the exception of libraries and other components with their own licenses.
